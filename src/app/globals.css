@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  /* Next.js layout.js থেকে আসা ফন্ট ভ্যারিয়েবলগুলোকে Tailwind v4 এর সাথে ম্যাপ করা হলো */
+  --font-sans: var(--font-sans), sans-serif;
+  --font-serif: var(--font-serif), serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
