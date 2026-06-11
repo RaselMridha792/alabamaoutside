@@ -1,11 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  /* Next.js layout.js থেকে আসা ফন্ট ভ্যারিয়েবলগুলোকে Tailwind v4 এর সাথে ম্যাপ করা হলো */
-  --font-sans: var(--font-sans), sans-serif;
-  --font-serif: var(--font-serif), serif;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Lora", Georgia, serif;
+  --font-display: "Cinzel", "Times New Roman", serif;
+  
+  --color-brand-gold: #c5a880;
+  --color-brand-gold-dark: #a88a5f;
+  --color-brand-gold-light: #e2d2bd;
+  --color-brand-navy: #0b1325;
+  --color-brand-navy-light: #152238;
 }
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
 }

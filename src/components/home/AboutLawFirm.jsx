@@ -1,87 +1,159 @@
-import Image from "next/image";
+"use client";
 
-export default function AboutSection() {
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Building2, Compass, Award, ExternalLink, ArrowRight, ShieldAlert } from 'lucide-react';
+import { ABOUT_CONTENT } from '../../data';
+import Image from 'next/image';
+import Link from 'next/link';
+
+export default function About({ onNavigateToAbout }) {
+  const [showMore, setShowMore] = useState(false);
+
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
-      
-      {/* Header */}
-      <p className="text-sm tracking-widest text-gray-500 uppercase mb-2">
-        Established Foundations • Proactive Defense
-      </p>
-
-      <h2 className="text-4xl font-bold mb-6">
-        ABOUT OUR LAW FIRM
-      </h2>
-
-      <div className="grid md:grid-cols-2 gap-10 items-start">
-
-        {/* LEFT CONTENT */}
-        <div>
-          <div className="border-l-4 border-gray-300 pl-4 text-gray-600 leading-relaxed mb-6">
-            Boles Holmes White LLC is a full-service law firm specializing in
-            transactional, litigation, government relations and white collar
-            criminal defense. Our team represents both businesses and individuals
-            throughout the U.S.
-          </div>
-
-          <p className="text-gray-600 mb-6">
-            With offices in downtown Birmingham and Dothan our team represents
-            clients on matters in states throughout the country.
-          </p>
-
-          {/* Feature Cards */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="border p-4 rounded-md">
-              <h4 className="font-semibold text-sm mb-1">PRO HAC VICE</h4>
-              <p className="text-xs text-gray-500">
-                Multi-state representation throughout the country.
-              </p>
-            </div>
-
-            <div className="border p-4 rounded-md">
-              <h4 className="font-semibold text-sm mb-1">DUAL OFFICE REACH</h4>
-              <p className="text-xs text-gray-500">
-                Offices in Birmingham and Dothan.
-              </p>
-            </div>
-          </div>
-
-          <button className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition">
-            Learn More →
-          </button>
-        </div>
-
-        {/* RIGHT IMAGES */}
-        <div className="flex gap-4 justify-center">
+    <section className="bg-white text-gray-800 py-32 px-4 sm:px-6 lg:px-8 mt-16 scroll-mt-20" id="about">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          <div className="mt-10">
-            <Image
-              src="https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1608-683x1024.jpg.webp"
-              alt="lawyer 1"
-              width={220}
-              height={300}
-              className="rounded-lg shadow-lg object-cover"
-            />
+          {/* Left Side: Content & Copy */}
+          <div className="lg:col-span-6 space-y-8">
+            <div className="space-y-3">
+              <span className="text-brand-gold font-sans font-semibold text-xs tracking-widest uppercase block">
+                Established Foundations &bull; Proactive Defense
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl text-brand-navy font-bold tracking-tight uppercase" id="about_title">
+                {ABOUT_CONTENT.title}
+              </h2>
+              <div className="w-16 h-1 bg-brand-gold" />
+            </div>
+
+            <div className="space-y-6 font-sans text-gray-600 leading-relaxed text-sm sm:text-base">
+              <p id="about_p1" className="text-gray-700 font-serif text-lg leading-relaxed italic border-l-4 border-brand-gold/30 pl-4">
+                {ABOUT_CONTENT.paragraph1}
+              </p>
+              
+              <p id="about_p2" className="text-gray-600">
+                {ABOUT_CONTENT.paragraph2}
+              </p>
+            </div>
+
+            {/* Quick Stats Grid or Trust Banner */}
+            <div className="grid grid-cols-2 gap-4 pt-4">
+              <div className="p-4 bg-gray-50 border-l-2 border-brand-gold rounded-r-md">
+                <Compass className="w-5 h-5 text-brand-gold mb-1.5" />
+                <h4 className="font-semibold text-brand-navy text-sm uppercase">Pro Hac Vice</h4>
+                <p className="text-xs text-gray-500 mt-1">Multi-state representation & representation throughout the country.</p>
+              </div>
+              <div className="p-4 bg-gray-50 border-l-2 border-brand-gold rounded-r-md">
+                <Building2 className="w-5 h-5 text-brand-gold mb-1.5" />
+                <h4 className="font-semibold text-brand-navy text-sm uppercase">Dual Office Reach</h4>
+                <p className="text-xs text-gray-500 mt-1">Fully staffed, highly accessible offices in Birmingham and Dothan.</p>
+              </div>
+            </div>
+
+            {/* Learn More Action Button */}
+            <div className="pt-4 flex flex-col gap-4">
+              <Link
+                href="/about"
+                id="about_learn_more_btn"
+                className="inline-flex self-start items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold-dark hover:text-brand-navy font-semibold text-xs tracking-wider uppercase px-6 py-3.5 rounded-sm transition-all duration-300 shadow-md group cursor-pointer"
+              >
+                <span>{ABOUT_CONTENT.actionText}</span>
+                <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
+
+              <AnimatePresence>
+                {showMore && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden bg-brand-navy/5 border border-brand-gold/20 p-6 rounded-md text-sm text-gray-700 italic space-y-4 shadow-inner"
+                    id="about_extended_content"
+                  >
+                    <div className="flex gap-2.5 items-start">
+                      <ShieldAlert className="w-5 h-5 text-brand-dark collapse shrink-0 text-brand-gold mt-0.5" />
+                      <div>
+                        <strong className="text-brand-navy font-sans tracking-wide block uppercase not-italic text-xs font-semibold mb-1">
+                          Admissions & Jurisdictional Compliance
+                        </strong>
+                        <p className="leading-relaxed">
+                          In states where BHW does not have a licensed attorney physically residing, members of our firm have been admitted <em>pro hac vice</em> to advocate for our clients in state and federal courts. Our commitment is as accessible and robust as a local firm with all the resources of a national powerhouse.
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
-          <div>
-            <Image
-              src="https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1679.jpg.webp"
-              alt="building"
-              width={220}
-              height={300}
-              className="rounded-lg shadow-lg object-cover"
-            />
-          </div>
+          {/* Right Side: Photo Collage */}
+          <div className="lg:col-span-6 relative">
+            <div className="grid grid-cols-6 gap-4 items-end">
+              
+              {/* Image 1 */}
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="col-span-2 overflow-hidden rounded-md shadow-lg"
+                id="about_img_1_container"
+              >
+               <Image
+  src={ABOUT_CONTENT.images[0]}
+  alt="BHW Attorney Office Portrait 1"
+  id="about_img_1"
+  width={600}
+  height={400}
+  className="w-full h-48 sm:h-64 object-cover brightness-95 contrast-105 hover:brightness-100 transition-all duration-300"
+  referrerPolicy="no-referrer"
+/>
+              </motion.div>
 
-          <div className="mt-10">
-            <Image
-              src="https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1706.jpg.webp"
-              alt="lawyer 2"
-              width={220}
-              height={300}
-              className="rounded-lg shadow-lg object-cover"
-            />
+              {/* Image 2 (Center highlight - taller) */}
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="col-span-2 overflow-hidden rounded-md shadow-2xl border-4 border-white transform translate-y-[-16px]"
+                id="about_img_2_container"
+              >
+               <Image
+  src={ABOUT_CONTENT.images[1]}
+  alt="BHW Attorney Office Portrait 2"
+  id="about_img_2"
+  width={600}
+  height={500}
+  className="w-full h-64 sm:h-80 object-cover brightness-95 contrast-105 hover:brightness-100 transition-all duration-300"
+  referrerPolicy="no-referrer"
+/>
+              </motion.div>
+
+              {/* Image 3 */}
+              <motion.div 
+                whileHover={{ scale: 1.03 }}
+                className="col-span-2 overflow-hidden rounded-md shadow-lg"
+                id="about_img_3_container"
+              >
+               <Image
+  src={ABOUT_CONTENT.images[2]}
+  alt="BHW Attorney Office Portrait 3"
+  id="about_img_3"
+  width={600}
+  height={400}
+  className="w-full h-48 sm:h-64 object-cover brightness-95 contrast-105 hover:brightness-100 transition-all duration-300"
+  referrerPolicy="no-referrer"
+/>
+                
+              </motion.div>
+
+            </div>
+
+            {/* Subtle decorative gold outline box in background */}
+            <div className="absolute -z-10 -bottom-6 -right-6 w-1/2 h-1/2 border-r-2 border-b-2 border-brand-gold/30 hidden sm:block pointer-events-none" />
           </div>
 
         </div>

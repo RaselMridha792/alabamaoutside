@@ -1,124 +1,195 @@
-'use client'; // React Hooks ব্যবহারের জন্য এটি প্রয়োজন
+"use client";
 
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect } from 'react';
+import { Phone, MapPin, Menu, X } from "lucide-react";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { HERO_CONTENT } from '../../data';
 import Link from 'next/link';
-// // lucide-react থেকে আইকন ইমপোর্ট করা হলো
-// import { ChevronDown, Facebook, Instagram, Linkedin } from 'lucide-react';
+import Image from 'next/image';
+import { usePathname } from 'next/navigation'; // ✅ Active পেজ ট্র্যাক করার জন্য
 
+export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // ✅ বর্তমান URL পাথ পাওয়ার জন্য
 
-import { ChevronDown } from 'lucide-react';
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  // স্ক্রল ইভেন্ট হ্যান্ডেল করার জন্য useEffect হুক
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setIsScrolled(true); // পেজ স্ক্রল হলে true
+      if (window.scrollY > 40) {
+        setScrolled(true);
       } else {
-        setIsScrolled(false); // পেজের শুরুতে থাকলে false
+        setScrolled(false);
       }
     };
-
-    // লিসেনার যুক্ত করা হলো
     window.addEventListener('scroll', handleScroll);
-
-    // ক্লিন-আপ ফাংশন (কম্পোনেন্ট আনমাউন্ট হলে লিসেনার রিমুভ করা হবে)
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // নেভিগেশন লিংকগুলোর গঠন পরিবর্তন করা হলো (ড্রপডাউন নির্দেশ করার জন্য)
-  const navLinks = [
-    { name: 'About', href: '#', hasDropdown: false },
-    { name: 'Attorneys', href: '#', hasDropdown: false },
-    { name: 'Personal', href: '#', hasDropdown: true },
-    { name: 'Professional', href: '#', hasDropdown: true },
-    { name: 'Blog', href: '#', hasDropdown: false },
-    { name: 'Media', href: '#', hasDropdown: false },
-    { name: 'Contact', href: '#', hasDropdown: false },
+  const menuItems = [
+    { name: 'About', href: '/about' },
+    { name: 'Attorneys', href: '/attorney' },
+    { name: 'Personal', href: '/personal' },
+    { name: 'Professional', href: '/professional' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Media', href: '/media' },
+    { name: 'Contact', href: '/contact' }
   ];
 
+  // ✅ মোবাইল মেনু বন্ধ করার জন্য সিম্পল ফাংশন
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
-    // মেইন হেডার কন্টেইনার - এটি fixed থাকবে
-    <header className="fixed top-0 left-0 w-full z-50 transition-all duration-300">
-      
-      {/* ১. টপ-বার (সলিড কালো) - এটি স্ক্রল করলে লুকিয়ে যাবে */}
-      <div
-        className={`bg-black text-gray-200 text-xs transition-all duration-300 overflow-hidden ${
-          isScrolled ? 'h-0 opacity-0' : 'h-11 opacity-100 flex items-center'
+    // পুরো হেডারকে fixed করা হয়েছে যেন স্মুথ ট্রানজিশন হয়
+    <header className="fixed top-0 left-0 w-full z-50 flex flex-col">
+      {/* Top Utility Bar */}
+      <div 
+        className={`bg-brand-navy text-gray-300 px-4 sm:px-6 lg:px-8 text-xs transition-all duration-500 ease-in-out overflow-hidden flex items-center ${
+          scrolled 
+            ? 'max-h-0 opacity-0 py-0 border-transparent' 
+            : 'max-h-[100px] opacity-100 py-2 border-b border-white/5'
         }`}
       >
-        <div className="container mx-auto px-4 lg:px-12 flex items-center justify-between">
-          {/* বাম দিকের তথ্য */}
-          <div className="flex items-center gap-1.5 font-sans">
-            <span>Birmingham, AL 35203</span>
-            <span className="text-gray-500">|</span>
-            <span className="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone-call text-gray-400"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 8 8"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
-                205-502-2000
-            </span>
+        <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+            <a 
+              href="https://maps.google.com/?q=1929+3rd+Ave.+North,+Suite+500,+Birmingham,+AL+35203" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              id="header_address_link"
+              className="flex items-center gap-1.5 hover:text-brand-gold transition-colors duration-200"
+            >
+              <MapPin className="w-3.5 h-3.5 text-brand-gold" />
+              <span>Birmingham, AL 35203</span>
+            </a>
+            <a 
+              href="tel:205-502-2000" 
+              id="header_phone_link"
+              className="flex items-center gap-1.5 hover:text-brand-gold transition-colors duration-200 font-medium"
+            >
+              <Phone className="w-3.5 h-3.5 text-brand-gold" />
+              <span>205-502-2000</span>
+            </a>
           </div>
-          {/* ডান দিকের সোশ্যাল আইকন (সাদা স্কয়ার ব্যাকগ্রাউন্ডে) */}
-          <div className="flex items-center gap-2 text-sm">
-            <span className="cursor-pointer bg-white text-black p-1.5 rounded-sm hover:opacity-80 transition-opacity"><FaFacebookF size={14} /></span>
-            <span className="cursor-pointer bg-white text-black p-1.5 rounded-sm hover:opacity-80 transition-opacity"><FaInstagram size={14} /></span>
-            <span className="cursor-pointer bg-white text-black p-1.5 rounded-sm hover:opacity-80 transition-opacity"><FaLinkedinIn size={14} /></span>
+          <div className="flex items-center gap-4">
+            <a href="https://facebook.com" id="header_fb" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Facebook">
+              <FaFacebookF className="w-4 h-4" />
+            </a>
+            <a href="https://twitter.com" id="header_tw" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Twitter">
+              <FaTwitter className="w-4 h-4" />
+            </a>
+            <a href="https://instagram.com" id="header_ig" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Instagram">
+              <FaInstagram className="w-4 h-4" />
+            </a>
+            <a href="https://linkedin.com" id="header_li" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="LinkedIn">
+              <FaLinkedinIn className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>
 
-      {/* ২. মেইন নেভিগেশন (সাদা ব্যাকগ্রাউন্ড) - এটি কম্প্যাক্ট হবে */}
-      <nav
-        className={`w-full transition-all duration-300 ${
-          isScrolled
-            ? 'bg-white shadow-lg py-2' // স্ক্রল করার পর সলিড সাদা এবং ছোট প্যাডিং
-            : 'bg-[#fcfcfc] py-4' // ডিফল্ট হালকা ব্যাকগ্রাউন্ড এবং বেশি প্যাডিং
+      {/* Main Navigation Bar */}
+      <nav 
+        id="main_nav"
+        className={`w-full transition-all duration-500 ease-in-out ${
+          scrolled 
+            ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 border-b border-gray-200' 
+            : 'bg-white/90 backdrop-blur-lg shadow-sm py-4 border-b border-white/20'
         }`}
       >
-        <div className="container mx-auto py-4 px-4 lg:px-12 flex items-center justify-between">
-          
-          {/* লোগো (বামে) */}
-          <Link href="/" className="flex items-center gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center bg-transparent">
+          {/* Logo */}
+          <Link href="/" onClick={handleLinkClick} className="flex items-center shrink-0" id="logo_link">
             <Image
-              src="https://res.cloudinary.com/dsga4gyw9/image/upload/v1781089132/613bc307f40b1cafd5e5dcff_BHW_GOLD-straight-across-p-500_xrt2wi.png"
+              src={HERO_CONTENT.logoImage}
               alt="Boles Holmes White LLC Logo"
-              width={260} // লোগোর উইডথ একটু কমানো হয়েছে কম্প্যাক্টনেসের জন্য
-              height={45}
-              priority // ইমেজটি দ্রুত লোড করার জন্য
-              className="object-contain"
+              id="logo_img"
+              width={150}   
+              height={50}   
+              className="h-8 sm:h-10 md:h-12 w-auto object-contain hover:opacity-90 transition-opacity select-none"
+              referrerPolicy="no-referrer"
             />
           </Link>
 
-          {/* মেনু লিংকসমূহ (ডানদিকে) */}
-          <div className="hidden lg:flex items-center gap-1.5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="font-sans text-[16px] font-medium tracking-wider text-black hover:text-[#d4af37] px-3 py-1 transition-colors flex items-center gap-1"
-              >
-                {link.name}
-                {/* ড্রপডাউন আইকন (কন্ডিশনাল) */}
-                {link.hasDropdown && <ChevronDown size={14} className="text-black" />}
-              </Link>
-            ))}
+          {/* Desktop Navigation */}
+          <div className="hidden xl:flex items-center gap-6 xl:gap-8 shrink-0">
+            {menuItems.map((item) => {
+              // ✅ Next.js এর usePathname দিয়ে খুব সহজেই Active পেজ চেক করা যায়
+              const isActive = pathname === item.href;
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={handleLinkClick}
+                  id={`nav_item_${item.name.toLowerCase().replace(' ', '_')}`}
+                  className={`text-xs xl:text-sm font-semibold tracking-wide uppercase transition-colors block relative group py-1 ${
+                    isActive ? 'text-brand-navy font-bold' : 'text-brand-navy/80 hover:text-brand-gold-dark'
+                  }`}
+                >
+                  {item.name}
+                  <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                </Link>
+              );
+            })}
+            <Link
+              href="/contact"
+              onClick={handleLinkClick}
+              id="nav_cta_button"
+              className="bg-brand-navy hover:bg-brand-navy-light text-brand-gold font-bold text-[11px] xl:text-xs tracking-wider uppercase px-4 xl:px-5 py-2.5 rounded-sm transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
+            >
+              Consultation
+            </Link>
           </div>
 
-          {/* মোবাইল মেনু বাটন (শুধুমাত্র মোবাইলে দেখাবে) */}
-          <button className="lg:hidden text-black p-2 rounded-md hover:bg-gray-100">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-          </button>
+          {/* Mobile Menu Toggle */}
+          <div className="xl:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              id="mobile_menu_toggle"
+              className="text-brand-navy hover:text-brand-gold p-2 transition-colors focus:outline-none cursor-pointer"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Sidebar Navigation Overlay */}
+        {mobileMenuOpen && (
+          <div className="xl:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl" id="mobile_menu_dropdown">
+            <div className="px-4 pt-2 pb-6 space-y-3">
+              {menuItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  id={`mobile_nav_${item.name.toLowerCase().replace(' ', '_')}`}
+                  onClick={handleLinkClick}
+                  className="block px-3 py-2.5 rounded-md text-base font-semibold text-brand-navy hover:bg-slate-50 hover:text-brand-gold-dark transition-all"
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="pt-4 border-t border-gray-100">
+                <Link
+                  href="/contact"
+                  id="mobile_cta_button"
+                  onClick={handleLinkClick}
+                  className="block w-full text-center bg-brand-navy hover:bg-brand-navy-light text-brand-gold font-bold py-3 px-4 rounded-sm transition-all text-sm tracking-wider uppercase"
+                >
+                  Free Consultation
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   );
-};
-
-export default Navbar;
+}
