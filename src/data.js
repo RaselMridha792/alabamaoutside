@@ -117,6 +117,13 @@ export const BLOG_POSTS = [
     imageUrl: "http://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6244ba26e1c13c41ffd68ebc_US-court-of-appeals-p-500.jpeg.webp",
     actionText: "Read More",
     date: "Mar 15, 2022"
+  },
+  {
+    title: "Boles Holmes White Attorney Wally Walker Assists in Securing Affirmance of $40 Million Settlement for Plaintiff Class",
+    summary: "On March 15, 2022, the United States Court of Appeals for the Fourth Circuit affirmed…",
+    imageUrl: "http://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6244ba26e1c13c41ffd68ebc_US-court-of-appeals-p-500.jpeg.webp",
+    actionText: "Read More",
+    date: "Mar 15, 2022"
   }
 ];
 

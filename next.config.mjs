@@ -11,6 +11,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "alabamaoutsidecounsel.com",
       },
+        {
+        protocol: "http",
+        hostname: "alabamaoutsidecounsel.com",
+      },
+      
     ],
   },
 };

@@ -9,7 +9,7 @@ import { FEATURED_REPORTERS } from '../../data';
 
 export default function FeaturedIn() {
   return (
-    <section className="bg-brand-navy py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-gold/10 scroll-mt-20" id="featured-in">
+    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 border-t border-brand-gold/10 scroll-mt-20" id="featured-in">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Title */}
@@ -19,7 +19,7 @@ export default function FeaturedIn() {
             <span>National Credibility</span>
             <Star className="w-3.5 h-3.5 fill-brand-gold text-brand-gold" />
           </div>
-          <h2 className="font-display text-lg sm:text-xl text-white font-semibold tracking-widest uppercase">
+          <h2 className="font-display text-lg sm:text-xl text-brand-navy font-semibold tracking-widest uppercase">
             Featured In
           </h2>
           <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
@@ -30,7 +30,7 @@ export default function FeaturedIn() {
           {FEATURED_REPORTERS.map((reporter, index) => (
             <div 
               key={reporter.name}
-              className="bg-white p-3.5 sm:p-5 w-full h-16 sm:h-20 rounded-lg flex items-center justify-center border border-white/10 transition-all duration-350 group shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-brand-gold/40"
+              className="bg-brand-navy/10 p-3.5 sm:p-5 w-full h-16 sm:h-20 rounded-lg flex items-center justify-center border border-white/10 transition-all duration-350 group shadow-lg hover:-translate-y-1 hover:shadow-xl hover:border-brand-gold/40"
               id={`featured_logo_${index}`}
             >
               <img

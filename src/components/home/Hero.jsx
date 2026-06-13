@@ -1,137 +1,196 @@
-"use client"
+"use client";
 
-import React from 'react';
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ShieldCheck, Landmark, Briefcase, ChevronDown } from 'lucide-react';
-import { HERO_CONTENT, FORWARD_CARDS } from '../../data';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
+
+/**
+ * Custom hook to animate counting numbers.
+ * @param {number} endValue - The target value to count to.
+ * @param {number} duration - The duration of the animation in milliseconds.
+ * @returns {number} - The current animated value.
+ */
+function useCountUp(endValue, duration = 1500) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let startTime;
+    let animationFrameId;
+
+    const animate = (timestamp) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Update count based on progress
+      setCount(progress * endValue);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      }
+    };
+
+    // Delay start slightly for visual effect
+    const delayId = setTimeout(() => {
+      animationFrameId = requestAnimationFrame(animate);
+    }, 200);
+
+    // Clean up on unmount or reset
+    return () => {
+      clearTimeout(delayId);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [endValue, duration]);
+
+  return count;
+}
 
 export default function Hero() {
-  const getIcon = (index) => {
-    switch (index) {
-      case 0:
-        return <Landmark className="w-8 h-8 text-brand-gold" />;
-      case 1:
-        return <Briefcase className="w-8 h-8 text-brand-gold" />;
-      case 2:
-        return <ShieldCheck className="w-8 h-8 text-brand-gold" />;
-      default:
-        return <ShieldCheck className="w-8 h-8 text-brand-gold" />;
-    }
+  // Define end values for each counter
+  const endValues = {
+    chargesResolved: 25000,
+    avvoReviews: 880,
+    avvoRating: 10,
+    endorsements: 44,
+    yearsExperience: 32
   };
 
+  // Run the counting animation for each value
+  const chargesCount = useCountUp(endValues.chargesResolved);
+  const reviewsCount = useCountUp(endValues.avvoReviews);
+  const ratingCount = useCountUp(endValues.avvoRating);
+  const endorsementsCount = useCountUp(endValues.endorsements);
+  const yearsCount = useCountUp(endValues.yearsExperience);
+
   return (
-    <section className="relative min-h-[95vh] flex flex-col justify-between text-white bg-brand-navy overflow-visible" id="hero">
-      {/* Background Wrapper with absolute clipping to prevent horizontal scrollbars on scaling */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Background Image with Dark & Warm Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60 scale-100 filter contrast-105 brightness-90 transition-opacity duration-500"
-          style={{ backgroundImage: `url(${HERO_CONTENT.backgroundImage})` }}
-        />
-        {/* Decorative Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/55 via-brand-navy/45 to-brand-navy/95" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-navy to-transparent" />
-      </div>
-
-      {/* Main Hero Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-12 flex-grow flex flex-col justify-center items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          {/* Accent Gold Crest / Tag */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-navy/80 border border-brand-gold/45 rounded-full text-brand-gold text-xs font-semibold uppercase tracking-widest mb-6 shadow-md" id="hero_badge">
-            <span className="w-1.5 h-1.5 bg-brand-gold rounded-full animate-pulse"></span>
-            Litigation & Regulatory Leaders
-          </div>
-
-          <h1 
-            id="hero_title"
-            className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight text-white mb-6 uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)]"
+    <section className="relative w-full flex flex-col z-0 overflow-hidden" id="hero-section">
+      
+      {/* MAIN HERO BODY: High-resolution background image with overlay */}
+      <div className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-[#1a1a1a] overflow-hidden">
+        
+        {/* Background Image: Next.js Image component for best optimization and avoiding crops */}
+        <div className="absolute inset-0">
+          <Image 
+            src="https://res.cloudinary.com/dsga4gyw9/image/upload/v1781170345/ChatGPT_Image_Jun_11_2026_03_31_58_PM_oid42f.png"
+            alt="Alabama Criminal Defense Attorneys Background"
+            fill
+            priority
+            className="object-contain md:object-cover object-[center_15%]"
+          />
+        </div>
+        
+        {/* Soft, very light overlay just enough to make white text readable, without hiding the image */}
+        <div className="absolute inset-0 bg-black/25" />
+        
+        {/* Central Content */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-20 sm:mt-24 md:mt-28 pb-16 sm:pb-20">
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-2 sm:space-y-4 mb-6 sm:mb-8"
           >
-            {HERO_CONTENT.title}
-          </h1>
+            <h2 className="font-sans text-sm sm:text-base md:text-lg font-bold text-white uppercase tracking-wider drop-shadow-md">
+              We Will Make Sure Your Rights
+            </h2>
+            <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-lg">
+              ARE PROTECTED
+            </h1>
+          </motion.div>
 
-          <p 
-            id="hero_subtitle"
-            className="font-serif text-lg sm:text-xl md:text-2xl text-brand-gold-light tracking-wide max-w-3xl mx-auto font-medium mb-4 italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]"
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="font-sans text-xs sm:text-sm md:text-base text-white max-w-3xl mx-auto uppercase tracking-widest font-bold mb-10 sm:mb-12 px-4 drop-shadow"
           >
-            “{HERO_CONTENT.subtitle}”
-          </p>
+            Trust in our devoted team of Alabama Criminal Defense Attorneys.
+          </motion.p>
 
-          <p 
-            id="hero_description"
-            className="font-sans text-sm sm:text-base md:text-lg text-gray-100 max-w-2xl mx-auto leading-relaxed mb-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)] font-medium"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
-            {HERO_CONTENT.description}
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Link 
-              href="#contact" 
-              className="bg-brand-gold hover:bg-brand-gold-dark text-brand-navy font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-sm transition-all duration-300 shadow-xl"
-              id="hero_cta_consult"
+            <Link
+              href="/#contact"
+              className="inline-flex items-center gap-2.5 bg-[#C92A2A] hover:bg-[#A02020] text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
             >
-              Request Free Consultation
+              <span>Free Consultation</span>
+              <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
-            <Link 
-              href="#practice-areas" 
-              className="bg-transparent hover:bg-white/5 border border-white/30 hover:border-brand-gold font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-sm transition-all duration-300 text-white"
-              id="hero_cta_practices"
-            >
-              Explore Practice Areas
-            </Link>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-16 animate-bounce text-brand-gold-light/60 hover:text-brand-gold cursor-pointer transition-colors hidden md:block">
-          <Link href="#three-pillars" aria-label="Scroll Down">
-            <ChevronDown className="w-8 h-8" />
-          </Link>
         </div>
       </div>
 
-      {/* Floating 3 Pillars Overlay (Government Investigations, Business Law, Litigation) */}
-      <div id="three-pillars" className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mb-16 md:-mb-28 transform translate-y-0">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {FORWARD_CARDS.map((card, i) => (
-            <motion.div
-              key={card.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="bg-brand-navy-light/95 backdrop-blur-md rounded-lg p-6 border-t-4 border-brand-gold shadow-2xl flex flex-col justify-between"
-              id={`pillar_card_${i}`}
-            >
-              <div>
-                <div className="p-3 bg-brand-gold/10 border border-brand-gold/20 rounded-md inline-block mb-4 leading-none">
-                  {getIcon(i)}
-                </div>
-                <h3 className="font-display text-lg font-bold text-white uppercase tracking-wider mb-3">
-                  {card.title}
-                </h3>
-                <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed">
-                  {card.content}
-                </p>
-              </div>
-              <div className="mt-6 pt-4 border-t border-white/5">
-                <Link 
-                  href="#contact" 
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-gold hover:text-white uppercase tracking-wider transition-colors"
-                >
-                  Schedule Advisory &rarr;
-                </Link>
-              </div>
-            </motion.div>
-          ))}
+      {/* ==============================================
+        COUNTER SECTION: Animating numbers from zero
+        ==============================================
+      */}
+      <div className="relative bg-[#0F1420] text-white py-10 px-4 sm:px-6 lg:px-8 z-10 border-t border-gray-800 shadow-xl">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-4 sm:gap-6 justify-items-center">
+          
+          {/* Column 1: Charges Resolved */}
+          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {Math.floor(chargesCount).toLocaleString()}+
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              Charges Resolved
+            </span>
+          </div>
+
+          {/* Column 2: AVVO Reviews */}
+          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {Math.floor(reviewsCount)}+
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              5 Star AVVO Reviews
+            </span>
+          </div>
+
+          {/* Column 3: AVVO Rating */}
+          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {ratingCount.toFixed(1)}
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              Perfect AVVO Rating
+            </span>
+          </div>
+
+          {/* Column 4: Lawyer Endorsements */}
+          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {Math.floor(endorsementsCount)}+
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              Lawyer Endorsements
+            </span>
+          </div>
+
+          {/* Column 5: Years of Experience */}
+          <div className="w-full flex flex-col items-center text-center border-r-0">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {Math.floor(yearsCount)}+
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              Years of Experience
+            </span>
+          </div>
+
         </div>
       </div>
+
     </section>
   );
 }

@@ -6,21 +6,21 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Phone, MapPin, Menu, X } from "lucide-react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { Phone, Menu, X, MapPin } from "lucide-react";
 import { HERO_CONTENT } from '../../data';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation'; // ✅ Active পেজ ট্র্যাক করার জন্য
+import { usePathname } from 'next/navigation';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const pathname = usePathname(); // ✅ বর্তমান URL পাথ পাওয়ার জন্য
+  const pathname = usePathname();
 
+  // Scroll effect for hiding top bar and sticking the nav bar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -30,7 +30,9 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Updated Menu Items (Added 'Home' as per the new design structure)
   const menuItems = [
+    { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Attorneys', href: '/attorney' },
     { name: 'Personal', href: '/personal' },
@@ -40,156 +42,160 @@ export default function Header() {
     { name: 'Contact', href: '/contact' }
   ];
 
-  // ✅ মোবাইল মেনু বন্ধ করার জন্য সিম্পল ফাংশন
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
   };
 
   return (
-    // পুরো হেডারকে fixed করা হয়েছে যেন স্মুথ ট্রানজিশন হয়
-    <header className="fixed top-0 left-0 w-full z-50 flex flex-col">
-      {/* Top Utility Bar */}
+    <header className="w-full flex flex-col z-50">
+      
+      {/* ========================================
+        TOP TIER: Navy Background (Logo & Phone)
+        ========================================
+      */}
       <div 
-        className={`bg-brand-navy text-gray-300 px-4 sm:px-6 lg:px-8 text-xs transition-all duration-500 ease-in-out overflow-hidden flex items-center ${
-          scrolled 
-            ? 'max-h-0 opacity-0 py-0 border-transparent' 
-            : 'max-h-[100px] opacity-100 py-2 border-b border-white/5'
+        className={`bg-[#0A192F] transition-all duration-500 ease-in-out overflow-hidden flex items-center ${
+          scrolled ? 'max-h-0 opacity-0 py-0' : 'max-h-[120px] opacity-100 py-4 sm:py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto w-full flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-            <a 
-              href="https://maps.google.com/?q=1929+3rd+Ave.+North,+Suite+500,+Birmingham,+AL+35203" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              id="header_address_link"
-              className="flex items-center gap-1.5 hover:text-brand-gold transition-colors duration-200"
-            >
-              <MapPin className="w-3.5 h-3.5 text-brand-gold" />
-              <span>Birmingham, AL 35203</span>
-            </a>
-            <a 
-              href="tel:205-502-2000" 
-              id="header_phone_link"
-              className="flex items-center gap-1.5 hover:text-brand-gold transition-colors duration-200 font-medium"
-            >
-              <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>205-502-2000</span>
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="https://facebook.com" id="header_fb" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Facebook">
-              <FaFacebookF className="w-4 h-4" />
-            </a>
-            <a href="https://twitter.com" id="header_tw" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Twitter">
-              <FaTwitter className="w-4 h-4" />
-            </a>
-            <a href="https://instagram.com" id="header_ig" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="Instagram">
-              <FaInstagram className="w-4 h-4" />
-            </a>
-            <a href="https://linkedin.com" id="header_li" target="_blank" rel="noopener noreferrer" className="hover:text-brand-gold transition-colors" aria-label="LinkedIn">
-              <FaLinkedinIn className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation Bar */}
-      <nav 
-        id="main_nav"
-        className={`w-full transition-all duration-500 ease-in-out ${
-          scrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 border-b border-gray-200' 
-            : 'bg-white/90 backdrop-blur-lg shadow-sm py-4 border-b border-white/20'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center bg-transparent">
-          {/* Logo */}
-          <Link href="/" onClick={handleLinkClick} className="flex items-center shrink-0" id="logo_link">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+          
+          {/* Left: Logo */}
+          <Link href="/" onClick={handleLinkClick} className="flex text-white items-center shrink-0">
             <Image
               src={HERO_CONTENT.logoImage}
               alt="Boles Holmes White LLC Logo"
-              id="logo_img"
-              width={150}   
-              height={50}   
-              className="h-8 sm:h-10 md:h-12 w-auto object-contain hover:opacity-90 transition-opacity select-none"
+              width={280}   
+              height={70}   
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain hover:opacity-90 transition-opacity"
               referrerPolicy="no-referrer"
+              priority
             />
           </Link>
 
+          {/* Right: Contact Info (Hidden on very small screens, visible on sm and up) */}
+        <div className="hidden sm:flex flex-col items-end justify-center text-right">
+  
+
+
+  {/* Address */}
+  <div className="flex items-center gap-2 text-gray-300 text-xs sm:text-sm mb-1">
+    <MapPin className="w-4 h-4 text-brand-gold" />
+    <span>Birmingham, AL 35203</span>
+  </div>
+
+  {/* Phone */}
+  <a 
+    href="tel:205-502-2000" 
+    className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors duration-300 group"
+  >
+    <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-brand-gold group-hover:text-white" />
+    
+    <span className="text-xl sm:text-2xl lg:text-3xl font-display font-medium tracking-tight">
+      205-502-2000
+    </span>
+  </a>
+
+</div>
+
+          {/* Mobile Menu Toggle Button (Shows on mobile instead of phone number) */}
+          <div className="sm:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-white hover:text-brand-gold p-2 transition-colors focus:outline-none"
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ========================================
+        BOTTOM TIER: White Background Navigation
+        ========================================
+      */}
+      <nav 
+        className={`w-full bg-[#F8F9FA] transition-all duration-500 z-50 ${
+          scrolled ? 'fixed top-0 left-0 shadow-md border-b border-gray-200' : 'relative border-b border-gray-200'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-6 xl:gap-8 shrink-0">
+          <div className="hidden sm:flex justify-center items-center gap-6 md:gap-8 lg:gap-10 xl:gap-12 py-4">
             {menuItems.map((item) => {
-              // ✅ Next.js এর usePathname দিয়ে খুব সহজেই Active পেজ চেক করা যায়
               const isActive = pathname === item.href;
               
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  onClick={handleLinkClick}
-                  id={`nav_item_${item.name.toLowerCase().replace(' ', '_')}`}
-                  className={`text-xs xl:text-sm font-semibold tracking-wide uppercase transition-colors block relative group py-1 ${
-                    isActive ? 'text-brand-navy font-bold' : 'text-brand-navy/80 hover:text-brand-gold-dark'
+                  className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors relative group ${
+                    isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
                   }`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  <span className={`absolute -bottom-1.5 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              onClick={handleLinkClick}
-              id="nav_cta_button"
-              className="bg-brand-navy hover:bg-brand-navy-light text-brand-gold font-bold text-[11px] xl:text-xs tracking-wider uppercase px-4 xl:px-5 py-2.5 rounded-sm transition-all duration-300 shadow-md transform hover:-translate-y-0.5 cursor-pointer whitespace-nowrap"
-            >
-              Consultation
-            </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <div className="xl:hidden flex items-center">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              id="mobile_menu_toggle"
-              className="text-brand-navy hover:text-brand-gold p-2 transition-colors focus:outline-none cursor-pointer"
-              aria-label="Toggle Menu"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile Centered Phone Number (Since it was hidden in top bar on mobile) */}
+          {scrolled && (
+            <div className="sm:hidden flex justify-between items-center py-3">
+              <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy font-bold">
+                <Phone className="w-4 h-4 text-brand-gold" fill="currentColor" />
+                <span>205-502-2000</span>
+              </a>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-brand-navy hover:text-brand-gold focus:outline-none"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Mobile Sidebar Navigation Overlay */}
+        {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl" id="mobile_menu_dropdown">
-            <div className="px-4 pt-2 pb-6 space-y-3">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  id={`mobile_nav_${item.name.toLowerCase().replace(' ', '_')}`}
-                  onClick={handleLinkClick}
-                  className="block px-3 py-2.5 rounded-md text-base font-semibold text-brand-navy hover:bg-slate-50 hover:text-brand-gold-dark transition-all"
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-4 border-t border-gray-100">
-                <Link
-                  href="/contact"
-                  id="mobile_cta_button"
-                  onClick={handleLinkClick}
-                  className="block w-full text-center bg-brand-navy hover:bg-brand-navy-light text-brand-gold font-bold py-3 px-4 rounded-sm transition-all text-sm tracking-wider uppercase"
-                >
-                  Free Consultation
-                </Link>
-              </div>
+          <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-xl border-b border-gray-200">
+            <div className="px-4 pt-2 pb-6 space-y-1">
+              {/* Mobile Phone Number visible if not scrolled */}
+              {!scrolled && (
+                <div className="pb-4 mb-4 border-b border-gray-100 flex justify-center">
+                  <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy text-lg font-bold">
+                    <Phone className="w-5 h-5 text-brand-gold" fill="currentColor" />
+                    <span>205-502-2000</span>
+                  </a>
+                </div>
+              )}
+              
+              {menuItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    onClick={handleLinkClick}
+                    className={`block px-4 py-3 rounded-md text-sm font-bold tracking-wider uppercase transition-all ${
+                      isActive 
+                        ? 'bg-brand-navy/5 text-brand-navy border-l-4 border-brand-gold' 
+                        : 'text-gray-700 hover:bg-slate-50 hover:text-brand-gold'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         )}
       </nav>
+
     </header>
   );
 }
