@@ -145,6 +145,14 @@ export const FEATURED_REPORTERS = [
   { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
 ];
 
+export const ACCREDITATIONS = [
+  { name: "National Association of Criminal Defense Lawyers", logo: "/01.svg" },
+  { name: "Avvo Rating 10.0 Superb", logo: "/02.png" },
+  { name: "Martindale-Hubbell AV Preeminent", logo: "/03.png" },
+  { name: "Super Lawyers", logo: "/04.png" },
+  { name: "The National Trial Lawyers Top 100", logo: "/05.svg" }
+];
+
 export const OFFICE_INFO = [
   {
     name: "BIRMINGHAM OFFICE",
