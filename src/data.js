@@ -8,7 +8,7 @@ export const HERO_CONTENT = {
   subtitle: "The law firm of Boles Holmes White has a long history of protecting our clients.",
   description: "We determine the risks our clients face and develop a plan to protect their reputation, financial strength, business relationships, freedom, and future.",
   backgroundImage: "https://alabamaoutsidecounsel.com/wp-content/uploads/2025/09/home-bg.webp",
-  logoImage: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/613bc307f40b1cafd5e5dcff_BHW_GOLD-straight-across-p-500.png"
+  logoImage: "/white.png"
 };
 
 export const FORWARD_CARDS = [
