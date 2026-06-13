@@ -14,7 +14,7 @@ export default function Accreditations() {
           {ACCREDITATIONS.map((item) => (
             <div
               key={item.name}
-              className="w-full h-20 sm:h-24 px-4 sm:px-6 flex items-center justify-center"
+              className="w-full h-16 sm:h-20 px-4 sm:px-6 flex items-center justify-center"
             >
               <img
                 src={item.logo}

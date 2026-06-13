@@ -5,6 +5,8 @@ import FeaturedIn from "@/components/home/FeaturedIn";
 import Hero from "@/components/home/Hero";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import OurTeam from "@/components/home/OurTeam";
+import WhyOurFirm from "@/components/home/WhyOurFirm";
+import FAQ from "@/components/home/FAQ";
 // import LatestUpdates from "@/components/home/LatestUpdates";
 import PracticeSection from "@/components/home/PracticeSection";
 import OurProcess from "@/components/home/OurProcess";
@@ -23,14 +25,15 @@ export default function Home() {
       <OurTeam></OurTeam>
       <OurProcess></OurProcess>
       <ClientReviews></ClientReviews>
-
+      <WhyOurFirm></WhyOurFirm>
 
       {/* <AboutLawFirm></AboutLawFirm> */}
-   
+
 
           <LatestUpdates></LatestUpdates>
       {/* <LatestUpdates></LatestUpdates> */}
 
+      <FAQ></FAQ>
       <ContactUs></ContactUs>
     </div>
   );
