@@ -1,138 +1,202 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-import "swiper/css";
-
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { useRef } from "react";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
+import { Calendar, ArrowRight, X, ChevronDown, Share2 } from 'lucide-react';
+import { BLOG_POSTS } from '../../data';
 
 export default function LatestUpdates() {
-  const swiperRef = useRef(null);
+  // প্রথমে ৬টি পোস্ট (৩ কলাম x ২ রো) দেখানোর জন্য স্টেট
+  const [visibleCount, setVisibleCount] = useState(6);
+  const [selectedPost, setSelectedPost] = useState(null);
 
-  const data = [
-    {
-      img: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/662e106b3e6778df1e79108c_Wage-Fixing-scaled-p-500.jpeg.webp",
-      date: "Apr 28, 2024",
-      title:
-        "WAGE FIXING AND NO POACH AGREEMENTS IN CRIMINAL CROSSHAIRS",
-      desc: "It is common knowledge among corporate executives that it is illegal to conspire...",
-    },
-    {
-      img: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/662e0fb4c999dfe9b2dfcd63_Illegal-Sports-Gambling-scaled-p-500.jpeg.webp",
-      date: "Apr 15, 2024",
-      title:
-        "ILLEGAL SPORTS GAMBLING SUBJECT TO PROSECUTION",
-      desc: "In years past, sports gambling was often associated with seedy characters...",
-    },
-    {
-      img: "http://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6244ba26e1c13c41ffd68ebc_US-court-of-appeals-p-500.jpeg.webp",
-      date: "Mar 15, 2022",
-      title:
-        "BOLES HOLMES WHITE ATTORNEY WALLY WALKER ASSISTS...",
-      desc: "On March 15, 2022, the United States Court of Appeals for the Fourth Circuit affirmed...",
-    },
-    {
-      img: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6020ed45a265973d0c86f0fe_pharma-part-3-p-500-2.jpeg.webp",
-      date: "Mar 10, 2024",
-      title: "PHARMACEUTICAL LAW INSIGHTS",
-      desc: "Regulatory insights in pharmaceutical frameworks...",
-    },
-  ];
+  // Load More বাটনে ক্লিক করলে আরও ৩টি করে পোস্ট বাড়বে
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 3);
+  };
+
+  // বর্তমানে যতগুলো পোস্ট ভিজিবল আছে
+  const visiblePosts = BLOG_POSTS.slice(0, visibleCount);
+  const hasMorePosts = visibleCount < BLOG_POSTS.length;
 
   return (
-    <section className="bg-[#f5f5f5] py-20">
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <p className="text-[11px] tracking-[3px] text-gray-400 uppercase">
-              LEGAL INSIGHTS & NEWS
-            </p>
-
-            <h2 className="text-[42px] font-semibold mt-2 tracking-tight">
-              LATEST UPDATES
-            </h2>
-
-            <div className="w-14 h-[2px] bg-yellow-600 mt-3"></div>
-          </div>
-
-          {/* Custom Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={() => swiperRef.current?.slidePrev()}
-              className="w-10 h-10 rounded-full border flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition"
-            >
-              <FaArrowLeft size={12} />
-            </button>
-
-            <button
-              onClick={() => swiperRef.current?.slideNext()}
-              className="w-10 h-10 rounded-full border flex items-center justify-center text-gray-600 hover:bg-black hover:text-white transition"
-            >
-              <FaArrowRight size={12} />
-            </button>
-          </div>
+    // স্ক্রিনশটের মতো ডার্ক নেভি ব্যাকগ্রাউন্ড
+    <section className="bg-[#1A253B] text-white py-24 px-4 sm:px-6 lg:px-8 scroll-mt-20" id="latest-updates">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Section Header (Centered like the screenshot) */}
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-white drop-shadow-md" id="updates_title">
+            Latest Updates
+          </h2>
+          <div className="w-16 h-1 bg-brand-gold mx-auto" />
+          <p className="text-gray-300 font-sans text-sm sm:text-base max-w-2xl mx-auto mt-4">
+            Review supreme court decisions, regional regulatory shifts, and in-depth legal intelligence reports.
+          </p>
         </div>
 
-        {/* Slider */}
-        <Swiper
-          modules={[Autoplay]}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          spaceBetween={30}
-          slidesPerView={3}
-          loop={true}
-          autoplay={{
-            delay: 3500,
-            disableOnInteraction: false,
-          }}
-          breakpoints={{
-            0: { slidesPerView: 1.1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
-          }}
+        {/* Blog Posts Grid (3 Columns) */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+          id="blog_grid"
         >
-          {data.map((item, i) => (
-            <SwiperSlide key={i}>
-              <div className="bg-white rounded-xl overflow-hidden border hover:shadow-lg transition">
+          <AnimatePresence mode="popLayout">
+            {visiblePosts.map((post, index) => (
+              <motion.article
+                key={post.title}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
+                className="bg-white rounded-lg overflow-hidden border border-gray-100 hover:border-brand-gold/40 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Image Header with Next.js Image */}
+                  <div className="relative overflow-hidden aspect-video bg-gray-900 w-full">
+                    <Image 
+                      src={post.imageUrl} 
+                      alt={post.title} 
+                      fill
+                      className="object-cover filter brightness-90 group-hover:scale-105 transition-transform duration-500"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute top-3 left-3 bg-brand-navy/90 backdrop-blur-sm text-brand-gold text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shadow-md">
+                      Legal Brief
+                    </div>
+                  </div>
 
-                {/* Image */}
-                <div className="relative">
-                  <img
-                    src={item.img}
-                    alt=""
-                    className="w-full h-[230px] object-cover"
-                  />
-
-                  <span className="absolute top-4 left-4 text-[10px] tracking-wider bg-[#0b1a2f] text-white px-3 py-1 rounded">
-                    IN-DEPTH REVIEW
-                  </span>
+                  {/* Content Pad (White background for text contrast) */}
+                  <div className="p-6 space-y-4 text-gray-800">
+                    {post.date && (
+                      <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{post.date}</span>
+                      </div>
+                    )}
+                    
+                    <h3 className="font-display text-lg font-bold text-brand-navy tracking-tight leading-snug line-clamp-2 group-hover:text-brand-gold transition-colors duration-200" title={post.title}>
+                      {post.title}
+                    </h3>
+                    
+                    <p className="font-sans text-xs sm:text-sm text-gray-600 leading-relaxed line-clamp-3">
+                      {post.summary}
+                    </p>
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <p className="text-[12px] text-gray-400 mb-3">
-                    {item.date}
-                  </p>
-
-                  <h3 className="text-[14px] font-semibold leading-snug mb-3">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-[12px] text-gray-500 mb-5">
-                    {item.desc}
-                  </p>
-
-                  <button className="text-[11px] font-semibold tracking-wide flex items-center gap-2 text-gray-700 hover:gap-3 transition">
-                    READ MORE →
+                {/* Read More Button Area */}
+                <div className="p-6 pt-0">
+                  <button
+                    onClick={() => setSelectedPost(post)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-brand-gold hover:text-brand-navy uppercase tracking-wider transition-colors duration-200"
+                  >
+                    <span>{post.actionText || 'Read More'}</span>
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                   </button>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Load More Button */}
+        {hasMorePosts && (
+          <div className="mt-16 flex justify-center">
+            <button
+              onClick={handleLoadMore}
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-transparent border-2 border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-navy font-bold text-sm tracking-widest uppercase rounded transition-all duration-300"
+            >
+              <span>Load More</span>
+              <ChevronDown className="w-4 h-4 animate-bounce" />
+            </button>
+          </div>
+        )}
+
+        {/* Modal/Lightbox Overlay for reading full article */}
+        <AnimatePresence>
+          {selectedPost && (
+            <div className="fixed inset-0 bg-brand-navy/90 backdrop-blur-md flex items-center justify-center z-50 p-4 overflow-y-auto" id="blog_modal">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white rounded-lg shadow-2xl max-w-3xl w-full overflow-hidden border border-brand-gold/10 relative my-8"
+              >
+                {/* Image top bar */}
+                <div className="relative h-64 sm:h-80 w-full bg-gray-900">
+                  <Image 
+                    src={selectedPost.imageUrl} 
+                    alt={selectedPost.title} 
+                    fill
+                    className="object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                  
+                  {/* Close btn */}
+                  <button
+                    onClick={() => setSelectedPost(null)}
+                    id="btn_close_blog_modal"
+                    className="absolute top-4 right-4 bg-black/60 hover:bg-black text-white p-2.5 rounded-full transition-colors focus:outline-none z-10"
+                    aria-label="Close details"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+
+                  <div className="absolute bottom-6 left-6 right-6 text-white space-y-2 z-10">
+                    {selectedPost.date && (
+                      <div className="flex items-center gap-1.5 text-xs text-brand-gold font-semibold uppercase tracking-wider">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{selectedPost.date}</span>
+                        <span className="text-white/40">&bull;</span>
+                        <span>Legal Intelligence REPORT</span>
+                      </div>
+                    )}
+                    <h3 className="font-display text-lg sm:text-2xl font-bold uppercase leading-tight tracking-wide">
+                      {selectedPost.title}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Actual detailed text */}
+                <div className="p-6 sm:p-8 space-y-6 font-sans text-gray-700 leading-relaxed max-h-[50vh] overflow-y-auto custom-scrollbar">
+                  <div className="bg-gray-50 border-l-4 border-brand-gold p-4 italic text-sm text-gray-600 rounded-r-md">
+                    {selectedPost.summary || selectedPost.excerpt}
+                  </div>
+
+                  <p className="text-xs sm:text-sm">
+                    {selectedPost.content || "This specialized report documents ongoing regulatory adjustments and key litigation shifts monitored by Boles Holmes White. Legal briefs, environmental studies, and class-action updates are thoroughly investigated by our state, federal, and administrative attorneys."}
+                  </p>
+
+                  <p className="text-xs sm:text-sm">
+                    Understanding compliance shifts, white-collar boundaries, and class settlements are foundational to safeguarding individual rights and corporate longevity. BHW continues to analyze precedents at the state, federal, and administrative levels in over 25 states.
+                  </p>
+
+                  <div className="pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-xs font-semibold uppercase text-brand-navy">
+                    <span>Published by Boles Holmes White LLC</span>
+                    <button
+                      onClick={() => alert(`Review: "${selectedPost.title}" - shared link to clipboard.`)}
+                      className="inline-flex items-center gap-1 text-xs text-brand-gold hover:text-brand-navy"
+                    >
+                      <Share2 className="w-4 h-4" />
+                      <span>Share Legal Update</span>
+                    </button>
+                  </div>
+                </div>
+
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>

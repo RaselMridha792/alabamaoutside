@@ -1,57 +1,60 @@
 "use client";
 
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import Image from 'next/image';
-import { Play, Newspaper, X } from 'lucide-react';
-import { FEATURED_REPORTERS } from '../../data';
+
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
+import { Play, Newspaper, X } from "lucide-react";
+import { FEATURED_REPORTERS } from "../../data";
 
 export default function MediaPage({ onNavigateToContact }) {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  // ইউটিউবের অফিশিয়াল ডিফল্ট থাম্বনেইল ডাইনামিকালি জেনারেট করার জন্য অবজেক্ট স্ট্রাকচার আপডেট করা হয়েছে
+  
   const youtubeVideos = [
     {
       title: "Business Challenges in a Pandemic",
       channel: "Boles Holmes Parkman White LLC",
-      youtubeId: "KwE7mpbbwAY"
+      youtubeId: "KwE7mpbbwAY",
     },
     {
       title: "Divorce During a Pandemic",
       channel: "Boles Holmes Parkman White LLC",
-      youtubeId: "5o3fwpFeWjA"
+      youtubeId: "5o3fwpFeWjA",
     },
     {
       title: "Considering divorce?",
       channel: "Boles Holmes Parkman White LLC",
-      youtubeId: "62DShppBwGo"
-    }
+      youtubeId: "62DShppBwGo",
+    },
   ];
 
   const pressMentions = [
     {
       source: "Forbes",
-      title: "Managing Corporate White-Collar Liability in Transitioning Regulatory Eras",
+      title:
+        "Managing Corporate White-Collar Liability in Transitioning Regulatory Eras",
       date: "Jan 12, 2024",
-      highlight: "In-depth counsel insight provided by White Collar Litigation Partners."
+      highlight:
+        "In-depth counsel insight provided by White Collar Litigation Partners.",
     },
     {
       source: "American Lawyer",
       title: "How Boles Holmes White Secured the $40M Class Affirmation",
       date: "Nov 04, 2023",
-      highlight: "The appellate and defense coordination that overcame rigorous objectors."
+      highlight:
+        "The appellate and defense coordination that overcame rigorous objectors.",
     },
     {
       source: "CBS News",
-      title: "Antitrust Division Targets Non-Compete and Wage Fixing in Corporate Suites",
+      title:
+        "Antitrust Division Targets Non-Compete and Wage Fixing in Corporate Suites",
       date: "Jul 21, 2023",
-      highlight: "Expert commentary regarding the DOJ Criminal prosecution shifts."
-    }
+      highlight:
+        "Expert commentary regarding the DOJ Criminal prosecution shifts.",
+    },
   ];
 
   const handleVideoClick = (video) => {
@@ -59,12 +62,17 @@ export default function MediaPage({ onNavigateToContact }) {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="media-page-view">
-      
+    <div
+      className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16"
+      id="media-page-view"
+    >
       {/* Hero Section */}
-      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="media-hero">
+      <section
+        className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden"
+        id="media-hero"
+      >
         <div className="absolute inset-0 opacity-85">
-          <Image 
+          <Image
             src="https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/about-cover.jpg"
             alt="Media Background"
             fill
@@ -73,9 +81,9 @@ export default function MediaPage({ onNavigateToContact }) {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/50 via-brand-navy/60 to-brand-navy/95" />
-        
+
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-12">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -90,22 +98,27 @@ export default function MediaPage({ onNavigateToContact }) {
       {/* YouTube Videos Section */}
       <section className="py-20 bg-white" id="youtube-videos-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
           <div className="text-center mb-16 space-y-4">
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#C5A85C] font-normal leading-tight" id="youtube-heading-serif">
+            <h2
+              className="font-serif text-3xl sm:text-4xl text-[#C5A85C] font-normal leading-tight"
+              id="youtube-heading-serif"
+            >
               YouTube Videos
             </h2>
             <div className="w-16 h-0.5 bg-[#C5A85C] mx-auto" />
           </div>
 
           {/* YouTube Video Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-5xl mx-auto" id="youtube-videos-grid">
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center max-w-5xl mx-auto"
+            id="youtube-videos-grid"
+          >
             {youtubeVideos.map((video, idx) => {
               // ✅ প্রতিটি ভিডিওর ডিফল্ট ইউটিউব থাম্বনেইল ইউআরএল জেনারেট করা হচ্ছে
               const defaultYoutubeThumbnail = `https://img.youtube.com/vi/${video.youtubeId}/maxresdefault.jpg`;
 
               return (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -115,9 +128,9 @@ export default function MediaPage({ onNavigateToContact }) {
                   id={`youtube_card_${idx}`}
                 >
                   {/* ✅ Unsplash এর বদলে এখন অফিশিয়াল ইউটিউব ডিফল্ট থাম্বনেইল লোড হবে */}
-                  <Image 
-                    src={defaultYoutubeThumbnail} 
-                    alt={video.title} 
+                  <Image
+                    src={defaultYoutubeThumbnail}
+                    alt={video.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover filter brightness-90 group-hover:scale-105 duration-500 transition-transform"
@@ -126,11 +139,17 @@ export default function MediaPage({ onNavigateToContact }) {
 
                   <div className="absolute top-0 left-0 w-full p-4 bg-gradient-to-b from-black/80 to-transparent flex items-start gap-2.5">
                     <div className="w-8 h-8 rounded-full bg-brand-navy border border-brand-gold flex items-center justify-center shrink-0">
-                      <span className="font-serif text-[10px] font-bold text-brand-gold">BHW</span>
+                      <span className="font-serif text-[10px] font-bold text-brand-gold">
+                        BHW
+                      </span>
                     </div>
                     <div className="space-y-0.1 select-none">
-                      <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide line-clamp-1 group-hover:text-brand-gold transition-colors">{video.title}</h3>
-                      <p className="text-[10px] text-gray-300 font-medium">{video.channel}</p>
+                      <h3 className="text-xs sm:text-sm font-bold text-white tracking-wide line-clamp-1 group-hover:text-brand-gold transition-colors">
+                        {video.title}
+                      </h3>
+                      <p className="text-[10px] text-gray-300 font-medium">
+                        {video.channel}
+                      </p>
                     </div>
                   </div>
 
@@ -143,8 +162,12 @@ export default function MediaPage({ onNavigateToContact }) {
                   <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 px-2.5 py-1 text-[10.5px] font-bold tracking-wider rounded flex items-center gap-1.5 hover:bg-neutral-900 shadow transition-colors">
                     <span>Watch on</span>
                     <div className="flex items-center gap-0.5">
-                      <span className="font-extrabold text-white text-[11px] uppercase tracking-tighter">You</span>
-                      <span className="bg-[#FF0000] text-white px-1 sm:px-1.5 rounded-sm text-[9.5px] font-black uppercase">Tube</span>
+                      <span className="font-extrabold text-white text-[11px] uppercase tracking-tighter">
+                        You
+                      </span>
+                      <span className="bg-[#FF0000] text-white px-1 sm:px-1.5 rounded-sm text-[9.5px] font-black uppercase">
+                        Tube
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -153,20 +176,22 @@ export default function MediaPage({ onNavigateToContact }) {
           </div>
 
           <div className="mt-16 flex justify-center">
-            <button 
-              onClick={() => window.open('https://youtube.com', '_blank')}
+            <button
+              onClick={() => window.open("https://youtube.com", "_blank")}
               className="bg-[#DFC27D] hover:bg-[#C5A85C] text-brand-navy font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-sm shadow-md transition-all duration-200 transform hover:-translate-y-0.5 cursor-pointer text-center select-none font-sans outline-none"
               id="btn_visit_youtube_channel"
             >
               VISIT YOUTUBE CHANNEL
             </button>
           </div>
-
         </div>
       </section>
 
       {/* Press Mentions Section */}
-      <section className="py-20 bg-slate-50 border-t border-gray-150" id="press-mentions-section">
+      <section
+        className="py-20 bg-slate-50 border-t border-gray-150"
+        id="press-mentions-section"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5 space-y-6">
@@ -178,13 +203,20 @@ export default function MediaPage({ onNavigateToContact }) {
               </h2>
               <div className="w-12 h-1 bg-brand-gold" />
               <p className="font-sans text-sm sm:text-base text-gray-600 leading-relaxed text-justify">
-                As trial defense attorneys handling high-profile corporate white collar criminal allegations, environmental contamination class briefs, and federal antitrust defense, our attorneys are frequently consulted by leading publications, TV news affiliates, and financial journals. 
+                As trial defense attorneys handling high-profile corporate white
+                collar criminal allegations, environmental contamination class
+                briefs, and federal antitrust defense, our attorneys are
+                frequently consulted by leading publications, TV news
+                affiliates, and financial journals.
               </p>
               <p className="font-sans text-xs sm:text-sm text-gray-500 leading-relaxed text-justify italic">
-                We believe in providing the public with transparent regulatory understanding, and our insights help clarify the complex web of federal and state administrative decisions that affect businesses across the Southeast.
+                We believe in providing the public with transparent regulatory
+                understanding, and our insights help clarify the complex web of
+                federal and state administrative decisions that affect
+                businesses across the Southeast.
               </p>
               <div className="pt-4">
-                <button 
+                <button
                   onClick={onNavigateToContact}
                   className="bg-brand-navy text-white hover:bg-brand-gold hover:text-brand-navy font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-sm transition-all duration-300 shadow"
                 >
@@ -193,9 +225,16 @@ export default function MediaPage({ onNavigateToContact }) {
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-6" id="press-timeline-container">
+            <div
+              className="lg:col-span-7 space-y-6"
+              id="press-timeline-container"
+            >
               {pressMentions.map((mention, idx) => (
-                <div key={idx} className="bg-white p-6 sm:p-7 rounded border border-gray-150 shadow-sm relative overflow-hidden" id={`press_mention_${idx}`}>
+                <div
+                  key={idx}
+                  className="bg-white p-6 sm:p-7 rounded border border-gray-150 shadow-sm relative overflow-hidden"
+                  id={`press_mention_${idx}`}
+                >
                   <div className="absolute top-0 right-0 py-1.5 px-3 bg-brand-navy text-brand-gold text-[10px] font-bold uppercase tracking-wider">
                     {mention.source}
                   </div>
@@ -219,25 +258,35 @@ export default function MediaPage({ onNavigateToContact }) {
       </section>
 
       {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 px-4 sm:px-6 lg:px-8 border-t border-gray-100" id="media-logos-grid">
+      <section
+        className="bg-white py-16 px-4 sm:px-6 lg:px-8 border-t border-gray-100"
+        id="media-logos-grid"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-10 space-y-2">
-            <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block">Recognized Credibility</span>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-normal">In The News</h3>
+            <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block">
+              Recognized Credibility
+            </span>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-normal">
+              In The News
+            </h3>
             <div className="w-8 h-0.5 bg-brand-gold mx-auto" />
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center select-none" id="media-reporters-grid">
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 items-center justify-items-center select-none"
+            id="media-reporters-grid"
+          >
             {FEATURED_REPORTERS.map((reporter, index) => (
               <div
                 key={index}
                 className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-                id={`media_reporter_${reporter.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}`}
+                id={`media_reporter_${reporter.name.toLowerCase().replace(/[^a-z0-9]/g, "_")}`}
               >
                 <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
+                  <Image
+                    src={reporter.logo}
+                    alt={`${reporter.name} Logo`}
                     fill
                     className="object-contain"
                     referrerPolicy="no-referrer"
@@ -252,14 +301,17 @@ export default function MediaPage({ onNavigateToContact }) {
       {/* Video Modal Lightbox */}
       <AnimatePresence>
         {selectedVideo && (
-          <div className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4" id="youtube_modal_lightbox">
-            <motion.div 
+          <div
+            className="fixed inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-50 p-4"
+            id="youtube_modal_lightbox"
+          >
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className="relative w-full max-w-4xl aspect-video bg-black rounded overflow-hidden shadow-2xl border border-white/10"
             >
-              <button 
+              <button
                 onClick={() => setSelectedVideo(null)}
                 className="absolute top-4 right-4 bg-black/60 hover:bg-neutral-900 border border-white/10 text-white p-2 rounded-full transition-colors focus:outline-none cursor-pointer z-[55]"
                 aria-label="Close Playback"
@@ -267,11 +319,11 @@ export default function MediaPage({ onNavigateToContact }) {
                 <X className="w-5 h-5" />
               </button>
 
-              <iframe 
-                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`} 
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}?autoplay=1`}
                 title={selectedVideo.title}
                 className="w-full h-full border-0 absolute inset-0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             </motion.div>

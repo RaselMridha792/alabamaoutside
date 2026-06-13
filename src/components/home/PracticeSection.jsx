@@ -1,140 +1,138 @@
 "use client";
 
-import { useState } from "react";
-import { FaUser, FaBriefcase, FaArrowRight } from "react-icons/fa";
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
 
-export default function PracticeSection() {
-  const [active, setActive] = useState("personal");
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+// আপনার দেওয়া অরিজিনাল ক্লাউডিনারি লিংকগুলোর সাথে ডাটা ম্যাপ করা হয়েছে
+const PRACTICE_AREAS_DATA = [
+  { 
+    name: 'Criminal Defense', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/Criminal_Defense_wybsoi.jpg' 
+  },
+  { 
+    name: 'DUI Defense', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/DUI_Defense_mxu56q.jpg' 
+  },
+  { 
+    name: 'Civil Lawsuits', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Civil_Lawsuits_bs638u.jpg' 
+  },
+  { 
+    name: 'Divorce & Family Law', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Divorce_Family_Law_lgo4sa.jpg' 
+  },
+  { 
+    name: 'Personal Injury', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Personal_Injury_ue919g.jpg' 
+  },
+  { 
+    name: 'Wills and Probate', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/probate_yzfnjw.jpg' 
+  },
+  { 
+    name: 'White Collar Defense', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/White_Collar_Defense_bhpna6.webp' 
+  },
+  { 
+    name: 'Administrative Law', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Administrative_Law_wvmw0q.jpg' 
+  },
+  { 
+    name: 'Business Litigation', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Business_Litigation_mlbyhy.jpg' 
+  }
+];
+
+export default function PracticeAreas() {
+  // শুরুতে ৬টি আইটেম দেখাবে
+  const [visibleCount, setVisibleCount] = useState(6);
+
+  const visibleAreas = PRACTICE_AREAS_DATA.slice(0, visibleCount);
+  const hasMore = visibleCount < PRACTICE_AREAS_DATA.length;
+
+  const handleViewMore = () => {
+    // প্রতি ক্লিকে আরও ৩টি করে আইটেম লোড হবে
+    setVisibleCount((prev) => prev + 3);
+  };
 
   return (
-    <section className="bg-[#f7f7f7] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-
-        {/* Header */}
-        <div className="text-center mb-12">
-          <p className="text-xs tracking-widest text-gray-500 uppercase">
-            Practice Specialization
-          </p>
-
-          <h2 className="text-4xl font-bold mt-2">
-            OUR PRACTICE AREAS
+    <section className="bg-[#1E263D] py-24 px-4 sm:px-6 lg:px-8" id="practice-areas">
+      <div className="max-w-6xl mx-auto">
+        
+        {/* Section Title */}
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-wide">
+            Our Practice Areas
           </h2>
-
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto">
-            Choose whether you require individual representation or
-            state/interstate corporate representation.
-          </p>
         </div>
 
-        {/* Main Grid */}
-        <div className="grid md:grid-cols-2 gap-10">
+        {/* Grid Layout (3 Columns on Desktop, 2 on Tablet, 1 on Mobile) */}
+        <motion.div 
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+        >
+          <AnimatePresence mode="popLayout">
+            {visibleAreas.map((area, index) => (
+              <motion.div
+                key={area.name}
+                layout
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
+                className="h-full"
+              >
+                {/* 
+                  Link ট্যাগ দিয়ে র্যাপিং করা হয়েছে যাতে পুরো কার্ডটিতে 
+                  ক্লিক করলেই /personal পেজে নিয়ে যায়।
+                */}
+                <Link href="/personal" className="group flex flex-col h-full block">
+                  
+                  {/* Image Section (With dynamic zoom and overlay effect) */}
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#111827] shadow-lg">
+                    <Image 
+                      src={area.image} 
+                      alt={area.name} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover filter brightness-90 group-hover:brightness-110 transition-all duration-700 group-hover:scale-110"
+                    />
+                    {/* Subtle inner shadow for premium look */}
+                    <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none" />
+                  </div>
+                  
+                  {/* Text Section (Hover করলে সলিড হোয়াইট হয়ে যাবে) */}
+                  <div className="p-5 sm:p-6 text-center transition-all duration-300 bg-transparent group-hover:bg-white flex-grow flex items-center justify-center transform group-hover:-translate-y-1 shadow-xl">
+                    <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-[#1E263D] tracking-wider transition-colors duration-300 uppercase">
+                      {area.name}
+                    </h3>
+                  </div>
+                  
+                </Link>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
 
-          {/* LEFT CARD */}
-          <div className="bg-white p-6 rounded-xl shadow-sm">
-
-            <p className="text-xs text-gray-400 mb-4">
-              SELECT ADVISORY STREAM
-            </p>
-
-            {/* Personal */}
-            <div
-              onClick={() => setActive("personal")}
-              className={`flex items-center gap-4 p-4 rounded-lg cursor-pointer mb-3 transition ${
-                active === "personal"
-                  ? "bg-[#0b1a2f] text-white"
-                  : "bg-gray-100"
-              }`}
+        {/* View More Button */}
+        {hasMore && (
+          <div className="mt-16 flex justify-center">
+            <button
+              onClick={handleViewMore}
+              className="px-10 py-3 bg-transparent border-2 border-white text-white font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#1E263D] transition-colors duration-300 transform hover:-translate-y-1 active:translate-y-0"
             >
-              <FaUser />
-              <div>
-                <h4 className="font-semibold">PERSONAL</h4>
-                <p className="text-xs opacity-70">
-                  Civil & Criminal Individual Representation
-                </p>
-              </div>
-            </div>
-
-            {/* Professional */}
-            <div
-              onClick={() => setActive("professional")}
-              className={`flex items-center gap-4 p-4 rounded-lg cursor-pointer transition ${
-                active === "professional"
-                  ? "bg-[#0b1a2f] text-white"
-                  : "bg-gray-100"
-              }`}
-            >
-              <FaBriefcase />
-              <div>
-                <h4 className="font-semibold">PROFESSIONAL</h4>
-                <p className="text-xs opacity-70">
-                  Corporate Litigation & Compliance
-                </p>
-              </div>
-            </div>
-
-            {/* Search */}
-            <div className="mt-6">
-              <p className="text-xs text-gray-400 mb-2">
-                DIRECT SEARCH SPECIALTIES
-              </p>
-              <input
-                type="text"
-                placeholder="e.g. White Collar, Licensing..."
-                className="w-full border rounded-md px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-gray-300"
-              />
-            </div>
-
-            <div className="text-xs text-gray-400 mt-4 border p-3 rounded-md">
-              Our civil and regulatory lawyers have defended state and federal
-              challenges in over 25 states.
-            </div>
+              View More
+            </button>
           </div>
+        )}
 
-          {/* RIGHT SIDE */}
-          <div>
-
-            {/* Dark Box */}
-            <div className="bg-[#0b1a2f] text-white p-8 rounded-xl mb-6 shadow-md">
-              <p className="text-xs text-gray-400 mb-2">
-                CATEGORY SCOPE
-              </p>
-
-              <h3 className="text-2xl font-semibold mb-3">
-                {active === "personal"
-                  ? "PERSONAL COUNSEL"
-                  : "PROFESSIONAL COUNSEL"}
-              </h3>
-
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {active === "personal"
-                  ? "Our civil attorneys can help, whether your case involves a business dispute, a wrongful death, or you are a whistleblower."
-                  : "Our corporate lawyers handle compliance, regulatory matters and business litigation for companies across multiple states."}
-              </p>
-            </div>
-
-            {/* Practice List */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                "Civil Lawsuits",
-                "Criminal Defense",
-                "Divorce & Family Law",
-                "DUI Defense",
-                "Personal Injury",
-                "Wills and Probate",
-                "White Collar Defense & Investigations",
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex justify-between items-center bg-white p-4 rounded-md shadow-sm hover:shadow-md transition cursor-pointer"
-                >
-                  <span className="text-sm">{item}</span>
-                  <FaArrowRight className="text-gray-400 text-xs" />
-                </div>
-              ))}
-            </div>
-
-          </div>
-        </div>
       </div>
     </section>
   );
