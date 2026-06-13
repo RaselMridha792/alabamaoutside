@@ -28,13 +28,13 @@ export const FORWARD_CARDS = [
 
 export const ABOUT_CONTENT = {
   title: "About our Law Firm",
-  paragraph1: "Boles Holmes White LLC is a full-service law firm specializing in transactional, litigation, government relations and white collar/criminal defense. Our team represents both businesses and individuals throughout the U.S. Our firm’s roots hail from the small town of Dothan, Alabama. Our attorneys provide clients with “big firm experience” and customized representation with “small town” accessibility including individualized attention. This dedicated approach is what sets us apart.",
+  paragraph1: "Boles Holmes White LLC is a full-service law firm specializing in transactional, litigation, government relations and white collar/criminal defense. Our team represents both businesses and individuals throughout the U.S. Our firm's roots hail from the small town of Dothan, Alabama. Our attorneys provide clients with \"big firm experience\" and customized representation with \"small town\" accessibility including individualized attention. This dedicated approach is what sets us apart.",
   paragraph2: "With offices in downtown Birmingham and Dothan our team represents clients on matters in states throughout the country. See image above. In states where BHW does not have a licensed attorney and goes to court, members of our firm receive admission from that jurisdiction through pro hac vice.",
   actionText: "Learn More",
   images: [
-    "https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1608-683x1024.jpg.webp",
-    "https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1679.jpg.webp",
-    "https://alabamaoutsidecounsel.com/wp-content/uploads/2025/02/thumbnail_IMG_1706.jpg.webp"
+    "/thumbnail_IMG_1608-683x1024.jpg.webp",
+    "/thumbnail_IMG_1679.jpg.webp",
+    "/thumbnail_IMG_1706.jpg.webp"
   ]
 };
 

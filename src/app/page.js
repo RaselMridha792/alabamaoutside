@@ -1,4 +1,5 @@
 // import AboutLawFirm from "@/components/home/AboutLawFirm";
+import AboutLawFirm from "@/components/home/AboutLawFirm";
 import Accreditations from "@/components/home/Accreditations";
 import ContactUs from "@/components/home/Contact";
 import FeaturedIn from "@/components/home/FeaturedIn";
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="">
       <Hero></Hero>
       <Accreditations></Accreditations>
+      <AboutLawFirm></AboutLawFirm>
       <FeaturedIn></FeaturedIn>
 
      <PracticeSection></PracticeSection>
@@ -26,8 +28,6 @@ export default function Home() {
       <OurProcess></OurProcess>
       <ClientReviews></ClientReviews>
       <WhyOurFirm></WhyOurFirm>
-
-      {/* <AboutLawFirm></AboutLawFirm> */}
 
 
           <LatestUpdates></LatestUpdates>

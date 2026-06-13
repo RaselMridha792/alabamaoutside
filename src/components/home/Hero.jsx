@@ -91,39 +91,49 @@ export default function Hero() {
         {/* Central Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-20 sm:mt-24 md:mt-28 pb-16 sm:pb-20">
           
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-2 sm:space-y-4 mb-6 sm:mb-8"
           >
-            <h2 className="font-sans text-sm sm:text-base md:text-lg font-bold text-white uppercase tracking-wider drop-shadow-md">
-              We Will Make Sure Your Rights
-            </h2>
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white tracking-wide leading-tight drop-shadow-lg">
-              ARE PROTECTED
+              Protect Your Priorities
             </h1>
           </motion.div>
 
-          <motion.p 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="font-sans text-xs sm:text-sm md:text-base text-white max-w-3xl mx-auto uppercase tracking-widest font-bold mb-10 sm:mb-12 px-4 drop-shadow"
+            className="space-y-4 mb-10 sm:mb-12"
           >
-            Trust in our devoted team of Alabama Criminal Defense Attorneys.
-          </motion.p>
+            <p className="font-sans text-sm sm:text-base md:text-lg text-white max-w-3xl mx-auto tracking-wide font-semibold drop-shadow">
+              The law firm of Boles Holmes White has a long history of protecting our clients.
+            </p>
+            <p className="font-sans text-xs sm:text-sm md:text-base text-white/90 max-w-3xl mx-auto tracking-wide drop-shadow">
+              We determine the risks our clients face and develop a plan to protect their reputation, financial strength, business relationships, freedom, and future.
+            </p>
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2.5 bg-[#C92A2A] hover:bg-[#A02020] text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
             >
               <span>Free Consultation</span>
+              <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
+            </Link>
+            <Link
+              href="/contact/"
+              className="inline-flex items-center gap-2.5 bg-white/20 hover:bg-white/30 border border-white/40 text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
+            >
+              <span>Get a Free Case Review</span>
               <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
           </motion.div>
