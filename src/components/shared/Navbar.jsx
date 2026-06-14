@@ -37,7 +37,7 @@ export default function Header() {
     { name: 'Attorneys', href: '/attorney' },
     { name: 'Personal', href: '/personal' },
     { name: 'Professional', href: '/professional' },
-    { name: 'Case Reviews', href: '/case_review' },
+    { name: 'Case Reviews', href: '/case-review' },
     { name: 'Blog', href: '/blog' },
     { name: 'Media', href: '/media' },
     { name: 'Contact', href: '/contact' }
