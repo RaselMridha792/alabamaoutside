@@ -130,10 +130,10 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/contact/"
+              href="/case-review"
               className="inline-flex items-center gap-2.5 bg-white/20 hover:bg-white/30 border border-white/40 text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
             >
-              <span>Get a Free Case Review</span>
+              <span>Free Case Review</span>
               <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
           </motion.div>
