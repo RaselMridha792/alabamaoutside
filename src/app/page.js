@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="">
       <Hero></Hero>
-      <Accreditations></Accreditations>
+      
       <AboutLawFirm></AboutLawFirm>
       <FeaturedIn></FeaturedIn>
 
@@ -32,6 +32,8 @@ export default function Home() {
 
           <LatestUpdates></LatestUpdates>
       {/* <LatestUpdates></LatestUpdates> */}
+
+<Accreditations></Accreditations>
 
       <FAQ></FAQ>
       <ContactUs></ContactUs>

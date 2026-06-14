@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { ACCREDITATIONS } from '../../data';
+import Image from 'next/image';
 
 export default function Accreditations() {
   return (
@@ -16,12 +17,14 @@ export default function Accreditations() {
               key={item.name}
               className="w-full h-16 sm:h-20 px-4 sm:px-6 flex items-center justify-center"
             >
-              <img
-                src={item.logo}
-                alt={`${item.name} accreditation`}
-                className="max-h-full max-w-full object-contain opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300"
-                loading="lazy"
-              />
+              <Image
+  src={item.logo}
+  alt={`${item.name} accreditation`}
+  width={200}
+  height={100}
+  className="max-h-full max-w-full object-contain opacity-90 hover:opacity-100 hover:scale-105 transition-all duration-300"
+  loading="lazy"
+/>
             </div>
           ))}
         </div>
