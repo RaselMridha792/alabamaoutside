@@ -92,7 +92,7 @@ export default function ClientReviews() {
             Client Testimonials
           </span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white">
-            What Our Clients Say
+            Client Testimonials
           </h2>
           <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
         </div>

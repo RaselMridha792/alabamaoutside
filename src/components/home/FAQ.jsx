@@ -6,6 +6,7 @@
  */
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
 const FAQ_DATA = [
@@ -46,44 +47,83 @@ const FAQ_DATA = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
+  // ডাটাকে ২ ভাগে ভাগ করে নিচ্ছি যাতে ২টি আলাদা স্বাধীন কলাম তৈরি করা যায়
+  const midPoint = Math.ceil(FAQ_DATA.length / 2);
+  const leftColumnData = FAQ_DATA.slice(0, midPoint).map((item, idx) => ({ ...item, globalIndex: idx }));
+  const rightColumnData = FAQ_DATA.slice(midPoint).map((item, idx) => ({ ...item, globalIndex: idx + midPoint }));
+
+  // বারবার একই কোড না লিখে একটি রিইউজেবল রেন্ডার ফাংশন তৈরি করে নিলাম
+  const renderFAQItem = (item) => {
+    const isOpen = openIndex === item.globalIndex;
+
+    return (
+      <div key={item.globalIndex} className="border border-brand-gold/20 rounded-lg overflow-hidden bg-brand-navy-light h-fit">
+        <button
+          onClick={() => setOpenIndex(isOpen ? null : item.globalIndex)}
+          className={`w-full px-6 py-5 flex items-start justify-between gap-4 transition-colors duration-300 ${
+            isOpen ? 'bg-brand-navy' : 'hover:bg-brand-navy/80'
+          }`}
+        >
+          <span className="font-display text-sm sm:text-base font-bold text-brand-gold text-left">
+            {item.question}
+          </span>
+          <ChevronDown
+            className={`w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300 ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+          />
+        </button>
+
+        {/* 
+          স্মুথ ড্রপডাউন ইফেক্টের জন্য AnimatePresence এবং motion.div 
+          এর height 0 থেকে auto করা হয়েছে। 
+        */}
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-5 pt-2 bg-brand-navy border-t-0 border-brand-gold/20">
+                <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed text-justify">
+                  {item.answer}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    );
+  };
+
   return (
     <section className="bg-[#0A192F] py-24 px-4 sm:px-6 lg:px-8" id="faq">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
+        
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-3">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white max-w-3xl mx-auto">
             Common Questions About Criminal Defense in Birmingham, Alabama
           </h2>
-          <div className="w-12 h-1 bg-brand-gold mx-auto" />
+          <div className="w-16 h-1 bg-brand-gold mx-auto" />
         </div>
 
-        {/* FAQ Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {FAQ_DATA.map((item, index) => (
-            <div key={index} className="border border-brand-gold/20 rounded-lg overflow-hidden">
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full bg-brand-navy-light hover:bg-brand-navy/80 px-6 py-5 flex items-start justify-between gap-4 transition-colors duration-300"
-              >
-                <span className="font-display text-sm sm:text-base font-bold text-brand-gold text-left group-hover:text-brand-gold">
-                  {item.question}
-                </span>
-                <ChevronDown
-                  className={`w-5 h-5 text-brand-gold flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
+        {/* FAQ Layout - দুটি স্বাধীন কলাম, তাই একদিকের আইটেম খুললে অন্যদিক নামবে না */}
+        <div className="flex flex-col lg:flex-row gap-6 items-start">
+          
+          {/* Left Column */}
+          <div className="flex-1 flex flex-col gap-6 w-full">
+            {leftColumnData.map(renderFAQItem)}
+          </div>
 
-              {openIndex === index && (
-                <div className="bg-brand-navy px-6 py-5 border-t border-brand-gold/20">
-                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    {item.answer}
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+          {/* Right Column */}
+          <div className="flex-1 flex flex-col gap-6 w-full">
+            {rightColumnData.map(renderFAQItem)}
+          </div>
+
         </div>
       </div>
     </section>
