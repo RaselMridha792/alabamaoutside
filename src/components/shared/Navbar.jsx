@@ -17,7 +17,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Scroll effect for hiding top bar and sticking the nav bar
+  // Scroll effect for hiding top bar and sticking the nav bar (আপনার অরিজিনাল লজিক)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -30,7 +30,6 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Updated Menu Items (Added 'Home' as per the new design structure)
   const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
@@ -42,6 +41,10 @@ export default function Header() {
     { name: 'Media', href: '/media' },
     { name: 'Contact', href: '/contact' }
   ];
+
+  // মেনুগুলোকে দুই ভাগে ভাগ করা হলো
+  const mainMenuItems = menuItems.filter(item => item.name !== 'Contact');
+  const contactItem = menuItems.find(item => item.name === 'Contact');
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
@@ -74,32 +77,27 @@ export default function Header() {
             />
           </Link>
 
-          {/* Right: Contact Info (Hidden on very small screens, visible on sm and up) */}
-        <div className="hidden sm:flex flex-col items-end justify-center text-right">
-  
+          {/* Right: Contact Info */}
+          <div className="hidden sm:flex flex-col items-end justify-center text-right">
+            {/* Address */}
+            <div className="flex items-center gap-2 text-gray-300 text-xs sm:text-sm mb-1">
+              <MapPin className="w-4 h-4 text-brand-gold" />
+              <span>Birmingham, AL 35203</span>
+            </div>
 
+            {/* Phone */}
+            <a 
+              href="tel:205-502-2000" 
+              className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors duration-300 group"
+            >
+              <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-brand-gold group-hover:text-white" />
+              <span className="text-xl sm:text-2xl lg:text-3xl font-display font-medium tracking-tight">
+                205-502-2000
+              </span>
+            </a>
+          </div>
 
-  {/* Address */}
-  <div className="flex items-center gap-2 text-gray-300 text-xs sm:text-sm mb-1">
-    <MapPin className="w-4 h-4 text-brand-gold" />
-    <span>Birmingham, AL 35203</span>
-  </div>
-
-  {/* Phone */}
-  <a 
-    href="tel:205-502-2000" 
-    className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors duration-300 group"
-  >
-    <Phone className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-brand-gold group-hover:text-white" />
-    
-    <span className="text-xl sm:text-2xl lg:text-3xl font-display font-medium tracking-tight">
-      205-502-2000
-    </span>
-  </a>
-
-</div>
-
-          {/* Mobile Menu Toggle Button (Shows on mobile instead of phone number) */}
+          {/* Mobile Menu Toggle Button */}
           <div className="sm:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -125,26 +123,40 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Desktop Navigation */}
-          <div className="hidden sm:flex justify-center items-center gap-6 md:gap-8 lg:gap-10 xl:gap-12 py-4">
-            {menuItems.map((item) => {
-              const isActive = pathname === item.href;
-              
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors relative group ${
-                    isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
-                  }`}
-                >
-                  {item.name}
-                  <span className={`absolute -bottom-1.5 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                </Link>
-              );
-            })}
+          <div className="hidden sm:flex justify-between items-center py-4">
+            
+            {/* বাম দিকে সব মেনু */}
+            <div className="flex items-center gap-6 md:gap-8 lg:gap-10 xl:gap-12">
+              {mainMenuItems.map((item) => {
+                const isActive = pathname === item.href;
+                
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors relative group ${
+                      isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
+                    }`}
+                  >
+                    {item.name}
+                    <span className={`absolute -bottom-1.5 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* ডান দিকে Contact বাটন */}
+            <div>
+              <Link
+                href={contactItem.href}
+                className="bg-[#C5A85C] hover:bg-[#DFC27D] text-[#0A192F] font-bold text-[11px] md:text-xs tracking-wider uppercase px-6 py-2.5 rounded shadow-sm transition-all duration-300 hover:-translate-y-0.5"
+              >
+                {contactItem.name}
+              </Link>
+            </div>
           </div>
 
-          {/* Mobile Centered Phone Number (Since it was hidden in top bar on mobile) */}
+          {/* Mobile Centered Phone Number */}
           {scrolled && (
             <div className="sm:hidden flex justify-between items-center py-3">
               <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy font-bold">
@@ -165,7 +177,6 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-xl border-b border-gray-200">
             <div className="px-4 pt-2 pb-6 space-y-1">
-              {/* Mobile Phone Number visible if not scrolled */}
               {!scrolled && (
                 <div className="pb-4 mb-4 border-b border-gray-100 flex justify-center">
                   <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy text-lg font-bold">
@@ -175,7 +186,8 @@ export default function Header() {
                 </div>
               )}
               
-              {menuItems.map((item) => {
+              {/* Mobile Main Menus */}
+              {mainMenuItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
                   <Link
@@ -192,6 +204,17 @@ export default function Header() {
                   </Link>
                 );
               })}
+
+              {/* Mobile Contact Button */}
+              <div className="pt-4 mt-2">
+                <Link
+                  href={contactItem.href}
+                  onClick={handleLinkClick}
+                  className="block w-full text-center bg-[#C5A85C] hover:bg-[#DFC27D] text-[#0A192F] px-4 py-3.5 rounded-md text-sm font-bold tracking-wider uppercase transition-colors shadow-sm"
+                >
+                  {contactItem.name}
+                </Link>
+              </div>
             </div>
           </div>
         )}
