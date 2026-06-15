@@ -114,16 +114,16 @@ export default function Footer({ setCurrentPage }) {
 
             {/* Social Links */}
             <div className="flex gap-4 items-center pt-2">
-              <a href="https://facebook.com" id="footer_fb" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Facebook">
+              <a href="https://www.facebook.com/bhwlaw" id="footer_fb" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Facebook">
                 <FaFacebookF className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com" id="footer_tw" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Twitter">
+              <a href="https://twitter.com/BHWLaw" id="footer_tw" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Twitter">
                 <FaTwitter className="w-4 h-4" />
               </a>
-              <a href="https://instagram.com" id="footer_ig" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Instagram">
+              <a href="https://www.instagram.com/bhwlaw/" id="footer_ig" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="Instagram">
                 <FaInstagram className="w-4 h-4" />
               </a>
-              <a href="https://linkedin.com" id="footer_li" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/bhwlaw/" id="footer_li" className="bg-white/5 hover:bg-brand-gold text-white hover:text-brand-navy p-2 rounded-full transition-all duration-300" aria-label="LinkedIn">
                 <FaLinkedinIn className="w-4 h-4" />
               </a>
             </div>
