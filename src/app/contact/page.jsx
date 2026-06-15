@@ -112,142 +112,9 @@ export default function ContactPage() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         id="contact-main"
       >
-        {/* Contact info row - three equal-height cards */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch mb-10"
-          id="contact-info-row"
-        >
-          {/* CARD 1: Location */}
-          <div
-            className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
-            id="contact_card_location"
-          >
-              <div className="flex items-center gap-3">
-                <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
-                  <MapPin className="w-6 h-6" />
-                </div>
-                <div className="space-y-0.5">
-                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
-                    Headquarters Location
-                  </span>
-                  <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
-                    Birmingham Office
-                  </h2>
-                </div>
-              </div>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex gap-3 text-xs sm:text-sm text-gray-600">
-                  <MapPin className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <p className="font-sans leading-relaxed text-justify">
-                    1929 3rd Ave. North, Suite 500
-                    <br />
-                    Birmingham, AL 35203
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
-                  ESTABLISHED LITIGATION SUITE
-                </span>
-                <span className="text-xs font-bold text-brand-gold uppercase">
-                  Suite 500
-                </span>
-              </div>
-            </div>
-
-            {/* CARD 2: Consultation Hours */}
-            <div
-              className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
-              id="office_hours_card"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <div className="space-y-0.5">
-                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
-                    Office Schedule
-                  </span>
-                  <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
-                    Consultation Hours
-                  </h2>
-                </div>
-              </div>
-              <ul className="mt-auto space-y-3 pt-2 text-xs sm:text-sm font-sans text-gray-600">
-                <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
-                  <span>Monday - Friday</span>
-                  <span className="font-bold text-brand-navy">
-                    8:00 AM - 5:00 PM
-                  </span>
-                </li>
-                <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
-                  <span>Saturday</span>
-                  <span className="text-amber-600 font-semibold uppercase">
-                    By Appointment
-                  </span>
-                </li>
-                <li className="flex justify-between leading-snug">
-                  <span>Emergency Line</span>
-                  <span className="text-brand-gold font-bold">
-                    24 / 7 Active
-                  </span>
-                </li>
-              </ul>
-            </div>
-
-            {/* CARD 3: Direct Contact */}
-            <div
-              className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
-              id="contact_card_direct"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div className="space-y-0.5">
-                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
-                    Direct Line
-                  </span>
-                  <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
-                    Reach Us
-                  </h2>
-                </div>
-              </div>
-
-              <div className="space-y-4 pt-2">
-                <a
-                  href="tel:205-502-2000"
-                  className="flex items-center gap-3 text-xs sm:text-sm text-gray-800 font-bold hover:text-brand-gold transition-colors font-sans"
-                >
-                  <Phone className="w-5 h-5 text-brand-gold shrink-0" />
-                  <span>205-502-2000</span>
-                </a>
-
-                <a
-                  href="mailto:info@bolesholmes.com"
-                  className="flex items-center gap-3 text-xs sm:text-sm text-brand-navy font-bold hover:text-brand-gold transition-colors font-sans"
-                >
-                  <Mail className="w-5 h-5 text-brand-gold shrink-0" />
-                  <span>Email Us</span>
-                </a>
-              </div>
-
-              <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
-                  EMERGENCY DEFENSE LINE
-                </span>
-                <span className="text-xs font-bold text-brand-gold uppercase">
-                  24 / 7
-                </span>
-              </div>
-            </div>
-        </div>
-
-        {/* CONTACT FORM - centered below the info row */}
+        {/* CONTACT FORM - full width, above the info cards */}
         <section
-          className="max-w-3xl mx-auto w-full bg-white p-8 sm:p-10 rounded-lg border border-gray-150 shadow-md space-y-8"
+          className="w-full bg-white p-8 sm:p-10 rounded-lg border border-gray-150 shadow-md space-y-8"
           id="contact-right-section"
         >
             <div className="space-y-3 border-b border-gray-100 pb-6">
@@ -465,6 +332,139 @@ export default function ContactPage() {
               )}
             </AnimatePresence>
         </section>
+
+        {/* Contact info row - three equal-height cards */}
+        <div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch mt-12"
+          id="contact-info-row"
+        >
+          {/* CARD 1: Location */}
+          <div
+            className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
+            id="contact_card_location"
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
+                <MapPin className="w-6 h-6" />
+              </div>
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
+                  Headquarters Location
+                </span>
+                <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
+                  Birmingham Office
+                </h2>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <div className="flex gap-3 text-xs sm:text-sm text-gray-600">
+                <MapPin className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+                <p className="font-sans leading-relaxed">
+                  1929 3rd Ave. North, Suite 500
+                  <br />
+                  Birmingham, AL 35203
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+              <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
+                ESTABLISHED LITIGATION SUITE
+              </span>
+              <span className="text-xs font-bold text-brand-gold uppercase">
+                Suite 500
+              </span>
+            </div>
+          </div>
+
+          {/* CARD 2: Consultation Hours */}
+          <div
+            className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
+            id="office_hours_card"
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
+                <Clock className="w-6 h-6" />
+              </div>
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
+                  Office Schedule
+                </span>
+                <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
+                  Consultation Hours
+                </h2>
+              </div>
+            </div>
+            <ul className="mt-auto space-y-3 pt-2 text-xs sm:text-sm font-sans text-gray-600">
+              <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
+                <span>Monday - Friday</span>
+                <span className="font-bold text-brand-navy">
+                  8:00 AM - 5:00 PM
+                </span>
+              </li>
+              <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
+                <span>Saturday</span>
+                <span className="text-amber-600 font-semibold uppercase">
+                  By Appointment
+                </span>
+              </li>
+              <li className="flex justify-between leading-snug">
+                <span>Emergency Line</span>
+                <span className="text-brand-gold font-bold">
+                  24 / 7 Active
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          {/* CARD 3: Direct Contact */}
+          <div
+            className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
+            id="contact_card_direct"
+          >
+            <div className="flex items-center gap-3">
+              <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
+                <Phone className="w-6 h-6" />
+              </div>
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
+                  Direct Line
+                </span>
+                <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
+                  Reach Us
+                </h2>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-2">
+              <a
+                href="tel:205-502-2000"
+                className="flex items-center gap-3 text-xs sm:text-sm text-gray-800 font-bold hover:text-brand-gold transition-colors font-sans"
+              >
+                <Phone className="w-5 h-5 text-brand-gold shrink-0" />
+                <span>205-502-2000</span>
+              </a>
+
+              <a
+                href="mailto:info@bolesholmes.com"
+                className="flex items-center gap-3 text-xs sm:text-sm text-brand-navy font-bold hover:text-brand-gold transition-colors font-sans"
+              >
+                <Mail className="w-5 h-5 text-brand-gold shrink-0" />
+                <span>Email Us</span>
+              </a>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+              <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
+                EMERGENCY DEFENSE LINE
+              </span>
+              <span className="text-xs font-bold text-brand-gold uppercase">
+                24 / 7
+              </span>
+            </div>
+          </div>
+        </div>
 
         {/* FREQUENTLY ASKED QUESTIONS - Homepage-style accordion */}
         <section className="mt-24" id="contact-faq-section">
