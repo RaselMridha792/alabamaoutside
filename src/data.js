@@ -138,14 +138,22 @@ export const BLOG_POSTS = [
     id: 1,
     slug: "wage-fixing-and-no-poach-agreements",
     title: "Wage Fixing and No Poach Agreements in Criminal Crosshairs",
-    imageUrl: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6020ed45a265973d0c86f0fe_pharma-part-3-p-500-2.jpeg.webp",
-    heroImage: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/about-cover.jpg",
+    imageUrl: "/wage-fixing-no-poach.png",
+    heroImage: "/wage-fixing-no-poach.png",
     content: `
       <p>It is common knowledge among corporate executives that it is illegal to conspire with your competitors to “price-fix”. Price-fixing is an agreement between competitors to set a minimum price for a particular good without regards to natural market forces. Such agreements are intended to maximize profitability for the companies at the expense of the general public. It is not hard to imagine how such an agreement harms the public because it reduces competition in the industry, usually resulting in increased prices.</p>
+      <figure class="my-8">
+        <img src="/wage-fixing-no-poach.png" alt="Wage fixing and no poach agreements in criminal crosshairs" class="w-full h-auto rounded-lg shadow-md" />
+        <figcaption class="mt-3 text-sm text-center text-gray-500 italic">Wage fixing and no-poach agreements are increasingly drawing criminal scrutiny.</figcaption>
+      </figure>
       <p>There are other less known forms of anti-competitive activity that have recently drawn the attention of criminal prosecutors often referred to as “No poach agreements” or “wage fixing”.</p>
       <p>Within a particular industry, it can be common for employees to leverage their knowledge and experience to obtain higher salaries from one of their employer’s competitors. This can result in competitors recruiting employees from their competitors, resulting in higher wage costs for everyone in the industry. It can be frustrating for an employer to spend many years and hundreds of thousands of dollars investing in their employees, only to lose them to a competitor.</p>
       <p>As a result, some companies resorted to entering into agreements not to hire employees from one another. These agreements are called “No poach agreements”. Additionally, companies looking to combat rising employment costs entered into agreements with their competitors to limit salaries of employees to eliminate the employees’ motivation to switch from one company to their competitor. These agreements are called “Wage-fixing”.</p>
       <p>The Department of Justice has taken aim at these anti-competitive employment agreements taking the position that just as consumers have the right to the benefits of an open market, so do employees. These prosecutors are pursuing civil and felony criminal complaints against companies and their executives under the Sherman Anti-Trust Act.</p>
+      <figure class="my-8">
+        <img src="/wage-fixing-no-poach-2.png" alt="Department of Justice pursuing criminal complaints under the Sherman Anti-Trust Act" class="w-full h-auto rounded-lg shadow-md" />
+        <figcaption class="mt-3 text-sm text-center text-gray-500 italic">The DOJ is pursuing both civil and felony criminal complaints under the Sherman Anti-Trust Act.</figcaption>
+      </figure>
       <p>It is becoming more common for corporations and executives and to become entangled in criminal investigations for these agreements not to hire a one another’s employees, which was initially seen as a cost-saving move to combat escalating salaries caused by a competitor’s poaching. The consequences of these investigations can be staggering, including huge fines and possible imprisonment for the executives accused of entering into one of these agreements.</p>
       <p>If you or your company has been accused of any anti-competitive behavior in Alabama or across the United States, or if you have any questions about “wage fixing” or “no poach agreements”, the attorneys at Boles Holmes White LLC are available to assist.</p>
     `
