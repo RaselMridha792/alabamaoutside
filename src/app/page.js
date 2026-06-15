@@ -13,11 +13,14 @@ import PracticeSection from "@/components/home/PracticeSection";
 import OurProcess from "@/components/home/OurProcess";
 import Image from "next/image";
 import ClientReviews from "@/components/home/ClientReviews";
+import ServiceCards from "@/components/home/ServiceCards";
 
 export default function Home() {
   return (
     <div className="">
       <Hero></Hero>
+
+      <ServiceCards></ServiceCards>
       
       <AboutLawFirm></AboutLawFirm>
       <FeaturedIn></FeaturedIn>

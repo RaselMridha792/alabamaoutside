@@ -10,43 +10,52 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// আপনার দেওয়া অরিজিনাল ক্লাউডিনারি লিংকগুলোর সাথে ডাটা ম্যাপ করা হয়েছে
+// আপনার দেওয়া অরিজিনাল ক্লাউডিনারি লিংকগুলোর সাথে ডাটা এবং ডায়নামিক রাউটিং (href) ম্যাপ করা হয়েছে
 const PRACTICE_AREAS_DATA = [
   { 
     name: 'Criminal Defense', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/Criminal_Defense_wybsoi.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/Criminal_Defense_wybsoi.jpg',
+    href: '/personal/criminal-defense'
   },
   { 
     name: 'DUI Defense', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/DUI_Defense_mxu56q.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/DUI_Defense_mxu56q.jpg',
+    href: '/personal/dui-defense'
   },
   { 
     name: 'Civil Lawsuits', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Civil_Lawsuits_bs638u.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Civil_Lawsuits_bs638u.jpg',
+    href: '/personal/civil-lawsuits'
   },
   { 
     name: 'Divorce & Family Law', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Divorce_Family_Law_lgo4sa.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Divorce_Family_Law_lgo4sa.jpg',
+    href: '/personal/divorce-and-family-law'
   },
   { 
     name: 'Personal Injury', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Personal_Injury_ue919g.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Personal_Injury_ue919g.jpg',
+    href: '/personal/personal-injury'
   },
   { 
     name: 'Wills and Probate', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/probate_yzfnjw.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/probate_yzfnjw.jpg',
+    href: '/personal/wills-and-probate'
   },
-  { 
-    name: 'White Collar Defense', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/White_Collar_Defense_bhpna6.webp' 
-  },
+  // { 
+  //   name: 'White Collar Defense', 
+  //   image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/White_Collar_Defense_bhpna6.webp',
+  //   href: '/professional/white-collar-defense'
+  // },
   { 
     name: 'Administrative Law', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Administrative_Law_wvmw0q.jpg' 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Administrative_Law_wvmw0q.jpg',
+    href: '/professional/administrative-law'
   },
   { 
-    name: 'Business Litigation', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Business_Litigation_mlbyhy.jpg' 
+    name: 'Business Consulting', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Business_Litigation_mlbyhy.jpg',
+    href: '/professional/business-consulting'
   }
 ];
 
@@ -89,11 +98,9 @@ export default function PracticeAreas() {
                 transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
                 className="h-full"
               >
-                {/* 
-                  Link ট্যাগ দিয়ে র্যাপিং করা হয়েছে যাতে পুরো কার্ডটিতে 
-                  ক্লিক করলেই /personal পেজে নিয়ে যায়।
-                */}
-                <Link href="/personal" className="group flex flex-col h-full block">
+              
+                {/* ✅ ডায়নামিক লিংকিং করা হয়েছে */}
+                <Link href={area.href} className="group flex flex-col h-full block">
                   
                   {/* Image Section (With dynamic zoom and overlay effect) */}
                   <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#111827] shadow-lg">
@@ -108,7 +115,7 @@ export default function PracticeAreas() {
                     <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)] pointer-events-none" />
                   </div>
                   
-                  {/* Text Section (Hover করলে সলিড হোয়াইট হয়ে যাবে) */}
+                  {/* Text Section (Hover করলে সলিড হোয়াইট হয়ে যাবে) */}
                   <div className="p-5 sm:p-6 text-center transition-all duration-300 bg-transparent group-hover:bg-white flex-grow flex items-center justify-center transform group-hover:-translate-y-1 shadow-xl">
                     <h3 className="font-display font-bold text-sm sm:text-base text-white group-hover:text-[#1E263D] tracking-wider transition-colors duration-300 uppercase">
                       {area.name}

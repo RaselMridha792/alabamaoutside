@@ -6,7 +6,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, MapPin } from "lucide-react";
+import { Phone, Menu, X, MapPin, ChevronDown } from "lucide-react";
 import { HERO_CONTENT } from '../../data';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,9 +15,13 @@ import { usePathname } from 'next/navigation';
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  // মোবাইলে ড্রপডাউন ওপেন/ক্লোজ করার জন্য স্টেট
+  const [openDropdowns, setOpenDropdowns] = useState({});
+  
   const pathname = usePathname();
 
-  // Scroll effect for hiding top bar and sticking the nav bar (আপনার অরিজিনাল লজিক)
+  // Scroll effect (শুধুমাত্র শ্যাডো অ্যাড করার জন্য ব্যবহার হবে, লেআউট জাম্প করবে না)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -26,42 +30,65 @@ export default function Header() {
         setScrolled(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Personal এবং Professional থেকে মেইন URL রিমুভ করা হয়েছে এবং সাব-পেজ অ্যাড করা হয়েছে
   const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Attorneys', href: '/attorney' },
-    { name: 'Personal', href: '/personal' },
-    { name: 'Professional', href: '/professional' },
+    { 
+      name: 'Personal', 
+      subItems: [
+        { name: 'Civil Lawsuits', href: '/personal' },
+        { name: 'Criminal Defense', href: '/personal/criminal-defense' },
+        { name: 'Divorce and Family Law', href: '/personal/divorce-and-family-law' },
+        { name: 'DUI Defense', href: '/personal/dui-defense' },
+        { name: 'Personal Injury', href: '/personal/personal-injury' },
+        { name: 'Wills and Probate', href: '/personal/wills-and-probate' }
+      ]
+    },
+    { 
+      name: 'Professional', 
+      subItems: [
+        { name: 'Administrative Law', href: '/professional' },
+        { name: 'Appellate Litigation', href: '/professional/appellate-litigation' },
+        { name: 'Business Consulting', href: '/professional/business-consulting' },
+        { name: 'Business Formation & Dissolution', href: '/professional/business-formation-dissolution' }
+      ]
+    },
     { name: 'Case Reviews', href: '/case-review' },
     { name: 'Blog', href: '/blog' },
     { name: 'Media', href: '/media' },
     { name: 'Contact', href: '/contact' }
   ];
 
-  // মেনুগুলোকে দুই ভাগে ভাগ করা হলো
   const mainMenuItems = menuItems.filter(item => item.name !== 'Contact');
   const contactItem = menuItems.find(item => item.name === 'Contact');
 
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
+    setOpenDropdowns({}); // মেনু ক্লোজ হলে ড্রপডাউনগুলোও রিসেট হবে
+  };
+
+  const toggleMobileDropdown = (menuName, e) => {
+    e.preventDefault(); // লিংক ক্লিক হওয়া বন্ধ করে শুধু ড্রপডাউন ওপেন করবে
+    setOpenDropdowns(prev => ({
+      ...prev,
+      [menuName]: !prev[menuName]
+    }));
   };
 
   return (
-    <header className="w-full flex flex-col z-50">
-      
+    <>
       {/* ========================================
-        TOP TIER: Navy Background (Logo & Phone)
+        TOP TIER: Navy Background
+        এটি নরমালি স্ক্রল হয়ে উপরে চলে যাবে। কোনো জাভাস্ক্রিপ্ট ট্রানজিশন নেই, তাই কাঁপবে না।
         ========================================
       */}
-      <div 
-        className={`bg-[#0A192F] transition-all duration-500 ease-in-out overflow-hidden flex items-center ${
-          scrolled ? 'max-h-0 opacity-0 py-0' : 'max-h-[120px] opacity-100 py-4 sm:py-6'
-        }`}
-      >
+      <div className="w-full bg-[#0A192F] py-4 sm:py-6 z-40 relative">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex justify-between items-center">
           
           {/* Left: Logo */}
@@ -79,13 +106,10 @@ export default function Header() {
 
           {/* Right: Contact Info */}
           <div className="hidden sm:flex flex-col items-end justify-center text-right">
-            {/* Address */}
             <div className="flex items-center gap-2 text-gray-300 text-xs sm:text-sm mb-1">
               <MapPin className="w-4 h-4 text-brand-gold" />
               <span>Birmingham, AL 35203</span>
             </div>
-
-            {/* Phone */}
             <a 
               href="tel:205-502-2000" 
               className="flex items-center gap-2 text-brand-gold hover:text-white transition-colors duration-300 group"
@@ -113,40 +137,76 @@ export default function Header() {
 
       {/* ========================================
         BOTTOM TIER: White Background Navigation
+        এটি `sticky top-0` দেওয়া আছে। পেজ স্ক্রল করলে শুধু এই সাদা বারটি টপে স্টিক হয়ে থাকবে।
         ========================================
       */}
-      <nav 
-        className={`w-full bg-[#F8F9FA] transition-all duration-500 z-50 ${
-          scrolled ? 'fixed top-0 left-0 shadow-md border-b border-gray-200' : 'relative border-b border-gray-200'
+      <header 
+        className={`w-full bg-[#F8F9FA] z-50 sticky top-0 transition-shadow duration-300 ${
+          scrolled ? 'shadow-md border-b-transparent' : 'border-b border-gray-200'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Desktop Navigation */}
           <div className="hidden sm:flex justify-between items-center py-4">
             
-            {/* বাম দিকে সব মেনু */}
-            <div className="flex items-center gap-6 md:gap-8 lg:gap-10 xl:gap-12">
+            <div className="flex items-center gap-6 md:gap-8 lg:gap-10">
               {mainMenuItems.map((item) => {
-                const isActive = pathname === item.href;
+                const hasDropdown = !!item.subItems;
+                // Check if active (matches exact href or any sub-item href)
+                const isActive = hasDropdown 
+                  ? item.subItems.some(sub => pathname === sub.href)
+                  : pathname === item.href;
                 
                 return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors relative group ${
-                      isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
-                    }`}
-                  >
-                    {item.name}
-                    <span className={`absolute -bottom-1.5 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                  </Link>
+                  <div key={item.name} className="relative group">
+                    {hasDropdown ? (
+                      // ড্রপডাউনের জন্য বাটন ব্যবহার করা হয়েছে, তাই ক্লিক করলে পেজ লোড হবে না
+                      <button
+                        className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1 relative py-2 cursor-pointer focus:outline-none ${
+                          isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-300" />
+                        <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                      </button>
+                    ) : (
+                      // সাধারণ মেনুর জন্য লিংক
+                      <Link
+                        href={item.href}
+                        className={`text-[11px] md:text-xs font-bold tracking-wider uppercase transition-colors flex items-center gap-1 relative py-2 ${
+                          isActive ? 'text-brand-navy' : 'text-[#0A192F]/80 hover:text-brand-gold'
+                        }`}
+                      >
+                        {item.name}
+                        <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-gold transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                      </Link>
+                    )}
+
+                    {/* Desktop Dropdown Menu */}
+                    {hasDropdown && (
+                      <div className="absolute top-full left-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 translate-y-2 group-hover:translate-y-0 pt-2 z-50">
+                        <div className="bg-white shadow-xl border border-gray-100 border-t-2 border-t-brand-gold min-w-[260px] flex flex-col py-2 rounded-b-md">
+                          {item.subItems.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              href={subItem.href}
+                              className="px-5 py-3 text-[11px] font-bold tracking-wider uppercase text-[#0A192F]/80 hover:text-brand-gold hover:bg-slate-50 transition-colors border-b border-gray-50 last:border-b-0"
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
 
-            {/* ডান দিকে Contact বাটন */}
-            <div>
+            {/* Contact Button */}
+            <div className="flex items-center pl-6 border-l border-gray-200">
               <Link
                 href={contactItem.href}
                 className="bg-[#C5A85C] hover:bg-[#DFC27D] text-[#0A192F] font-bold text-[11px] md:text-xs tracking-wider uppercase px-6 py-2.5 rounded shadow-sm transition-all duration-300 hover:-translate-y-0.5"
@@ -156,7 +216,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Mobile Centered Phone Number */}
+          {/* Mobile Phone Number & Hamburger (visible when scrolled past blue bar) */}
           {scrolled && (
             <div className="sm:hidden flex justify-between items-center py-3">
               <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy font-bold">
@@ -171,55 +231,95 @@ export default function Header() {
               </button>
             </div>
           )}
-        </div>
+        </nav>
 
-        {/* Mobile Dropdown Menu */}
-        {mobileMenuOpen && (
-          <div className="sm:hidden absolute top-full left-0 w-full bg-white shadow-xl border-b border-gray-200">
-            <div className="px-4 pt-2 pb-6 space-y-1">
-              {!scrolled && (
-                <div className="pb-4 mb-4 border-b border-gray-100 flex justify-center">
-                  <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy text-lg font-bold">
-                    <Phone className="w-5 h-5 text-brand-gold" fill="currentColor" />
-                    <span>205-502-2000</span>
-                  </a>
-                </div>
-              )}
-              
-              {/* Mobile Main Menus */}
-              {mainMenuItems.map((item) => {
-                const isActive = pathname === item.href;
-                return (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    onClick={handleLinkClick}
-                    className={`block px-4 py-3 rounded-md text-sm font-bold tracking-wider uppercase transition-all ${
-                      isActive 
-                        ? 'bg-brand-navy/5 text-brand-navy border-l-4 border-brand-gold' 
-                        : 'text-gray-700 hover:bg-slate-50 hover:text-brand-gold'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              })}
-
-              {/* Mobile Contact Button */}
-              <div className="pt-4 mt-2">
-                <Link
-                  href={contactItem.href}
-                  onClick={handleLinkClick}
-                  className="block w-full text-center bg-[#C5A85C] hover:bg-[#DFC27D] text-[#0A192F] px-4 py-3.5 rounded-md text-sm font-bold tracking-wider uppercase transition-colors shadow-sm"
-                >
-                  {contactItem.name}
-                </Link>
+        {/* Mobile Navigation Menu Dropdown */}
+        <div 
+          className={`sm:hidden absolute top-full left-0 w-full bg-white shadow-xl overflow-hidden transition-all duration-400 ease-in-out ${
+            mobileMenuOpen ? 'max-h-[800px] border-b border-gray-200 opacity-100 overflow-y-auto' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="px-4 pt-2 pb-6 space-y-1">
+            {!scrolled && (
+              <div className="pb-4 mb-4 border-b border-gray-100 flex justify-center">
+                <a href="tel:205-502-2000" className="flex items-center gap-2 text-brand-navy text-lg font-bold">
+                  <Phone className="w-5 h-5 text-brand-gold" fill="currentColor" />
+                  <span>205-502-2000</span>
+                </a>
               </div>
+            )}
+            
+            {mainMenuItems.map((item) => {
+              const hasDropdown = !!item.subItems;
+              const isActive = hasDropdown 
+                ? item.subItems.some(sub => pathname === sub.href)
+                : pathname === item.href;
+              const isDropdownOpen = openDropdowns[item.name];
+
+              return (
+                <div key={item.name} className="flex flex-col">
+                  {hasDropdown ? (
+                    // মোবাইলে ড্রপডাউন টগল করার জন্য পুরো রো-টি বাটন
+                    <button
+                      onClick={(e) => toggleMobileDropdown(item.name, e)}
+                      className={`w-full flex justify-between items-center px-4 py-3 rounded-md text-sm font-bold tracking-wider uppercase transition-all focus:outline-none cursor-pointer ${
+                        isActive ? 'bg-brand-navy/5 text-brand-navy border-l-4 border-brand-gold' : 'text-gray-700 hover:bg-slate-50 hover:text-brand-gold'
+                      }`}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-brand-gold' : ''}`} />
+                    </button>
+                  ) : (
+                    // সাধারণ লিংকের জন্য
+                    <Link
+                      href={item.href}
+                      onClick={handleLinkClick}
+                      className={`block px-4 py-3 rounded-md text-sm font-bold tracking-wider uppercase transition-all ${
+                        isActive ? 'bg-brand-navy/5 text-brand-navy border-l-4 border-brand-gold' : 'text-gray-700 hover:bg-slate-50 hover:text-brand-gold'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+
+                  {/* Mobile Dropdown Items */}
+                  {hasDropdown && (
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                        isDropdownOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <div className="pl-6 pr-4 py-2 space-y-1 border-l-2 border-brand-gold/30 ml-6 mt-1 mb-2">
+                        {item.subItems.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            onClick={handleLinkClick}
+                            className="block px-4 py-2.5 text-xs font-bold text-gray-600 hover:text-brand-gold uppercase tracking-wider transition-colors"
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <div className="pt-4 mt-2">
+              <Link
+                href={contactItem.href}
+                onClick={handleLinkClick}
+                className="block w-full text-center bg-[#C5A85C] hover:bg-[#DFC27D] text-[#0A192F] px-4 py-3.5 rounded-md text-sm font-bold tracking-wider uppercase transition-colors shadow-sm"
+              >
+                {contactItem.name}
+              </Link>
             </div>
           </div>
-        )}
-      </nav>
+        </div>
+      </header>
 
-    </header>
+    </>
   );
 }
