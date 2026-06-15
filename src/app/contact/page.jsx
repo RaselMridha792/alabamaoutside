@@ -14,7 +14,7 @@ import {
   Mail,
   Send,
   CheckCircle2,
-  HelpCircle,
+  ChevronDown,
   Clock,
   ShieldCheck,
   FileText,
@@ -33,6 +33,7 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [openFAQ, setOpenFAQ] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -111,21 +112,16 @@ export default function ContactPage() {
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         id="contact-main"
       >
-        {/* Office & Details Cards Grid - Left side coordinates, Right side form */}
+        {/* Contact info row - three equal-height cards */}
         <div
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start"
-          id="contact-layout-grid"
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch mb-10"
+          id="contact-info-row"
         >
-          {/* LEFT 5 COLS: Birmingham Office Detail + Hours + FAQ */}
-          <section
-            className="lg:col-span-5 space-y-8"
-            id="contact-left-section"
+          {/* CARD 1: Location */}
+          <div
+            className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
+            id="contact_card_location"
           >
-            {/* BIRMINGHAM OFFICE CARD - EXACTLY MATCHING COPYS */}
-            <div
-              className="bg-white p-8 rounded-lg border border-gray-150 shadow-sm space-y-6"
-              id="birmingham_office_contact_card"
-            >
               <div className="flex items-center gap-3">
                 <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
                   <MapPin className="w-6 h-6" />
@@ -149,29 +145,9 @@ export default function ContactPage() {
                     Birmingham, AL 35203
                   </p>
                 </div>
-
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-800">
-                  <Phone className="w-5 h-5 text-brand-gold shrink-0" />
-                  <a
-                    href="tel:205-502-2000"
-                    className="font-bold hover:text-brand-gold transition-colors font-sans"
-                  >
-                    205-502-2000
-                  </a>
-                </div>
-
-                <div className="flex items-center gap-3 text-xs sm:text-sm text-gray-800">
-                  <Mail className="w-5 h-5 text-brand-gold shrink-0" />
-                  <a
-                    href="mailto:info@bolesholmes.com"
-                    className="font-bold hover:text-brand-gold transition-colors font-sans text-brand-navy"
-                  >
-                    Email Us
-                  </a>
-                </div>
               </div>
 
-              <div className="pt-6 border-t border-gray-100 flex items-center justify-between">
+              <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
                 <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
                   ESTABLISHED LITIGATION SUITE
                 </span>
@@ -181,69 +157,99 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Office Hours Info Card */}
+            {/* CARD 2: Consultation Hours */}
             <div
-              className="bg-brand-navy-light p-6 rounded-lg text-gray-200 border border-brand-gold/15 space-y-4"
+              className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
               id="office_hours_card"
             >
-              <div className="flex items-center gap-2.5 text-brand-gold">
-                <Clock className="w-4.5 h-4.5" />
-                <h3 className="text-xs font-bold tracking-widest uppercase font-sans">
-                  Consultation Hours
-                </h3>
+              <div className="flex items-center gap-3">
+                <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
+                  <Clock className="w-6 h-6" />
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
+                    Office Schedule
+                  </span>
+                  <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
+                    Consultation Hours
+                  </h2>
+                </div>
               </div>
-              <ul className="space-y-2 text-xs sm:text-sm font-sans text-gray-300">
-                <li className="flex justify-between border-b border-white/5 pb-1.5 leading-snug">
+              <ul className="mt-auto space-y-3 pt-2 text-xs sm:text-sm font-sans text-gray-600">
+                <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
                   <span>Monday - Friday</span>
-                  <span className="font-bold text-white">
+                  <span className="font-bold text-brand-navy">
                     8:00 AM - 5:00 PM
                   </span>
                 </li>
-                <li className="flex justify-between border-b border-white/5 pb-1.5 leading-snug">
+                <li className="flex justify-between border-b border-gray-100 pb-2 leading-snug">
                   <span>Saturday</span>
-                  <span className="text-amber-500 font-semibold uppercase">
-                    By Retainer Appointment
+                  <span className="text-amber-600 font-semibold uppercase">
+                    By Appointment
                   </span>
                 </li>
                 <li className="flex justify-between leading-snug">
-                  <span>Emergency Defense Line</span>
+                  <span>Emergency Line</span>
                   <span className="text-brand-gold font-bold">
-                    24 / 7 Active Support
+                    24 / 7 Active
                   </span>
                 </li>
               </ul>
             </div>
 
-            {/* Quick FAQ section */}
-            <div className="space-y-4" id="quick-faqs">
-              <h3 className="font-display text-xs font-extrabold text-[#C5A85C] uppercase tracking-widest border-b border-gray-200 pb-2 flex items-center gap-1.5">
-                <HelpCircle className="w-4 h-4" />
-                <span>Frequently Asked Questions</span>
-              </h3>
-              <div className="space-y-3">
-                {selectFAQ.map((faq, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-white p-4.5 rounded border border-gray-150 text-[11.5px] sm:text-xs text-gray-650"
-                    id={`faq_item_${idx}`}
-                  >
-                    <h4 className="font-semibold text-brand-navy uppercase mb-1">
-                      {faq.q}
-                    </h4>
-                    <p className="font-sans leading-relaxed text-justify">
-                      {faq.a}
-                    </p>
-                  </div>
-                ))}
+            {/* CARD 3: Direct Contact */}
+            <div
+              className="bg-white p-7 rounded-lg border border-gray-150 shadow-sm flex flex-col gap-5"
+              id="contact_card_direct"
+            >
+              <div className="flex items-center gap-3">
+                <div className="p-3.5 bg-brand-navy rounded-sm text-brand-gold">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div className="space-y-0.5">
+                  <span className="text-[10px] font-extrabold text-brand-gold uppercase tracking-widest block font-mono">
+                    Direct Line
+                  </span>
+                  <h2 className="font-display text-lg font-bold text-brand-navy tracking-wide uppercase">
+                    Reach Us
+                  </h2>
+                </div>
+              </div>
+
+              <div className="space-y-4 pt-2">
+                <a
+                  href="tel:205-502-2000"
+                  className="flex items-center gap-3 text-xs sm:text-sm text-gray-800 font-bold hover:text-brand-gold transition-colors font-sans"
+                >
+                  <Phone className="w-5 h-5 text-brand-gold shrink-0" />
+                  <span>205-502-2000</span>
+                </a>
+
+                <a
+                  href="mailto:info@bolesholmes.com"
+                  className="flex items-center gap-3 text-xs sm:text-sm text-brand-navy font-bold hover:text-brand-gold transition-colors font-sans"
+                >
+                  <Mail className="w-5 h-5 text-brand-gold shrink-0" />
+                  <span>Email Us</span>
+                </a>
+              </div>
+
+              <div className="mt-auto pt-6 border-t border-gray-100 flex items-center justify-between">
+                <span className="text-[10.5px] font-extrabold text-gray-400 font-mono">
+                  EMERGENCY DEFENSE LINE
+                </span>
+                <span className="text-xs font-bold text-brand-gold uppercase">
+                  24 / 7
+                </span>
               </div>
             </div>
-          </section>
+        </div>
 
-          {/* RIGHT 7 COLS: High Fidelity Custom Contact Form */}
-          <section
-            className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-lg border border-gray-150 shadow-md space-y-8"
-            id="contact-right-section"
-          >
+        {/* CONTACT FORM - centered below the info row */}
+        <section
+          className="max-w-3xl mx-auto w-full bg-white p-8 sm:p-10 rounded-lg border border-gray-150 shadow-md space-y-8"
+          id="contact-right-section"
+        >
             <div className="space-y-3 border-b border-gray-100 pb-6">
               <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
                 Schedule a Consultation
@@ -458,11 +464,71 @@ export default function ContactPage() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </section>
-        </div>
+        </section>
+
+        {/* FREQUENTLY ASKED QUESTIONS - Homepage-style accordion */}
+        <section className="mt-24" id="contact-faq-section">
+          <div className="bg-[#0A192F] rounded-2xl py-16 px-6 sm:px-10 lg:px-16">
+            {/* Section Header */}
+            <div className="text-center mb-12 space-y-4">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-white max-w-3xl mx-auto">
+                Frequently Asked Questions
+              </h2>
+              <div className="w-16 h-1 bg-brand-gold mx-auto" />
+            </div>
+
+            {/* Accordion */}
+            <div className="max-w-3xl mx-auto flex flex-col gap-6">
+              {selectFAQ.map((faq, idx) => {
+                const isOpen = openFAQ === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="border border-brand-gold/20 rounded-lg overflow-hidden bg-brand-navy-light h-fit"
+                    id={`faq_item_${idx}`}
+                  >
+                    <button
+                      onClick={() => setOpenFAQ(isOpen ? null : idx)}
+                      className={`w-full px-6 py-5 flex items-start justify-between gap-4 transition-colors duration-300 ${
+                        isOpen ? "bg-brand-navy" : "hover:bg-brand-navy/80"
+                      }`}
+                    >
+                      <span className="font-display text-sm sm:text-base font-bold text-brand-gold text-left">
+                        {faq.q}
+                      </span>
+                      <ChevronDown
+                        className={`w-5 h-5 text-brand-gold shrink-0 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-6 pb-5 pt-2 bg-brand-navy">
+                            <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed text-justify">
+                              {faq.a}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
         {/* GOOGLE MAP REGION */}
-        <section className="mt-20 space-y-4" id="google-maps-section">
+        <section className="mt-24 space-y-4" id="google-maps-section">
           <h3 className="font-display text-xs font-extrabold text-[#C5A85C] uppercase tracking-widest border-b border-gray-200 pb-2 flex items-center gap-1.5">
             <FileText className="w-4 h-4" />
             <span>Birmingham Litigation Chambers Map</span>
@@ -473,7 +539,7 @@ export default function ContactPage() {
             id="embedded_maps_iframe_box"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m8!1m3!1d3329.071724653512!2d-86.809312!3d33.518933!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88891bfb264e15db%3A0xc6cb1dc2287de4bb!2s1929%203rd%20Ave%20N%20%23500%2C%20Birmingham%2C%20AL%2035203!5e0!3m2!1sen!2sus!4v1714562000000!5m2!1sen!2sus"
+              src="https://maps.google.com/maps?q=1929%203rd%20Ave%20N%20%23500%2C%20Birmingham%2C%20AL%2035203&t=&z=16&ie=UTF8&iwloc=&output=embed"
               className="w-full h-full border-0 absolute inset-0"
               allowFullScreen={true}
               loading="lazy"
