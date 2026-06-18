@@ -5,9 +5,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
-
-// import { Mail, Facebook, Twitter, Instagram, Linkedin, MapPin, Phone, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import React from 'react';
 
 // ✅ lucide icons (valid ones only)
 import { 
@@ -30,67 +28,12 @@ import {
 import { HERO_CONTENT, ABOUT_CONTENT, OFFICE_INFO, ATTORNEYS, DISCLAIMERS } from '../../data';
 
 export default function Footer({ setCurrentPage }) {
-  const [email, setEmail] = useState('');
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e) => {
-    e.preventDefault();
-    if (!email.trim() || !email.includes('@')) return;
-    setSubscribed(true);
-    setEmail('');
-  };
+  // নিউজলেটারের স্টেট এবং লজিকগুলো রিমুভ করা হয়েছে কারণ ক্লায়েন্টের নিউজলেটার নেই
 
   return (
     <footer className="bg-brand-navy-light text-gray-300 pt-16 pb-12 border-t border-brand-gold/10" id="footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top: Newsletter Subscribe Section */}
-        <div className="bg-brand-navy border border-brand-gold/15 p-8 sm:p-10 rounded-lg shadow-xl mb-16 relative overflow-hidden" id="newsletter_box">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            <div className="lg:col-span-5 space-y-2">
-              <h3 className="font-display text-lg sm:text-xl font-bold uppercase tracking-wide text-white">
-                Subscribe to our newsletter
-              </h3>
-              <p className="text-xs sm:text-sm text-gray-400 font-sans">
-                Review supreme court decisions, regional regulatory shifts, and hot white collar counsel.
-              </p>
-            </div>
-
-            <div className="lg:col-span-7">
-              {!subscribed ? (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                  <div className="relative flex-grow">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400" />
-                    <input
-                      required
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      id="newsletter_email"
-                      placeholder="Enter your secure business email"
-                      className="w-full bg-brand-navy-light text-white text-xs sm:text-sm pl-11 pr-4 py-3.5 rounded-sm border border-white/10 focus:outline-none focus:border-brand-gold text-gray-200"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    id="newsletter_submit"
-                    className="bg-brand-gold hover:bg-brand-gold-dark text-brand-navy font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-sm transition-all shadow-md shrink-0 cursor-pointer"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              ) : (
-                <div className="flex items-center gap-3 p-4 bg-brand-gold/10 border border-brand-gold/30 text-brand-gold rounded-sm" id="newsletter_success">
-                  <CheckCircle2 className="w-5 h-5" />
-                  <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Subscription Successful - Welcome to our Advisory List</span>
-                </div>
-              )}
-            </div>
-          </div>
-          
-        </div>
-
         {/* Middle: Foot Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/5">
           
@@ -103,8 +46,9 @@ export default function Footer({ setCurrentPage }) {
               referrerPolicy="no-referrer"
             />
             <h4 className="text-xs font-bold text-white uppercase tracking-widest hidden">BOLES HOLMES WHITE LLC</h4>
+            {/* Dothan এবং small town এর রেফারেন্স মুছে ফেলা হয়েছে */}
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-sans" id="footer_about_text">
-              Boles Holmes White LLC is a full-service law firm providing transactional, litigation, government relations and white collar/criminal defense. We represent both businesses and individuals throughout the Southeast Region. As a full-service law firm with roots in the small town of Dothan and with large Birmingham firm experience, all of our attorneys strive to provide clients “big firm” representation with “small town” accessibility and personal attention. That is what sets us apart.
+              Boles Holmes White LLC is a full-service law firm providing transactional, litigation, government relations and white collar/criminal defense. We represent both businesses and individuals throughout the Southeast Region. With large Birmingham firm experience, all of our attorneys strive to provide clients “big firm” representation with accessibility and personal attention. That is what sets us apart.
             </p>
 
             {/* Alabama bar associations mandate bar representation statement */}
@@ -136,7 +80,8 @@ export default function Footer({ setCurrentPage }) {
             </h4>
             
             <div className="space-y-4">
-              {OFFICE_INFO.map((office) => (
+              {/* Dothan অফিসকে কোডের মাধ্যমে ফিল্টার করে বাদ দেওয়া হয়েছে */}
+              {OFFICE_INFO.filter(office => !office.name.toLowerCase().includes('dothan')).map((office) => (
                 <div key={office.name} className="space-y-2 text-xs sm:text-sm" id="footer_office_block">
                   <h5 className="font-bold text-brand-gold text-xs tracking-wider uppercase">{office.name}</h5>
                   <p className="text-gray-400 font-sans leading-relaxed">
@@ -153,12 +98,6 @@ export default function Footer({ setCurrentPage }) {
                   </a>
                 </div>
               ))}
-              
-              {/* Secondary Office Note for Dothan (mentioned heavily in copy context) */}
-              <div className="pt-2 border-t border-white/5 text-[11px] text-gray-500">
-                <h6 className="font-semibold text-gray-400 uppercase">Dothan Liaison</h6>
-                <p className="mt-1 font-sans">Roots rooted in Dothan, AL. Attorneys available representation throughout the country.</p>
-              </div>
             </div>
           </div>
 
@@ -222,9 +161,12 @@ export default function Footer({ setCurrentPage }) {
           <p id="copyright_p">
             {DISCLAIMERS.copyright}
           </p>
+
           <div className="flex gap-4 items-center">
             <ShieldCheck className="w-4 h-4 text-brand-gold" />
-            <span className="font-sans text-[10px] tracking-wide uppercase">Elite Corporate Counsel &bull; Proudly Serving Dothan & Birmingham</span>
+            <span className="font-sans text-[10px] tracking-wide uppercase">
+              Elite Corporate Counsel • Proudly Serving Birmingham
+            </span>
           </div>
         </div>
 

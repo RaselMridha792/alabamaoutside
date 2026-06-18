@@ -12,6 +12,7 @@ import {
   Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
+import FAQ from '@/components/home/FAQ';
 
 export default function CriminalDefensePage({ onNavigateToContact }) {
   const [formData, setFormData] = useState({
@@ -378,6 +379,14 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
           </div>
         </div>
       </section>
+
+<FAQ></FAQ>
+
+
     </div>
+
+
+
+
   );
 }

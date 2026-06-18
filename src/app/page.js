@@ -7,11 +7,11 @@ import Hero from "@/components/home/Hero";
 import LatestUpdates from "@/components/home/LatestUpdates";
 import OurTeam from "@/components/home/OurTeam";
 import WhyOurFirm from "@/components/home/WhyOurFirm";
-import FAQ from "@/components/home/FAQ";
+// import FAQ from "@/components/home/FAQ";
 // import LatestUpdates from "@/components/home/LatestUpdates";
 import PracticeSection from "@/components/home/PracticeSection";
 import OurProcess from "@/components/home/OurProcess";
-import Image from "next/image";
+
 import ClientReviews from "@/components/home/ClientReviews";
 import ServiceCards from "@/components/home/ServiceCards";
 
@@ -38,7 +38,7 @@ export default function Home() {
 
 <Accreditations></Accreditations>
 
-      <FAQ></FAQ>
+      {/* <FAQ></FAQ> */}
       <ContactUs></ContactUs>
     </div>
   );

@@ -11,21 +11,25 @@ import Image from 'next/image';
 import { ArrowRight, Mail } from 'lucide-react';
 import Link from 'next/link';
 
+// স্ক্রিনশট থেকে সঠিক টাইটেল এবং বায়ো (Bio) নিয়ে ডাটা আপডেট করা হয়েছে
 const TEAM_DATA = [
   {
     name: 'Jeffrey E. Holmes',
-    role: 'Partner / Lead Trial Litigator',
+    role: 'Telecommunications & Corporate Lawyer',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img2.jpg',
+    bio: 'Brings broad legal expertise to his clients after serving as in-house counsel to a Fortune 500 company. He specializes in telecommunications, health care, mining, and corporate law.',
   },
   {
     name: 'William C. White, II',
-    role: 'Partner / White Collar Defense',
+    role: 'White Collar Criminal Defense Attorney',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img3.jpg',
+    bio: 'Ranked as one of the top 100 Lawyers by the American Trial Lawyers Association, successfully representing clients in local, state, and federal criminal defense across multiple states.',
   },
   {
     name: 'Nathan Holmes',
-    role: 'Attorney / Business & IP Advocate',
+    role: 'Of Counsel / AI & Tech Law',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img5.jpg',
+    bio: 'Legal advisor for AI and emerging technologies. His practice focuses on commercial litigation and matters where science and technology are central to the dispute or transaction.',
   }
 ];
 
@@ -34,7 +38,7 @@ export default function OurTeam() {
     <section className="bg-[#F1F3F6] py-24 px-4 sm:px-6 lg:px-8" id="our-team">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header (Centered like the screenshot) */}
+        {/* Section Header */}
         <div className="text-center mb-16 space-y-4">
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A253B] tracking-tight">
             Meet Our Experienced Team
@@ -45,7 +49,7 @@ export default function OurTeam() {
           </p>
         </div>
 
-        {/* Team Grid (3 Columns like screenshot) */}
+        {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {TEAM_DATA.map((member, index) => (
             <motion.div
@@ -54,12 +58,12 @@ export default function OurTeam() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
+              className="group flex flex-col h-full bg-white rounded-2xl shadow-sm hover:shadow-2xl transition-shadow duration-500 overflow-hidden"
             >
-              {/* Image Card: Rounded top with gradient background behind photo */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-gradient-to-b from-[#D1D8E2] to-[#E2E8F0] shadow-lg transition-all duration-500 group-hover:shadow-2xl">
+              {/* Image Card */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-[#D1D8E2] to-[#E2E8F0]">
                 
-                {/* Attorney Portrait with Next.js Image */}
+                {/* Attorney Portrait */}
                 <Image
                   src={member.image}
                   alt={member.name}
@@ -68,7 +72,7 @@ export default function OurTeam() {
                   referrerPolicy="no-referrer"
                 />
 
-                {/* Subtle Floating Info Overlay on Hover */}
+                {/* Overlay Link on Hover */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                    <Link 
                      href="/attorney" 
@@ -80,16 +84,22 @@ export default function OurTeam() {
               </div>
 
               {/* Text Info (Bottom) */}
-              <div className="mt-6 text-center">
+              <div className="p-6 text-center flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-[#1A253B] group-hover:text-brand-gold transition-colors duration-300 uppercase tracking-tight">
                   {member.name}
                 </h3>
-                <p className="text-sm font-semibold text-brand-gold uppercase tracking-widest mt-1">
+                
+                <p className="text-xs font-bold text-brand-gold uppercase tracking-widest mt-1 mb-3">
                   {member.role}
+                </p>
+
+                {/* Bio Summary */}
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-grow line-clamp-4">
+                  {member.bio}
                 </p>
                 
                 {/* Contact Link */}
-                <div className="mt-4 flex justify-center">
+                <div className="mt-auto pt-4 border-t border-gray-100 flex justify-center">
                   <Link 
                     href="/contact" 
                     className="flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-brand-navy transition-colors uppercase"
@@ -107,7 +117,7 @@ export default function OurTeam() {
         <div className="mt-16 text-center">
           <Link
             href="/attorney"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A253B] text-white hover:bg-brand-gold font-bold text-xs tracking-widest uppercase rounded-sm transition-all duration-300 shadow-md"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1A253B] text-white hover:bg-brand-gold font-bold text-xs tracking-widest uppercase rounded-sm transition-all duration-300 shadow-md transform hover:-translate-y-1"
           >
             <span>View All Attorneys</span>
             <ArrowRight className="w-4 h-4" />

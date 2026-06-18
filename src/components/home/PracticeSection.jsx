@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// আপনার দেওয়া অরিজিনাল ক্লাউডিনারি লিংকগুলোর সাথে ডাটা এবং ডায়নামিক রাউটিং (href) ম্যাপ করা হয়েছে
+// ক্লায়েন্টের রিকয়ারমেন্ট এবং নতুন জেব্রার ছবি সহ ডাটা আপডেট করা হয়েছে
 const PRACTICE_AREAS_DATA = [
   { 
     name: 'Criminal Defense', 
@@ -42,20 +42,33 @@ const PRACTICE_AREAS_DATA = [
     image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324901/probate_yzfnjw.jpg',
     href: '/personal/wills-and-probate'
   },
-  // { 
-  //   name: 'White Collar Defense', 
-  //   image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/White_Collar_Defense_bhpna6.webp',
-  //   href: '/professional/white-collar-defense'
-  // },
+  { 
+    name: 'White Collar Defense & Investigations', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/White_Collar_Defense_bhpna6.webp',
+    href: '/professional/white-collar-defense' // Make sure this page exists or update the link
+  },
   { 
     name: 'Administrative Law', 
-    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Administrative_Law_wvmw0q.jpg',
+    // ক্লায়েন্টের রিকয়ারমেন্ট অনুযায়ী জেব্রার (USDA) ছবি বসানো হয়েছে
+    image: 'https://res.cloudinary.com/dsga4gyw9/image/upload/v1781766593/9ae0c8f2-6816-4327-9b46-b4476f474763_irpk23.png',
     href: '/professional/administrative-law'
   },
   { 
     name: 'Business Consulting', 
     image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781324900/Business_Litigation_mlbyhy.jpg',
     href: '/professional/business-consulting'
+  },
+  { 
+    // নতুন যোগ করা হয়েছে
+    name: 'Licensure Protection', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781774679/images_bzruzn.jpg', // Placeholder image, replace with a relevant one if available
+    href: '/professional/licensure-protection' 
+  },
+  { 
+    // নতুন যোগ করা হয়েছে
+    name: 'Litigation', 
+    image: 'https://res.cloudinary.com/dp08caz1r/image/upload/v1781774783/images_1_atoalg.jpg', 
+    href: '/professional/litigation'
   }
 ];
 
@@ -99,7 +112,7 @@ export default function PracticeAreas() {
                 className="h-full"
               >
               
-                {/* ✅ ডায়নামিক লিংকিং করা হয়েছে */}
+                {/* ডায়নামিক লিংকিং করা হয়েছে */}
                 <Link href={area.href} className="group flex flex-col h-full block">
                   
                   {/* Image Section (With dynamic zoom and overlay effect) */}
