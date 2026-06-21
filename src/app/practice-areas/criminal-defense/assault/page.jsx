@@ -7,13 +7,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
-export default function DuiDefensePage() {
+// শুধুমাত্র আপনার FeaturedLogos কম্পোনেন্টটি ইমপোর্ট করা হলো
+import FeaturedLogos from '@/components/FeaturedLogos';
+
+export default function AssaultPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,25 +24,6 @@ export default function DuiDefensePage() {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +35,7 @@ export default function DuiDefensePage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="dui-defense-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="assault-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -70,7 +53,7 @@ export default function DuiDefensePage() {
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>DUI Defense Practice</span>
+            <span>Criminal Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +63,7 @@ export default function DuiDefensePage() {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            DUI Defense
+            Assault Defense
           </motion.h1>
         </div>
       </section>
@@ -95,99 +78,74 @@ export default function DuiDefensePage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                DUI Defense Attorney Serving the State Of Alabama
+                Assault
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                DUI &amp; DWI Defense Attorneys Throughout Alabama and the Southeast
+                Alabama Assault Attorney; Defending Your Rights
               </h3>
             </div>
 
             {/* General Description Card */}
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                With a rich tradition of excellence in criminal defense, the Alabama DUI defense attorneys of Boles Holmes White LLC are known for their stunning victories in high-profile cases of national interest. However, our office maintains a tight focus on felony and misdemeanor DUI defense throughout the state of Alabama. Our concentration on DUI and DWI charges means that our clients benefit from focused, sophisticated, and confident representation in a friendly and attentive atmosphere.
-              </p>
               
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify mt-4">
-                If you’re thinking about saving money by pleading guilty without a defense attorney, you might want to think again. You could have strong defenses ranging from an improper traffic stop to unreliable toxicology reports that few people would recognize. There might also be pretrial diversion programs in the community where you were arrested that could sidestep the criminal justice system altogether.
+              <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-3">
+                Alabama First-Degree, Second-Degree, Third-Degree Assault Lawyers
+              </h4>
+              
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
+                Aggravated assault in Alabama is a serious issue even though Alabama only has “assault” designated as a formal crime. If you are looking for a defense lawyer after your arrest on assault charges, Our experienced alabama assault lawyer at Boles Holmes White LLC are ready to protect your rights.
               </p>
-
-              {/* Scope of Defenses Grid */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Improper Traffic Stop Defenses",
-                  "Unreliable Toxicology Reports",
-                  "Pretrial Diversion Programs",
-                  "Felony & Misdemeanor Defense"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
-            {/* Segment 1: Protecting from Convictions */}
-            <div className="space-y-4" id="dwi-law-firm-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  A DWI Law Firm Serving Clients Statewide
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  An experienced Alabama DUI Defense attorney at Boles Holmes White LLC can evaluate your situation and find a way to protect you from the consequences of a drunk driving conviction. When you consider the long-term financial and personal impact, you’ll find that our single flat fee for your defense might turn out to be a great investment.
-                </p>
-                
-                {/* Visual callout focusing on consequences */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Consequences of a First Offense</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      A single conviction can cost several thousand dollars in court costs, fines, increased insurance premiums, mandatory chemical dependency treatment, and license reinstatement fees.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Segment 2: Accomplished Trial Lawyers */}
-            <div className="space-y-4" id="trial-lawyers-section">
+            {/* Segment 1: Assault Degrees Section */}
+            <div className="space-y-4" id="assault-degrees-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
                   <Scale className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Finding Weaknesses in a DUI Case
+                  Degrees of Assault in Alabama
                 </h3>
               </div>
+              
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Our DWI and DUI defense attorneys are all accomplished trial lawyers who know how to find the weaknesses in a DUI case and apply them to the benefit of our clients. You will get personal attention from your first consultation until your case is settled. Contact our skilled Alabama DUI Defense Attorneys as soon as possible after your arrest to get your defense organized and under way.
-                </p>
                 
-                {/* Visual grid listing types of cases handled */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Cases We Handle</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                    {[
-                      "Misdemeanor DUI", 
-                      "Repeat/Felony DUI", 
-                      "Commercial Arrests", 
-                      "License Suspension"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
+                {/* Arson Degrees Blocks - With exact content */}
+                <div className="space-y-6">
+                  
+                  {/* First Degree */}
+                  <div className="p-5 bg-slate-50 border-l-4 border-brand-gold rounded-r">
+                    <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-2">
+                      Alabama First-Degree Assault Lawyer
+                    </h4>
+                    <p className="text-sm text-gray-700 text-justify leading-relaxed">
+                      Alabama law classifies first-degree assault as the most serious assault charge. This crime is a felony and can lead to serious prison time: the maximum allowed is twenty years and fines may be in excess of $30,000 if you are convicted. The charge typically involves serious injury and may also include assault with a deadly weapon. Such cases may also be related to reckless behavior, other crimes like domestic violence, rape, theft crimes, and even DUI. In such cases, having the right attorney on your side is crucial. Minimize your risks of incarceration with Boles Holmes White LLC defending you. We will examine the evidence, interrogate arresting officers, question witnesses, and assert your rights aggressively. Our goal will be to get your charges dropped or at least significantly reduced. If we go to trial, you will have a tenacious defense against Alabama assault charges with our skilled attorneys at your side. Contact us now for your defense against assault charges.
+                    </p>
                   </div>
+                  
+                  {/* Second Degree */}
+                  <div className="p-5 bg-slate-50 border-l-4 border-brand-gold rounded-r">
+                    <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-2">
+                      Alabama Second-Degree Assault Lawyer
+                    </h4>
+                    <p className="text-sm text-gray-700 text-justify leading-relaxed">
+                      Second-degree assault is also considered a felony in Alabama and can lead to significant prison time, a long probation, fines and other long-lasting punishments. If you are charged with second-degree assault, defense attorneys at Boles Holmes White LLC will do all we can to get your charges reduced and, perhaps, dismissed.  These cases may be related to drug charges, other forms of assault, resisting arrest or interfering with a police investigation. Call us to discuss all of the details of your circumstances with an experienced and skilled alabama assault lawyer.
+                    </p>
+                  </div>
+                  
+                  {/* Third Degree */}
+                  <div className="p-5 bg-slate-50 border-l-4 border-brand-gold rounded-r">
+                    <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-2">
+                      Alabama Third-Degree Assault Lawyer
+                    </h4>
+                    <p className="text-sm text-gray-700 text-justify leading-relaxed">
+                      Third-degree assault is a misdemeanor but still carries heavy consequences in Alabama: a year in jail and thousands of dollars in fines. Law enforcement may arrest you for assault if you interfere with their duties, recklessly use a weapon, or cause any physical injury intentionally or not. If you are facing a second or subsequent misdemeanor assault charge you may face even more serious criminal penalties. Contact a assault attorney to defend your rights against charges in Alabama.
+                    </p>
+                  </div>
+                  
                 </div>
+
               </div>
             </div>
 
@@ -239,7 +197,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         placeholder="John"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_first_name"
                       />
                     </div>
                   </div>
@@ -258,7 +215,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         placeholder="Doe"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_last_name"
                       />
                     </div>
                   </div>
@@ -277,7 +233,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(205) 502-2000"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_phone"
                       />
                     </div>
                   </div>
@@ -296,7 +251,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="johndoe@example.com"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_email"
                       />
                     </div>
                   </div>
@@ -312,27 +266,25 @@ export default function DuiDefensePage() {
                         value={formData.practiceArea}
                         onChange={(e) => setFormData({...formData, practiceArea: e.target.value})}
                         className="w-full bg-white text-gray-800 pl-4 pr-10 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold cursor-pointer appearance-none"
-                        id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="DUI / DWI Defense">DUI / DWI Defense</option>
-                        <option value="License Suspension">License Suspension Hearings</option>
-                        <option value="Felony DUI">Felony or Repeat DUI</option>
-                        <option value="Other Criminal Matter">Other Criminal Matter</option>
+                        <option value="Criminal Defense (Assault)">Criminal Defense (Assault)</option>
+                        <option value="DUI Defense">DUI Defense</option>
+                        <option value="White Collar Crime">White Collar Crime</option>
+                        <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
 
                   {/* SMS Policy Consent Agreement */}
-                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none" id="sms-consent-box">
+                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none">
                     By providing your phone number, you consent to receive automated informational/conversational SMS communications from Lawmatics on behalf of Boles Holmes White. Consent is not a condition of service. Message &amp; data rates may apply and frequency will vary. Reply STOP to unsubscribe. Text HELP for help. <a href="#privacy" className="underline hover:text-brand-gold">Privacy Policy</a> &bull; <a href="#terms" className="underline hover:text-brand-gold">Terms of Use</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    id="btn_submit_intake"
                     className="w-full py-4 bg-[#4CAF50] hover:bg-[#43A047] text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-sm shadow-md transition-all duration-200 cursor-pointer text-center select-none transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     <span>SUBMIT</span>
@@ -348,39 +300,9 @@ export default function DuiDefensePage() {
         </div>
       </main>
 
-      {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

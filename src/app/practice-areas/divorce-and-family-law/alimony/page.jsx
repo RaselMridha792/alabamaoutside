@@ -7,13 +7,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, Landmark, HelpCircle,
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
-export default function WillsAndProbatePage() {
+import FeaturedLogos from '@/components/FeaturedLogos';
+import FAQ from '@/components/home/FAQ';
+
+export default function AlimonyPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,25 +24,6 @@ export default function WillsAndProbatePage() {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +35,7 @@ export default function WillsAndProbatePage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="wills-probate-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="alimony-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -69,8 +52,8 @@ export default function WillsAndProbatePage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Landmark className="w-3.5 h-3.5" />
-            <span>Estate &amp; Probate Practice</span>
+            <Scale className="w-3.5 h-3.5" />
+            <span>Family Law Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +63,7 @@ export default function WillsAndProbatePage() {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Wills and Probate
+            Alimony and Spousal Support
           </motion.h1>
         </div>
       </section>
@@ -95,127 +78,86 @@ export default function WillsAndProbatePage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                Wills and Probate Overview
+                Birmingham alimony Lawyer & Spousal Support attorney;
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                Comprehensive Estate Planning and Business Formation Attorneys in Alabama
+                Helping clients in Vestavia Hills, Gardendale, Columbiana and the surrounding areas
               </h3>
             </div>
 
             {/* General Description Card */}
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                The attorneys of Boles Holmes White LLC provide a wide variety of services relating to probate law, including estate planning, will drafting, trust instrument drafting, power of attorney, estate administration, advance directives, beneficiary representation, non-probate transfers, and business organization. 
-              </p>
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify mt-4">
-                When people think of estate planning, they typically think of a will. However, there are many available methods of effecting the intent of a client with regards to what happens to his property and minor children after he is gone. Here we will take a quick overview of some of these methods.
-              </p>
               
-              {/* Comprehensive Services Grid */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Estate Planning & Will Drafting",
-                  "Trust Instrument Drafting",
-                  "Power of Attorney",
-                  "Estate Administration",
-                  "Advance Directives",
-                  "Non-Probate Transfers"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                One of the most contested aspects of a divorce case is alimony.  While people usually do not complain about supporting their minor children, they really don’t like having to write their ex a check every month.  To do so makes the payer of alimony feel like the divorce will never end, and makes him feel he is working hard to support someone that doesn’t appreciate him.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                On the flip side, a spouse who didn’t work during the marriage, often at the insistence of her husband, is in some cases entitled to maintain the standard of living to which she has grown accustomed.  She may have foregone a successful career in order to support her spouse’s career and their children.  Alimony and Spousal Support is designed to ensure she is not left destitute after all of her sacrifice.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                A judge usually awards alimony and spousal support based upon the need of one spouse requesting alimony and the ability of the other spouse to pay.  In determining the amount of alimony, a number of factors are considered, such as length of the marriage and reasons for the divorce.  If the family law judge determines there is fault, which caused the divorce, they may order alimony out of the estate of one of the spouses.  However, as a general rule, property owned prior to the marriage or received through inheritance cannot be considered when deciding the amount of alimony.  An exception to this exists if the property or inheritance was used throughout the marriage to support the marriage.   Alabama State Divorce Code – Chapter 2, Section 30-2-52, 30-2-53]
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-750 font-bold text-justify">
+                Alimony in Alabama takes two forms:  Alimony in Gross and Periodic Alimony
+              </p>
             </div>
 
-            {/* Segment 1: Probate vs Non-Probate */}
-            <div className="space-y-4" id="probate-options-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Scale className="w-5 h-5 sm:h-6 sm:w-6" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Probate and Non-Probate Transfers
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  About half of all property passes through probate. This means the property is either passed under a decedent’s (person who dies) will or through intestacy (property of a decedent who had no will). The other half is considered non-probate property, and passes outside of probate under an instrument other than a will. 
-                </p>
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Examples of non-probate transfers include joint tenancy, life insurance, contracts with payable-on-death (POD) provisions, and interests in trusts.
-                </p>
-                
-                {/* Visual callout focusing on Trusts */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">The Power of Trusts</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      Trusts have become an increasingly popular option for clients due to the greater flexibility and control they offer over traditional wills.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Segment 2: Child Custody & Advance Directives */}
-            <div className="space-y-4" id="family-protection-section">
+            {/* Segment 1: Alimony in Gross */}
+            <div className="space-y-4" id="alimony-in-gross-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
+                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Protecting Your Family &amp; Health Decisions
+                  What is Alimony in Gross?
                 </h3>
               </div>
+              
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
-                  Possibly the most important reason to consider a Last Will &amp; Testament in Alabama is to determine who gains custody of a minor child in the event both parents are deceased. The death of both parents can be traumatic enough, without a custody battle between surviving relatives. A carefully drafted Last Will &amp; Testament can resolve these issues, providing comfort in knowing the children are taken care of in a worst-case scenario.
-                </p>
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Another important area of practice is in advance directives and health care proxies, which enable a person to make difficult medical decisions, such as whether to remove life support, in advance. While ensuring the client’s wishes are carried out, this also relieves loved ones of difficult decisions in trying times.
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify">
+                  Alimony in gross means payments from one spouse to another that are fixed and for a definite amount.  Alimony in Gross cannot be modified after it has been Ordered , unless it is successfully appealed.  It is usually based upon the assets the parties have at the time of the divorce, not based on either’s future earning ability, although earning ability can be considered.  Alimony in Gross is often ordered as a lump sum payment and is part of the total property settlement of the parties.  A common example of Alimony in Gross is to allow one spouse to keep the vacation house, but Order a lump sum payment of $100,000 as alimony in gross.  Recipients of in gross alimony should know that it can be discharged through bankruptcy of the paying spouse.
                 </p>
               </div>
             </div>
 
-            {/* Segment 3: Business Organization */}
-            <div className="space-y-4" id="business-formation-section">
+            {/* Segment 2: Periodic Alimony */}
+            <div className="space-y-4" id="periodic-alimony-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Briefcase className="w-5 h-5 sm:h-6 sm:w-6" />
+                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Corporate &amp; Business Formation
+                  What is Periodic Alimony?
                 </h3>
               </div>
+              
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Our office also provides services to those wanting to start a business or dissolve an existing one through our corporate attorneys. Our Alabama estate planning attorneys are knowledgeable in corporate creation as well as the formation of limited liability companies (LLCs), limited liability partnerships (LLPs), and professional corporations (PCs).
-                </p>
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  We can help decide which entity is right for your new business, and help you draft and file the appropriate paperwork. Boles Holmes White LLC is here to offer our experience and unique expertise to assist you with all your estate planning and business creation needs.
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-6">
+                  Periodic Alimony is typically a set amount of money paid to the spouse on a monthly basis based on the divorce decree.  The divorce judge can order it for a set number of years, which is often referred to as temporary alimony, or it can be for the rest of the spouse’s life, often referred to as permanent alimony.  Periodic Alimony is considered taxable income to the spouse that receives it, and is a non taxable deduction to the spouse required to pay.  Even if periodic alimony has been ordered permanently, it can be terminated if the recipient gets remarried or moves in with someone of the opposite sex.
                 </p>
 
-                {/* Visual grid listing types of corporate entities */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Entity Formations Handled</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-center">
-                    {[
-                      "LLCs", 
-                      "LLPs", 
-                      "Professional Corps (PCs)", 
-                      "Business Dissolutions",
-                      "Corporate Drafting"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                <div className="space-y-4">
+                  <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest block">The Jere Beasley Report, August 2005</span>
+                  
+                  <p className="font-sans text-sm sm:text-base text-gray-750 text-justify">
+                    One of the most hotly contested issues our Birmingham alimony lawyer handle post divorce is a hearing to terminate alimony due to cohabitation.  The spouse paying alimony is anxious to get their ex off their payroll and can successfully end periodic alimony by showing cohabitation.  The spouse receiving alimony will often deny cohabitation, but that they maintain a separate residence from their new significant other.   This is usually a judgment call for the court, requiring a skilled Birmingham alimony lawyer & spousal support attorney to present the proper convincing evidence.  Tens of thousands of dollars (if not hundreds of thousands of dollars) usually hinge on the outcome of these alimony termination hearings.
+                  </p>
+
+                  <p className="font-sans text-sm sm:text-base text-gray-750 text-justify">
+                    Even if you do not seek to terminate periodic alimony completely, unlike alimony in gross, it can be modified if there has been a material change in circumstances.  The most common example our Alabama divorce attorneys see is a change in the income of the alimony payor.  If the payor’s income is decreased substantially, they can petition the court to modify the periodic alimony to a lower amount.   Similarly, if the paying spouse begins making more money, the alimony recipient may seek an Order from the divorce court judge increasing the alimony amount.
+                  </p>
                 </div>
+
+                <div className="mt-6 pt-5 border-t border-gray-100">
+                  <p className="font-sans text-sm sm:text-base text-brand-navy font-semibold text-justify">
+                    If you have questions about alimony in your divorce contact our experienced Birmingham alimony lawyer & spousal attorney .  Alimony can be a complex topic, and you need to know what the pros and cons of alimony in gross and periodic alimony are before making any divorce agreement.  At Boles Holmes White LLC we are ready to answer all of your Alabama alimony questions
+                  </p>
+                </div>
+
               </div>
             </div>
 
@@ -247,7 +189,7 @@ export default function WillsAndProbatePage() {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident estate planning attorney from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident trial attorney from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -267,7 +209,6 @@ export default function WillsAndProbatePage() {
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         placeholder="John"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_first_name"
                       />
                     </div>
                   </div>
@@ -286,7 +227,6 @@ export default function WillsAndProbatePage() {
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         placeholder="Doe"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_last_name"
                       />
                     </div>
                   </div>
@@ -305,7 +245,6 @@ export default function WillsAndProbatePage() {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(205) 502-2000"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_phone"
                       />
                     </div>
                   </div>
@@ -324,7 +263,6 @@ export default function WillsAndProbatePage() {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="johndoe@example.com"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_email"
                       />
                     </div>
                   </div>
@@ -340,13 +278,11 @@ export default function WillsAndProbatePage() {
                         value={formData.practiceArea}
                         onChange={(e) => setFormData({...formData, practiceArea: e.target.value})}
                         className="w-full bg-white text-gray-800 pl-4 pr-10 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold cursor-pointer appearance-none"
-                        id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Wills & Estate Planning">Wills &amp; Estate Planning</option>
-                        <option value="Probate Administration">Probate Administration</option>
-                        <option value="Trusts & Advance Directives">Trusts &amp; Advance Directives</option>
-                        <option value="Business Formation">Business Formation</option>
+                        <option value="Divorce / Family Law">Divorce / Family Law (Alimony)</option>
+                        <option value="Criminal Defense">Criminal Defense</option>
+                        <option value="DUI Defense">DUI Defense</option>
                         <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
@@ -354,14 +290,13 @@ export default function WillsAndProbatePage() {
                   </div>
 
                   {/* SMS Policy Consent Agreement */}
-                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none" id="sms-consent-box">
+                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none">
                     By providing your phone number, you consent to receive automated informational/conversational SMS communications from Lawmatics on behalf of Boles Holmes White. Consent is not a condition of service. Message &amp; data rates may apply and frequency will vary. Reply STOP to unsubscribe. Text HELP for help. <a href="#privacy" className="underline hover:text-brand-gold">Privacy Policy</a> &bull; <a href="#terms" className="underline hover:text-brand-gold">Terms of Use</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    id="btn_submit_intake"
                     className="w-full py-4 bg-[#4CAF50] hover:bg-[#43A047] text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-sm shadow-md transition-all duration-200 cursor-pointer text-center select-none transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     <span>SUBMIT</span>
@@ -377,39 +312,12 @@ export default function WillsAndProbatePage() {
         </div>
       </main>
 
-      {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Component */}
+      <FAQ />
+
     </div>
   );
 }

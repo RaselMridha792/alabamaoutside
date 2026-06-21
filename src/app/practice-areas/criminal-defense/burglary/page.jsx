@@ -7,13 +7,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
-export default function DivorceAndFamilyLawPage() {
+import FeaturedLogos from '@/components/FeaturedLogos';
+import FAQ from '@/components/home/FAQ';
+
+export default function BurglaryPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,25 +24,6 @@ export default function DivorceAndFamilyLawPage() {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +35,7 @@ export default function DivorceAndFamilyLawPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="divorce-family-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="burglary-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -69,8 +52,8 @@ export default function DivorceAndFamilyLawPage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Scale className="w-3.5 h-3.5" />
-            <span>Family Law Practice</span>
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Criminal Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +63,7 @@ export default function DivorceAndFamilyLawPage() {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Divorce and Family Law
+            Burglary Defense
           </motion.h1>
         </div>
       </section>
@@ -95,80 +78,49 @@ export default function DivorceAndFamilyLawPage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                Divorce Attorney Birmingham AL; Free Consultation Family Lawyer
+                Burglary
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                Counseling Clients on Family Law Issues Throughout the State of Alabama
+                Birmingham Burglary Defense Attorney: Protect Your Rights
               </h3>
             </div>
 
             {/* General Description Card */}
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                One of the most difficult tasks a person will face is navigating a divorce in Alabama. A Divorce Attorney in Birmingham AL can guide you through this challenging process. Divorces cause enormous stress to your emotions, preventing many from thinking clearly. For most, divorce is something they only deal with once in their life. Our divorce attorney and family lawyer in Birmingham, AL has years of experience in dealing with divorces on a daily basis, and knows how to advise clients in the most challenging domestic cases.
+              
+              <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-3">
+                Home Invasion, Robbery, Theft Lawyers representing clients throughout Alabama
+              </h4>
+              
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                Arrested for robbery in Birmingham? Does your arrest involve a gun crime? Your chances of going to Jefferson County Jail or an Alabama State Penitentiary will be significantly reduced with an experienced Birmingham burglary defense attorney on your side. At Boles Holmes White LLC, your attorney will have a team of dedicated legal professionals to assist in the defense of your rights and will be in consistent communication with you about the status of your case. The options you have—trial, plea bargain, defense strategies—will always be discussed with you in a straight-forward and clear manner. Most importantly, you will get a rigorous defense of your rights by an attorney at one of the nation’s leading criminal defense law firms.
               </p>
               
-              {/* Scope of Services Grid */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Child Custody & Visitation Disputes",
-                  "Child Support Adjustments",
-                  "Alimony Contests & Support Spousal",
-                  "Complex Marital Property Disputes",
-                  "Domestic Violence Protection Orders",
-                  "Uncontested & Peaceable Resolutions"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                If you face charges of robbery in Birmingham or home invasion anywhere in Alabama, call (205) 502-2000 for the sophisticated and rigorous defense you would expect from a leader in criminal law. If you are convicted of such serious crimes as robbery, home invasion, or other theft crimes in Birmingham, Alabama prosecutors will pursue devastating penalties against you. Your freedom will be at stake. With the right robbery defense attorney on your side, you may be able to have your charges reduced or even dropped. Our Birmingham burglary defense attorneys have assisted countless clients who face charges similar to yours.
+              </p>
+              
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
+                Though each case is unique, we will base our defense of your rights upon our history of success: we know what works in Alabama criminal defense. Contact us for the criminal defense lawyer you deserve against charges of robbery or home invasion in Birmingham. Don’t face the possibility of decades in prison and a permanent mark on your criminal record without a rigorous defense. Don’t face such penalties without one of the Alabama home invasion criminal lawyers at Boles Holmes White LLC protecting your freedom.  Birmingham police may have violated your rights. You may face accusations that cannot be supported. You may be in possession of stolen merchandise that you did not know was stolen. You may be suffering through a case of mistaken identity. You may be accused of being an accomplice in a robbery in which you had no part. Contact us immediately to get a lawyer fighting for your rights.
+              </p>
             </div>
 
-            {/* Segment 1: Fighting for our Divorce Clients */}
-            <div className="space-y-4" id="fighting-for-clients-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Fighting &amp; Negotiating for Our Clients
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
-                  Whether your goal is to negotiate an amicable resolution, or to fight to protect your assets or your child custody rights, we can help. If you’ve been the victim of domestic violence, adultery, or your spouse has addiction issues, our firm will act quickly to make sure your rights are protected. In some situations, we can move the court to Order custody of the children and the marital home to our clients while the divorce is pending. 
-                </p>
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify">
-                  Likewise, if you have simply fallen out of love with your spouse and are looking to peaceably go your separate ways, we can help. We can file an uncontested divorce or work directly with your spouse’s attorney to resolve issues. We also have extensive experience with domestic mediation, where issues of divorce are negotiated peaceably.
-                </p>
-              </div>
-            </div>
-
-            {/* Segment 2: Divorce Decree Enforcement Assistance */}
-            <div className="space-y-4" id="decree-enforcement-section">
+            {/* Segment 1: Vast Legal Experience */}
+            <div className="space-y-4" id="experience-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
+                  <Scale className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Divorce Decree Enforcement &amp; Modification
+                  Alabama Home Invasion, Robbery, Theft Lawyers with Vast Legal Experience
                 </h3>
               </div>
+              
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  If you’ve already obtained a divorce, but are seeking to enforce or modify the existing divorce decree, our family lawyers can assist. If there has been a material change in circumstances, a petition can be filed requesting the court for a modification of child support or alimony payments. Furthermore, if your ex-spouse has failed to make ordered payments or turn over certain property, they can be held in contempt of court. We can request a formal court hearing and Order your ex to explain why they have violated the terms of the original decree.
+                  For nearly five decades, Boles Holmes White LLC has been providing legal representation to people who face aggressive prosecutors and fierce law enforcement officers. Prosecutors are aggressive. Law enforcement officers are tough. When it comes to defending your rights, however, no one is tougher or more aggressive than the criminal defense attorneys at Boles Holmes White LLC.  We will defend your Constitutional rights against any opponent and no matter what criminal charges in Birmingham that you face: robbery, burglary, home invasion, high-value theft, armed robbery, shoplifting, and a host of other complex crimes that carry heavy penalties. You deserve to defend your freedom as aggressively as possible.  Call (205) 502-2000 to discuss your case with an experienced Birmingham burglary defense attorney.
                 </p>
-                
-                {/* Locations Grid */}
-                <div className="p-5 bg-slate-50 border-t border-gray-100 rounded">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Serving Surrounding Localities Including:</h4>
-                  <p className="text-xs text-gray-600 leading-relaxed">
-                    Birmingham, Tuscaloosa, Columbiana, Hoover, Mountain Brook, Chelsea, Vestavia Hills, Homewood, Irondale, Pell City, Bessemer, Pelham, Alabaster, Gardendale, Fultondale, Trussville, Leeds, Jefferson County, Shelby County, Tuscaloosa County, and St. Clair County.
-                  </p>
-                </div>
               </div>
             </div>
 
@@ -200,7 +152,7 @@ export default function DivorceAndFamilyLawPage() {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident trial family lawyer from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident trial attorney from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -220,7 +172,6 @@ export default function DivorceAndFamilyLawPage() {
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         placeholder="John"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_first_name"
                       />
                     </div>
                   </div>
@@ -239,7 +190,6 @@ export default function DivorceAndFamilyLawPage() {
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         placeholder="Doe"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_last_name"
                       />
                     </div>
                   </div>
@@ -258,7 +208,6 @@ export default function DivorceAndFamilyLawPage() {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(205) 502-2000"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_phone"
                       />
                     </div>
                   </div>
@@ -277,7 +226,6 @@ export default function DivorceAndFamilyLawPage() {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="johndoe@example.com"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_email"
                       />
                     </div>
                   </div>
@@ -293,27 +241,25 @@ export default function DivorceAndFamilyLawPage() {
                         value={formData.practiceArea}
                         onChange={(e) => setFormData({...formData, practiceArea: e.target.value})}
                         className="w-full bg-white text-gray-800 pl-4 pr-10 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold cursor-pointer appearance-none"
-                        id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Divorce">Divorce Proceedings</option>
-                        <option value="Child Custody">Child Custody &amp; Support</option>
-                        <option value="Decree Modification">Decree Enforcement / Modification</option>
-                        <option value="Other">Other Family Law Matter</option>
+                        <option value="Criminal Defense (Burglary)">Criminal Defense (Burglary)</option>
+                        <option value="DUI Defense">DUI Defense</option>
+                        <option value="White Collar Crime">White Collar Crime</option>
+                        <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
 
                   {/* SMS Policy Consent Agreement */}
-                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none" id="sms-consent-box">
+                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none">
                     By providing your phone number, you consent to receive automated informational/conversational SMS communications from Lawmatics on behalf of Boles Holmes White. Consent is not a condition of service. Message &amp; data rates may apply and frequency will vary. Reply STOP to unsubscribe. Text HELP for help. <a href="#privacy" className="underline hover:text-brand-gold">Privacy Policy</a> &bull; <a href="#terms" className="underline hover:text-brand-gold">Terms of Use</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    id="btn_submit_intake"
                     className="w-full py-4 bg-[#4CAF50] hover:bg-[#43A047] text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-sm shadow-md transition-all duration-200 cursor-pointer text-center select-none transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     <span>SUBMIT</span>
@@ -329,39 +275,12 @@ export default function DivorceAndFamilyLawPage() {
         </div>
       </main>
 
-      {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Component */}
+      <FAQ />
+
     </div>
   );
 }

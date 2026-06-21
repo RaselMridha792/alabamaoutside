@@ -7,14 +7,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
+
+import FeaturedLogos from '@/components/FeaturedLogos';
 import FAQ from '@/components/home/FAQ';
 
-export default function CriminalDefensePage({ onNavigateToContact }) {
+export default function AdulteryPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,25 +24,6 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,7 +35,7 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="personal-criminal-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="adultery-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -70,8 +52,8 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Criminal Practice</span>
+            <Scale className="w-3.5 h-3.5" />
+            <span>Family Law Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -81,7 +63,7 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Criminal Defense
+            Adultery
           </motion.h1>
         </div>
       </section>
@@ -96,101 +78,65 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                Experienced Birmingham Criminal Defense Lawyer
+                Adultery
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                Aggressive Criminal Defense Attorneys in Birmingham AL
+                Experienced with handling cases involving adultery
               </h3>
             </div>
 
             {/* General Description Card */}
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                The lawyers at Boles Holmes White LLC, your trusted Birmingham criminal defense lawyer, have a long-standing reputation. Our experienced defense attorneys have successfully represented clients across Alabama and have been trusted to defend clients in states like Florida, New York, Michigan, California, and many other states in the nation. With thousands of criminal cases handled, our skilled criminal lawyers in Birmingham are ready to use their extensive experience to protect your rights and achieve the best possible outcome for your case. Our Birmingham criminal defense lawyers helped thousands of clients and now we can use that experience to help you.
-              </p>
               
-              {/* Question list adapted from content to maintain design */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Represented clients across Alabama",
-                  "Trusted in NY, FL, MI, & CA",
-                  "Thousands of criminal cases handled",
-                  "Focused on achieving the best outcomes"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                You’ve got that feeling in your gut that something isn’t right.  You may not have any hard evidence, but you feel your spouse is being unfaithful.  Either they’ve denied it, or you haven’t had the energy to confront them.  But infidelity is not one of those situations you can just ignore.  What do you do?  Contact an experienced divorce attorney who knows how to deal with adultery in a divorce context.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                You may have noticed new behavior in your husband.   He may be working out more, buying new clothes, staying late at the office.  Your wife may seem disinterested, and be spending more and more time “with her friends” or on the computer in the other room.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                Suspicion of a cheating wife or cheating husband is one of the top reasons new clients contact our divorce attorneys in Birmingham, Alabama.  Adultery is one of the grounds authorized by Alabama law for a divorce court judge to grant a divorce.  The divorce lawyers in our Birmingham office can work with you to determine if your spouse has had a wandering eye, and if so begin planning your exit strategy.   In some cases, we have even found that the suspicion is unwarranted, allowing the marriage to be repaired.
+              </p>
+
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
+                We work with private investigators and other experts have been successful in catching a cheating spouse in the act.  Once that is done, this damaging information can be used to obtain the best possible outcome for you in your divorce.
+              </p>
             </div>
 
-            {/* Segment 1: Criminal Defense Services */}
-            <div className="space-y-4" id="criminal-services-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="injury_heading">
-                  Our Criminal Defense Services
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="injury_card_body">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify" id="injury_paragraph">
-                  We handle criminal defense matters across the State of Alabama from our offices in Birmingham, Dothan and Auburn. Whatever charges that have been brought against you, our Alabama defense attorneys are skilled at defending your rights. We can assist you with severe criminal charges including:
-                </p>
-                
-                {/* Visual grid listing types of cases evaluated (Mapped from your content) */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Defending Against All Charges</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-center">
-                    {[
-                      "Domestic Violence", 
-                      "Drug Crimes", 
-                      "Felony DUI", 
-                      "Property Crimes", 
-                      "Violent Crimes",
-                      "Restraining Orders"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Segment 2: Proactive Legal Defense */}
-            <div className="space-y-4" id="proactive-defense-section">
+            {/* Segment 1: Protecting Yourself Section */}
+            <div className="space-y-4" id="protect-yourself-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <Scale className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
+                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="business_litigation_heading">
-                  Proactive Legal Defense for Your Rights
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
+                  You’re the cheater?  How do you protect yourself?
                 </h3>
               </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="business_card_body">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5" id="business_paragraph">
-                  Prosecutors are aggressive. Our Birmingham Criminal defense attorneys will prepare your case for court and will offer you an exceptionally aggressive and rigorous defense if your case goes to trial. But, our skilled lawyers may be able to get the charges against you dropped. In many cases, we can determine that the police officers or other Alabama law enforcement officials violated your rights during an arrest or investigation. We will also work hard to find holes in the prosecution’s case against you. We will tenaciously defend your rights against your accusers. Contact the Birmingham criminal defense lawyers at Boles Holmes White LLC; we will be on your side against the longest odds and most complex criminal charges.
+              
+              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
+                  You’ve either been caught committing adultery, or you are worried that your secret is about to end.  Where do you go from here?  Many of our clients have made mistakes in their marriage, including adultery.  It is our job to mitigate that, and prevent it from causing devastating effects to you in your divorce case.
                 </p>
-                
-                {/* Visual callout focusing on background credentials */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Aggressive Representation</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">We tenaciously defend your rights and work tirelessly to uncover civil rights violations or holes in the prosecution’s case to protect your future.</p>
-                  </div>
+
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
+                  There is likely a reason you’ve strayed in your marriage that will explain your behavior.  While this may not excuse what you’ve done completely, our divorce attorneys are skilled advocates that can make the court understand the position in which you have found yourself.  Additionally, if no one yet knows about your “indiscretion” our divorce lawyers can help you negotiate a settlement before it comes to light, or advise you in how to disclose your adultery to your spouse in an effort to either help save the marriage or minimize the damage.
+                </p>
+
+                <div className="p-5 bg-slate-50 border-t border-gray-100 rounded">
+                  <p className="font-sans text-sm sm:text-base text-brand-navy font-semibold text-justify">
+                    If you suspect adultery, or your spouse is seeking a divorce from you because you have cheated, contact divorce attorney William White at Boles Holmes White LLC to guide you through this stressful time.
+                  </p>
                 </div>
               </div>
             </div>
 
           </section>
 
-          {/* Right Column: Sticky Contact Form (Unchanged Design) */}
+          {/* Right Column: Sticky Contact Form */}
           <section className="lg:col-span-5 lg:sticky lg:top-28" id="personal-form-col">
             <div className="bg-[#EAECEE]/90 backdrop-blur-md rounded-lg p-6 sm:p-8 shadow-xl border border-gray-250" id="consultation-form-card">
               
@@ -216,7 +162,7 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident trial litigation attorney from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident trial attorney from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -236,7 +182,6 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         placeholder="John"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_first_name"
                       />
                     </div>
                   </div>
@@ -255,7 +200,6 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         placeholder="Doe"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_last_name"
                       />
                     </div>
                   </div>
@@ -274,7 +218,6 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(205) 502-2000"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_phone"
                       />
                     </div>
                   </div>
@@ -293,7 +236,6 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="johndoe@example.com"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_email"
                       />
                     </div>
                   </div>
@@ -309,12 +251,11 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                         value={formData.practiceArea}
                         onChange={(e) => setFormData({...formData, practiceArea: e.target.value})}
                         className="w-full bg-white text-gray-800 pl-4 pr-10 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold cursor-pointer appearance-none"
-                        id="select_area"
                       >
                         <option value="" disabled>Select...</option>
+                        <option value="Divorce / Family Law">Divorce / Family Law (Adultery)</option>
                         <option value="Criminal Defense">Criminal Defense</option>
                         <option value="DUI Defense">DUI Defense</option>
-                        <option value="White Collar Crime">White Collar Crime</option>
                         <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
@@ -322,14 +263,13 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
                   </div>
 
                   {/* SMS Policy Consent Agreement */}
-                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none" id="sms-consent-box">
+                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none">
                     By providing your phone number, you consent to receive automated informational/conversational SMS communications from Lawmatics on behalf of Boles Holmes White. Consent is not a condition of service. Message &amp; data rates may apply and frequency will vary. Reply STOP to unsubscribe. Text HELP for help. <a href="#privacy" className="underline hover:text-brand-gold">Privacy Policy</a> &bull; <a href="#terms" className="underline hover:text-brand-gold">Terms of Use</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    id="btn_submit_intake"
                     className="w-full py-4 bg-[#4CAF50] hover:bg-[#43A047] text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-sm shadow-md transition-all duration-200 cursor-pointer text-center select-none transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     <span>SUBMIT</span>
@@ -345,48 +285,12 @@ export default function CriminalDefensePage({ onNavigateToContact }) {
         </div>
       </main>
 
-      {/* Featured In Logos Grid (Unchanged Design) */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-                id={`media_item_${reporter.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}`}
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-<FAQ></FAQ>
-
+      {/* FAQ Component */}
+      <FAQ />
 
     </div>
-
-
-
-
   );
 }

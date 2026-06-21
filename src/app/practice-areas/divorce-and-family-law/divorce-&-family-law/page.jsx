@@ -12,8 +12,9 @@ import {
   Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
+import FeaturedLogos from '@/components/FeaturedLogos';
 
-export default function BusinessFormationPage() {
+export default function DivorceAndFamilyLawPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,24 +24,7 @@ export default function BusinessFormationPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,9 +36,9 @@ export default function BusinessFormationPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="professional-business-formation-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="divorce-family-page">
       {/* Hero Section */}
-      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="professional-hero">
+      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-85"
           style={{ backgroundImage: "url('https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6042af26a5e70e1e56ee3508_1hugoblacktint.jpg')" }}
@@ -69,36 +53,36 @@ export default function BusinessFormationPage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>Corporate Practice</span>
+            <Scale className="w-3.5 h-3.5" />
+            <span>Family Law Practice</span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            id="professional-page-main-title"
+            id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Business Formation <br className="hidden md:block" /> &amp; Dissolution
+            Divorce and Family Law
           </motion.h1>
         </div>
       </section>
 
       {/* Structured Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" id="professional-main-container">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" id="personal-main-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-start">
           
           {/* Left Column: Rich legal informational sections (7 cols) */}
-          <section className="lg:col-span-7 space-y-12" id="professional-content-col">
+          <section className="lg:col-span-7 space-y-12" id="personal-content-col">
             
             {/* Header Block */}
             <div className="space-y-4">
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="professional_subheading_1">
-                Business Formation and Dissolution
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
+                Divorce Attorney Birmingham AL; Free Consultation Family Lawyer
               </h2>
-              <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="professional_subheading_2">
-                A personalized approach for every new entity or venture.
+              <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
+                Counseling Clients on Family Law Issues Throughout the State of Alabama
               </h3>
             </div>
 
@@ -106,91 +90,81 @@ export default function BusinessFormationPage() {
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
               <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                The start of any business should mean the sky is the limit for what that business can achieve. At Boles Holmes White, our business attorneys will be there to make sure from formation to multi-million-dollar success, you can control your business as you wish. Because there are so many available ways to form a business, this initial decision can have a lasting impact on the way your business grows.
-              </p>
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify mt-4">
-                Our attorneys have counseled clients in the formation of limited partnerships, limited liability partnerships, limited liability companies, series limited liability companies, and corporations in a diverse collection of industries. Whether you are an entrepreneur who wants to establish a sole proprietorship, or an established company looking to incorporate, our lawyers have the legal and practical knowledge of which type of entity will best suit your needs.
+                One of the most difficult tasks a person will face is navigating a divorce in Alabama. A Divorce Attorney in Birmingham AL can guide you through this challenging process. Divorces cause enormous stress to your emotions, preventing many from thinking clearly. For most, divorce is something they only deal with once in their life. Our divorce attorney and family lawyer in Birmingham, AL has years of experience in dealing with divorces on a daily basis, and knows how to advise clients in the most challenging domestic cases.
               </p>
               
-              {/* Scope of Entities Grid */}
+              {/* Scope of Services Grid - Updated to match existing website topics */}
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  "Limited Partnerships (LPs)",
-                  "Limited Liability Companies (LLCs)",
-                  "Corporations (C-Corp / S-Corp)",
-                  "Sole Proprietorships"
+                  "Adultery",
+                  "Alimony and Spousal Support",
+                  "Annulments",
+                  "Asset Location",
+                  "Attorney Fee Recovery",
+                  "Changing Alimony or Child Support",
+                  "Child Custody",
+                  "Child Relocation",
+                  "Child Support Calculations",
+                  "Child Visitation",
+                  "Contested Divorce",
+                  "Courthouses We Service",
+                  "Divorce Appeals",
+                  "Divorce of Same Sex Couples",
+                  "Domestic Violence / Protection from Abuse",
+                  "Enforcement of Divorce Decrees",
+                  "Grandparents Rights",
+                  "Grounds for Divorce",
+                  "How to Prepare for a Child Custody Case",
+                  "Joint Accounts in a Divorce"
                 ].map((q, idx) => (
                   <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
                     <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
+                    <span className="font-sans text-[11px] sm:text-xs font-semibold text-brand-navy leading-tight">{q}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Segment 1: Personalized Service Commitment */}
-            <div className="space-y-4" id="personalized-service-section">
+            {/* Segment 1: Fighting for our Divorce Clients */}
+            <div className="space-y-4" id="fighting-for-clients-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
                   <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Commitment to Personalized Service
+                  Fighting &amp; Negotiating for Our Clients
                 </h3>
               </div>
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  As part of BHW’s commitment to offering personalized service to all of our clients, our business attorneys know that not everything about starting a business is black and white. We understand the uncertainty of starting a new business, the regulatory and tax consequences of each type of business entity, as well as simply the legal definitions of each possible option.
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
+                  Whether your goal is to negotiate an amicable resolution, or to fight to protect your assets or your child custody rights, we can help. If you’ve been the victim of domestic violence, adultery, or your spouse has addiction issues, our firm will act quickly to make sure your rights are protected. In some situations, we can move the court to Order custody of the children and the marital home to our clients while the divorce is pending. 
                 </p>
-                
-                {/* Visual callout focusing on long term goals */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Attaining Long-Term Goals</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      By understanding both the strictly legal benefits and disadvantages of each possibility, incorporated with our practical knowledge, our attorneys will be able to meet your targets today while ensuring your long-term goals are attainable.
-                    </p>
-                  </div>
-                </div>
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify">
+                  Likewise, if you have simply fallen out of love with your spouse and are looking to peaceably go your separate ways, we can help. We can file an uncontested divorce or work directly with your spouse’s attorney to resolve issues. We also have extensive experience with domestic mediation, where issues of divorce are negotiated peaceably.
+                </p>
               </div>
             </div>
 
-            {/* Segment 2: Shutting Down a Business */}
-            <div className="space-y-4" id="dissolution-section">
+            {/* Segment 2: Divorce Decree Enforcement Assistance */}
+            <div className="space-y-4" id="decree-enforcement-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
                   <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Knowing How to Shut Down a Business
+                  Divorce Decree Enforcement &amp; Modification
                 </h3>
               </div>
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
-                  Knowing how to shut down a business is just as important as starting one. There may come a time for a business where dissolution is either the best or only option. In those instances, our attorneys have the expertise to advise clients as to the appropriate steps that must be taken in order to properly dissolve a business.
-                </p>
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Depending on the type of entity, dissolving a business can be an extremely simple task, or one that involves following a company’s operating agreement or other governing documents. Dissolution can also be more or less complex depending on how many stakeholders are a part of the business, or the nature of assets of the business that must be sold.
+                  If you’ve already obtained a divorce, but are seeking to enforce or modify the existing divorce decree, our family lawyers can assist. If there has been a material change in circumstances, a petition can be filed requesting the court for a modification of child support or alimony payments. Furthermore, if your ex-spouse has failed to make ordered payments or turn over certain property, they can be held in contempt of court. We can request a formal court hearing and Order your ex to explain why they have violated the terms of the original decree.
                 </p>
                 
-                {/* Visual grid listing dissolution complexities */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Crucial Dissolution Steps</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                    {[
-                      "Stakeholder Agreements", 
-                      "Asset Liquidation & Sales", 
-                      "Creditor Notifications", 
-                      "IRS & Tax Compliance"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-gray-500 mt-4 leading-relaxed italic text-center">
-                    Business dissolution often involves creditors and state agencies. Failure to adhere to IRS or local tax regulations is a serious matter. Let our attorneys ensure the process is handled correctly from start to finish.
+                {/* Locations Grid - Bibb County added */}
+                <div className="p-5 bg-slate-50 border-t border-gray-100 rounded">
+                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Serving Surrounding Localities Including:</h4>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Birmingham, Tuscaloosa, Columbiana, Hoover, Mountain Brook, Chelsea, Vestavia Hills, Homewood, Irondale, Pell City, Bessemer, Pelham, Alabaster, Gardendale, Fultondale, Trussville, Leeds, Jefferson County, Shelby County, Tuscaloosa County, Bibb County, and St. Clair County.
                   </p>
                 </div>
               </div>
@@ -199,7 +173,7 @@ export default function BusinessFormationPage() {
           </section>
 
           {/* Right Column: Sticky Contact Form */}
-          <section className="lg:col-span-5 lg:sticky lg:top-28" id="professional-form-col">
+          <section className="lg:col-span-5 lg:sticky lg:top-28" id="personal-form-col">
             <div className="bg-[#EAECEE]/90 backdrop-blur-md rounded-lg p-6 sm:p-8 shadow-xl border border-gray-250" id="consultation-form-card">
               
               <div className="border-b border-gray-300 pb-4 mb-6">
@@ -211,7 +185,7 @@ export default function BusinessFormationPage() {
                   Speak to an Attorney
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1 leading-relaxed">
-                  Provide your business details below for an absolute confidential, privileged legal consultation.
+                  Provide your case details below for an absolute confidential, privileged legal consultation.
                 </p>
               </div>
 
@@ -224,7 +198,7 @@ export default function BusinessFormationPage() {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident corporate attorney from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident trial family lawyer from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -320,10 +294,10 @@ export default function BusinessFormationPage() {
                         id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Business Formation">Business Formation</option>
-                        <option value="Business Dissolution">Business Dissolution</option>
-                        <option value="Tax & Compliance">Tax &amp; Compliance</option>
-                        <option value="Other Corporate Matter">Other Corporate Matter</option>
+                        <option value="Divorce">Divorce Proceedings</option>
+                        <option value="Child Custody">Child Custody &amp; Support</option>
+                        <option value="Decree Modification">Decree Enforcement / Modification</option>
+                        <option value="Other">Other Family Law Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
@@ -354,38 +328,7 @@ export default function BusinessFormationPage() {
       </main>
 
       {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="professional-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <FeaturedLogos></FeaturedLogos>
     </div>
   );
 }
