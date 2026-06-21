@@ -13,9 +13,6 @@ import Image from 'next/image';
 
 /**
  * Custom hook to animate counting numbers.
- * @param {number} endValue - The target value to count to.
- * @param {number} duration - The duration of the animation in milliseconds.
- * @returns {number} - The current animated value.
  */
 function useCountUp(endValue, duration = 1500) {
   const [count, setCount] = useState(0);
@@ -28,7 +25,6 @@ function useCountUp(endValue, duration = 1500) {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
       
-      // Update count based on progress
       setCount(progress * endValue);
 
       if (progress < 1) {
@@ -36,12 +32,10 @@ function useCountUp(endValue, duration = 1500) {
       }
     };
 
-    // Delay start slightly for visual effect
     const delayId = setTimeout(() => {
       animationFrameId = requestAnimationFrame(animate);
     }, 200);
 
-    // Clean up on unmount or reset
     return () => {
       clearTimeout(delayId);
       cancelAnimationFrame(animationFrameId);
@@ -52,32 +46,28 @@ function useCountUp(endValue, duration = 1500) {
 }
 
 export default function Hero() {
-  // Define end values for each counter
+  // ক্লায়েন্টের রিকয়ারমেন্ট অনুযায়ী নতুন ডাটা 
   const endValues = {
-    chargesResolved: 25000,
-    avvoReviews: 880,
-    avvoRating: 10,
-    endorsements: 44,
-    yearsExperience: 32
+    casesResolved: 25000,
+    countiesServed: 67,
+    statesRepresented: 25,
+    avvoRating: 10
   };
 
-  // Run the counting animation for each value
-  const chargesCount = useCountUp(endValues.chargesResolved);
-  const reviewsCount = useCountUp(endValues.avvoReviews);
+  const casesCount = useCountUp(endValues.casesResolved);
+  const countiesCount = useCountUp(endValues.countiesServed);
+  const statesCount = useCountUp(endValues.statesRepresented);
   const ratingCount = useCountUp(endValues.avvoRating);
-  const endorsementsCount = useCountUp(endValues.endorsements);
-  const yearsCount = useCountUp(endValues.yearsExperience);
 
   return (
     <section className="relative w-full flex flex-col z-0 overflow-hidden" id="hero-section">
       
-      {/* MAIN HERO BODY: High-resolution background image with overlay */}
+      {/* MAIN HERO BODY */}
       <div className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center bg-[#1a1a1a] overflow-hidden">
         
-        {/* Background Image: Next.js Image component for best optimization and avoiding crops */}
         <div className="absolute inset-0">
           <Image 
-            src="https://res.cloudinary.com/dsga4gyw9/image/upload/v1781170345/ChatGPT_Image_Jun_11_2026_03_31_58_PM_oid42f.png"
+            src="https://res.cloudinary.com/dsga4gyw9/image/upload/v1781763917/9c6ad7e8-c3ad-42b5-b444-f6c54f4734f1_ptjfv3.png"
             alt="Alabama Criminal Defense Attorneys Background"
             fill
             priority
@@ -85,7 +75,6 @@ export default function Hero() {
           />
         </div>
         
-        {/* Soft, very light overlay just enough to make white text readable, without hiding the image */}
         <div className="absolute inset-0 bg-black/25" />
         
         {/* Central Content */}
@@ -116,6 +105,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
+          {/* বাটনের টেক্সট আপডেট করা হয়েছে (No "Free" word) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -124,16 +114,16 @@ export default function Hero() {
           >
             <Link
               href="/#contact"
-              className="inline-flex items-center gap-2.5 bg-[#C92A2A] hover:bg-[#A02020] text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2.5 bg-[#C92A2A] hover:bg-[#A02020] text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
             >
-              <span>Free Consultation</span>
+              <span>Schedule a Consultation</span>
               <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
             <Link
-              href="/case-review"
-              className="inline-flex items-center gap-2.5 bg-white/20 hover:bg-white/30 border border-white/40 text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
+              href="/#contact"
+              className="inline-flex items-center justify-center gap-2.5 bg-white/20 hover:bg-white/30 border border-white/40 text-white font-sans font-medium text-sm tracking-wide px-6 sm:px-8 py-3 sm:py-3.5 shadow-lg transform hover:-translate-y-0.5 transition-all duration-300 group whitespace-nowrap"
             >
-              <span>Free Case Review</span>
+              <span>Contact Our Office</span>
               <ArrowRight className="w-4 h-4 text-white transition-transform font-light group-hover:translate-x-1" />
             </Link>
           </motion.div>
@@ -142,33 +132,43 @@ export default function Hero() {
       </div>
 
       {/* ==============================================
-        COUNTER SECTION: Animating numbers from zero
+        COUNTER SECTION: Updated with Client's 5 Stats
         ==============================================
       */}
       <div className="relative bg-[#0F1420] text-white py-10 px-4 sm:px-6 lg:px-8 z-10 border-t border-gray-800 shadow-xl">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-y-8 gap-x-4 sm:gap-6 justify-items-center">
           
-          {/* Column 1: Charges Resolved */}
+          {/* Stat 1: Cases Resolved */}
           <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
             <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
-              {Math.floor(chargesCount).toLocaleString()}+
+              {Math.floor(casesCount).toLocaleString()}+
             </span>
             <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
-              Charges Resolved
+              Cases Resolved
             </span>
           </div>
 
-          {/* Column 2: AVVO Reviews */}
+          {/* Stat 2: Alabama Counties */}
           <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
             <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
-              {Math.floor(reviewsCount)}+
+              {Math.floor(countiesCount)}
             </span>
             <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
-              5 Star AVVO Reviews
+              Alabama Counties Served
             </span>
           </div>
 
-          {/* Column 3: AVVO Rating */}
+          {/* Stat 3: US States */}
+          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+              {Math.floor(statesCount)}+
+            </span>
+            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
+              US States Represented In
+            </span>
+          </div>
+
+          {/* Stat 4: AVVO Rating */}
           <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
             <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
               {ratingCount.toFixed(1)}
@@ -178,23 +178,13 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Column 4: Lawyer Endorsements */}
-          <div className="w-full flex flex-col items-center text-center border-r border-gray-700 last:border-r-0 md:border-r">
+          {/* Stat 5: Highest AV Rating by Martindale */}
+          <div className="w-full flex flex-col items-center justify-center text-center border-r-0">
             <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
-              {Math.floor(endorsementsCount)}+
+              AV®
             </span>
             <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
-              Lawyer Endorsements
-            </span>
-          </div>
-
-          {/* Column 5: Years of Experience */}
-          <div className="w-full flex flex-col items-center text-center border-r-0">
-            <span className="font-sans text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
-              {Math.floor(yearsCount)}+
-            </span>
-            <span className="block font-sans text-xs sm:text-sm text-gray-300 mt-2">
-              Years of Experience
+              Highest Rating by Martindale
             </span>
           </div>
 

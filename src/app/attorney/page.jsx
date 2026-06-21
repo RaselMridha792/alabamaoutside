@@ -16,141 +16,249 @@ import {
 const ATTORNEYS_DATA = [
   {
     name: 'Jeffrey E. Holmes',
-    role: 'Partner / Lead Trial Litigator',
+    role: 'Telecommunications Lawyer in Alabama',
+    headline: 'Telecommunications Lawyer in Alabama – Legal Expertise for Your Business',
+    subHeadline: '',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img2.jpg',
-    practiceAreas: ['Civil Lawsuits', 'Trial Litigation', 'Government Investigations', 'White Collar Defense'],
-    shortBio: 'Lead trial attorney representing individuals and corporate clients in federal and state courts throughout Alabama.',
-    detailedBio: 'Jeffrey E. Holmes is a distinguished founding partner at Boles Holmes White with deep expertise in lead trial advocacy. Over a career spanning more than three decades, Jeff has directed hundreds of complex trials spanning state, federal, and appellate panel jurisdictions. He is widely praised as one of Alabama\'s most tenacious, experienced, and tactical trial litigators. Corporations, officers, and individuals facing high-security federal inquiries, white-collar criminal pursuits, and commercial disputes of immense magnitude trust Jeff with their most crucial legal defense requirements.',
+    practiceAreas: ['Telecommunications', 'Health Care', 'Mining', 'Hospitality', 'Technology-Related Business Transactions', 'Intellectual Property Matters', 'Environmental Matters', 'Labor & Employment'],
+    shortBio: 'Jeff Holmes represents clients in a number of different industries, including telecommunications, health care, mining, and hospitality.',
+    detailedBio: [
+      `Jeff Holmes represents clients in a number of different industries, including telecommunications, health care, mining, and hospitality. Jeff brings broad legal expertise to his clients. After serving as a law clerk to U.S. District Court Judge J. Foy Guin, Jr., Northern District of Alabama, Jeff worked as in-house counsel to a Fortune 500 company for nine years. He has been in private corporate law practice since 1996.`,
+      `Jeff has conducted technology-related business transactions, negotiated intellectual property matters, and developed technology-based evidence in trials and before environmental agencies and other agencies. He has provided consultation concerning a variety of environmental matters including site assessments, environmental audits, and responses to agency enforcement actions.`,
+      `He has managed $23 million in asset deals including sales of telecommunication businesses, a wholesale supply business, and a software business.`,
+      `Jeff also provides advice and representation to employers in labor and employment matters, including Title VII, wage and hour laws, disability laws, compliance with executive orders, and employment policies and procedures.`
+    ],
     education: [
-      'J.D., Cumberland School of Law, Samford University',
-      'B.A., University of Alabama'
+      'Cumberland School of Law, J.D., 1984',
+      'University of Alabama, M.S., Engineering Science & Mechanics, 2007',
+      'Concentration in dynamics, research in analytical modeling of impact of fluid-filled bottles',
+      'University of Alabama at Birmingham, B.A., Political Science, 1981'
     ],
-    barAdmissions: [
-      'Alabama State Bar, 1991',
-      'U.S. Court of Appeals for the 11th Circuit',
-      'U.S. District Court for Northern, Middle, and Southern Districts of Alabama'
-    ],
-    awards: [
-      'Best Lawyers in America® – White Collar Defense & Criminal Trial Litigation',
-      'Martindale-Hubbell® AV Preeminent Rating (Highest Peer Review Standard for Ethics and Legal ability)',
-      'National Trial Lawyers Top 100 Criminal Defense Attorneys'
-    ],
+    barAdmissions: [],
+    courtAdmissions: [],
+    awards: [],
     contact: {
-      email: 'jholmes@bhwlegal.com',
-      phone: '205-502-2000'
+      direct: '205-403-5713',
+      bhw: '205-502-2000',
+      email: 'jholmes@bhw.law',
+      fax: '205-847-1285',
+      phone: '205-403-5713'
     }
   },
   {
     name: 'William C. White, II',
-    role: 'Partner / Chair of White Collar Defense & Investigations',
+    role: 'White Collar Criminal Defense Attorney in Alabama',
+    headline: 'William C. White – White Collar Criminal Defense Attorney in Alabama',
+    subHeadline: '',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img3.jpg',
-    practiceAreas: ['Government Investigations', 'White Collar Defense', 'Regulatory Representation', 'Federal Criminal Defense'],
-    shortBio: 'Renowned regulatory and high-profile white collar defense attorney with extensive national experience.',
-    detailedBio: 'William C. ("Wally") White, II enjoys a national reputation for regulatory defense, white-collar criminal advocacy, and internal investigations. Wally routinely assists small, medium, and multi-national corporations as well as public servants to confidently navigate high-stakes investigations led by agencies such as the DOJ, FDA, EPA, SEC, CBP, OFAC, and the HHS-OIG. Wally has successfully defended clients against allegations ranging from health care and mortgage fraud to bribery, money laundering, and economic espionage across Alabama, Florida, Louisiana, Michigan, California, and many other states.',
+    practiceAreas: ['White Collar Criminal Defense', 'Civil Litigation', 'Business Consulting', 'Administrative Law', 'Transportation Law', 'Corporate Law', 'Professional License Protection', 'USDA Administrative Proceedings'],
+    shortBio: 'From white collar criminal defense to civil litigation and business consulting, William’s legal experience is varied and deep.',
+    detailedBio: [
+      `From white collar criminal defense to civil litigation and business consulting, William’s legal experience is varied and deep. Mr. White graduated with an accounting degree from the University of Alabama’s Culverhouse School of Accountancy in 1995 and also earned his law degree in 1998 from the University of Alabama.`,
+      `Since then, his commitment to clients has justified his reputation as an exceptional attorney in the fields of administrative law, transportation law, corporate law, civil litigation and white collar crime. His wide variety of experience has allowed him to counsel business owners and employees in a wide variety of industries. He has also represented doctors, attorneys, nurses, pharmacists, counselors and real estate professionals on professional licensing issues.`,
+      `He also has an active practice representing USDA licensees in response to licensure investigations and USDA administrative proceedings.`,
+      `With a degree in accounting and a background with insurance and real estate law, Mr. White offers knowledge and skill that make him an ideal white collar crime attorney. Through his career, he has successfully represented clients in Alabama, Georgia, California, Florida, Michigan, New Jersey, New York, Illinois, Texas, and other states, Mr. White has experience applicable to courts throughout the nation and suited for a wide variety of cases including civil litigation, white collar defense or corporate representation.`,
+      `Before co-founding Boles Holmes White LLC in 2018, Mr. White was the managing partner of Parkman White LLC. Prior to that, he was an Assistant District Attorney for Alabama’s 20th Judicial District. As a prosecutor, he took 75 felony cases to trial, including drug trafficking, rape and murder cases. With that background, Mr. White has found great success in local, state, and federal criminal defense including, but not limited to, white collar criminal defense.`,
+      `He is admitted to all federal and state courts in Alabama and also has Bar Admissions in New York, the District of Columbia, the United States Supreme Court, and the United States Court of Appeals 11th Circuit. As a result of his accomplishments and varied legal experience, Mr. White is ranked as one of the top 100 Lawyers by the American Trial Lawyers Association.`,
+      `Mr. White was lucky enough to participate in the legal defense for former HealthSouth CEO Richard Scrushy. That case was one of the most significant corporate fraud cases in legal history. The United States Department of Justice accused Scrushy of breaking certain laws related to the Sarbanes-Oxley Act designed to hold corporate executives more accountable. Scrushy faced accusations related to more than 2 billion dollars in accounting fraud. Thanks to an aggressive defense, led by Jim Parkman, Mr. White’s former law partner, Scrushy was acquitted.`,
+      `Mr. White also represented Senator Harri Anne Smith on her full acquittal on 19 charges of alleged corruption from the State of Alabama “Bingo trials” of 2011 and 2012. Mr. White’s blistering cross-examination of the government’s primary witness led the witness to proclaim in front of the jury “you’re sweating me out up here.”`,
+      `Mr. White is active in his community having served as a coach in the Vestavia Hills youth football and lacrosse leagues. He also volunteered for various girl’s youth volleyball teams as well as the Vestavia Hills High School Show Choir. He is on the Board of Directors for the Animal Welfare Alliance and is an active member of the Greater Hoover Rotary Club. He and his family are members of Independent Presbyterian Church in Birmingham, Alabama.`
+    ],
     education: [
-      'J.D., University of Alabama School of Law, magna cum laude',
-      'B.S., Auburn University'
+      'University of Alabama School of Law – J.D. 1998',
+      'University of Alabama – 1995 – Accounting Major'
     ],
     barAdmissions: [
-      'Alabama State Bar, 1996',
-      'State Bar of Georgia',
-      'Supreme Court of the United States',
-      'U.S. Court of Appeals for the 4th, 6th, and 11th Circuits'
+      'Alabama',
+      'District of Columbia',
+      'New York',
+      'Texas'
     ],
+    courtAdmissions: [
+      'Supreme Court of the United States',
+      'All State courts of Alabama',
+      'All State courts of New York',
+      'All State courts of Texas',
+      'United States District Court for:',
+      '– the District of Columbia',
+      '– the Northern District of Alabama',
+      '– the Middle District of Alabama',
+      '– the Southern District of Alabama',
+      '– the Northern District of Florida',
+      '– the Eastern District of Michigan',
+      'United States Court of Appeal:',
+      '– for the Eleventh Circuit',
+      '– for the Fourth Circuit'
+    ],
+    awardsHeading: 'Honors',
     awards: [
-      'Super Lawyers® Top Rated Class of Criminal & White Collar Defense (2012-Present)',
-      'Benchmark Litigation Star in Federal Investigations',
-      'Chambers and Partners Rated Advocate in White Collar Crime & Government Counsel'
+      'AV-Pre-imminent rated by Martindale Hubbell',
+      'Perfect 10.0 rated by AVVO',
+      'Top 100 Trial Attorneys',
+      'Alabama Leadership Forum Alumnus',
+      'Leadership Vestavia Hills Alumnus',
+      'Member of the Transportation Lawyers Association (Multiple committees)',
+      'Board of Directors of the Animal Welfare Alliance'
     ],
     contact: {
-      email: 'wwhite@bhwlegal.com',
-      phone: '205-502-2000'
+      direct: '205-403-5712',
+      bhw: '205-502-2000',
+      email: 'wwhite@bhw.law',
+      fax: '205-847-1285',
+      phone: '205-403-5712'
     }
   },
-  {
+ {
     name: 'Suzanne Norman',
-    role: 'Attorney / Chair of Personal & Family Law',
+    // ক্লায়েন্টের কথামতো টাইটেল এবং রোল আপডেট করা হয়েছে
+    role: 'Chair of Appeals / Civil Litigation & White Collar Investigations',
+    headline: 'Civil Litigation & White Collar Investigations in Alabama',
+    subHeadline: '',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img6.jpg',
-    practiceAreas: ['Personal Injury', 'Divorce & Family Law', 'Wills and Probate', 'Civil Lawsuits'],
-    shortBio: 'Empathetic and meticulous advocate guiding families and injured victims through complex civil litigation.',
-    detailedBio: 'Suzanne Norman is an accomplished partner who commands high praise and confidence for her work across personal injury litigation, divorce, trust creation, family matters, and probate management. Her strategic negotiation abilities and courtroom tenacity ensure that injured victims are vigorously represented and family legal transitions are treated with premium confidentiality, personal attention, and absolute focus. She stands out for giving clients direct, individual attention in addressing their particular legal matters.',
+    // ক্লায়েন্টের দেওয়া সঠিক প্র্যাকটিস এরিয়া
+    practiceAreas: ['Civil Litigation', 'White Collar Investigations', 'Appeals', 'Criminal Defense'],
+    shortBio: 'Skilled advocate focusing on civil litigation, white-collar investigations, and complex appeals, advocating strongly for her clients.',
+    detailedBio: [
+      `Suzanne attended Auburn University where she graduated with degrees in public relations and Spanish with a minor in political science. After graduation, Suzanne attended Cumberland School of Law where she received her Juris Doctor. At Cumberland, Suzanne served as a Senior Associate Editor of Cumberland’s American Journal of Trial Advocacy and was a member of the Phi Alpha Delta Law Fraternity. In addition, Suzanne was listed on the Dean’s List for six semesters and was named Scholar of Merit for Superior Performance in Professional Responsibilities in the Fall of 2018.`,
+      `Throughout her time at Cumberland, Suzanne worked as a law clerk for BHW, preparing her to be able to skillfully and effectively serve her clients as a practicing attorney. Suzanne’s focus during law school was on criminal and white-collar defense, as well as civil litigation. She strives to use her experience and education to best represent her clients and provide them with the strongest defense possible.`,
+      `In her free time, Suzanne serves as a member of the Junior League of Birmingham, where she feels fortunate to be able to serve our local community with such an impactful organization.`
+    ],
     education: [
-      'J.D., Thomas Goode Jones School of Law, Faulkner University',
-      'B.A., Birmingham-Southern College'
+      'Cumberland School of Law, J.D., 2019',
+      'Auburn University, B.A., Public Relations, 2016',
+      'Auburn University, B.A., Spanish, 2016'
     ],
     barAdmissions: [
-      'Alabama State Bar, 2004',
-      'U.S. District Court for Northern and Middle Districts of Alabama'
+      'Alabama'
+    ],
+    courtAdmissions: [
+      'Alabama State Courts',
+      'United States District Court for:',
+      'The Northern District of Alabama',
+      'The Middle District of Alabama',
+      'The Southern District of Alabama'
     ],
     awards: [
-      'Top 100 Personal Injury Trial Lawyers (Alabama Association for Justice)',
-      'American Institute of Family Law Attorneys – Peer Recommended',
-      'Faulkner University Alumni Leadership Recognition Award'
+      'Scholar of Merit for Superior Performance in Professional Responsibilities (Fall 2018)',
+      'Dean’s List for six semesters'
     ],
     contact: {
-      email: 'snorman@bhwlegal.com',
-      phone: '205-502-2000'
+      direct: '205-403-5715',
+      bhw: '205-502-2000',
+      email: 'snorman@bhw.law',
+      fax: '205-847-1285',
+      phone: '205-403-5715'
     }
   },
   {
     name: 'H. Hampton Boles',
-    role: 'Partner / Counsel for Corporate Law',
+    role: 'Of Counsel',
+    headline: 'H. Hampton Boles – Alabama Banking and Compliance Attorney',
+    subHeadline: '',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img4.jpg',
-    practiceAreas: ['Corporate Law', 'Transactions', 'Business Formation & Dissolution', 'Commercial Real Estate'],
-    shortBio: 'Over 35 years of general counsel and transactional experience representing banks, real estate portfolios, and mature companies.',
-    detailedBio: 'H. Hampton Boles delivers premier corporate counseling, joint venture negotiations, entity design, and transaction oversight. Over his thirty-five years of business advocacy, Hampton has guided mature corporate entities and early-stage companies to capture market share, negotiate license rights, navigate tax policies, and structure commercial real estate acquisitions. He provides standard outside general counsel services with unparalleled, high-level cost responsiveness.',
-    education: [
-      'J.D., Vanderbilt University Law School',
-      'B.A., Samford University, cum laude'
+    practiceAreas: ['Banking and Compliance', 'Regulatory Compliance', 'Financial Issues', 'Corporate Clients', 'State Legislative Matters'],
+    shortBio: 'Hamp Boles focuses on regulatory, compliance and financial issues for corporate clients.',
+    detailedBio: [
+      `In his “Of Counsel” role with the firm, Hamp Boles focuses on regulatory, compliance and financial issues for corporate clients. Since 1985, Hamp has drafted or participated in drafting substantial portions of the current Alabama Banking Code and various Articles of the UCC. Hamp counsels directors and officers about their responsibilities to regulators, shareholders and customers.`,
+      `“Hamp Boles is the dean of Alabama banking law. His work ethic, character and integrity are beyond reproach and he’d be included in any dream team of bank regulatory lawyers in Alabama.” -Chambers USA`,
+      `Regulations and compliance issues have been, are now, and will continue to be an important part of management, and costly for all regulated industries. Hamp believes that all businesses of every type and size are “regulated” to some extent and often face compliance issues. Addressing compliance before there is a need is the best practice. Hamp also works on state legislative matters.`
     ],
-    barAdmissions: [
-      'Alabama State Bar, 1982',
-      'United States Tax Court'
+    professionalAffiliations: [
+      'American College of Real Estate Lawyers',
+      'Birmingham Bar Association',
+      'Alabama State Bar',
+      'American Bar Association'
     ],
+    awardsHeading: 'Awards & Accolades',
     awards: [
-      'Corporate Counsel Association Special Award for Outstanding Legal Service',
-      'Best Lawyers® – Business & Taxation Advisory of Dothan and Birmingham',
-      'AV Preeminent Rating by Martindale-Hubbell'
+      'American College of Real Estate Lawyers',
+      'Chambers USA, Banking and Finance: Mainly Regulatory',
+      'The Best Lawyers in America, 1993 – Present',
+      'Named “Lawyer of the Year” by Best Lawyers for:',
+      'Real Estate Law, Birmingham (2013)',
+      'Banking and Financial Law, Birmingham (2009)',
+      'Super Lawyers, 2008 – Present',
+      'Birmingham Magazine, Top Attorney, 2017',
+      'B-Metro Magazine, Top Lawyers, 2015, 2017, 2018'
     ],
+    education: [
+      'Tulane University Law School, 1967'
+    ],
+    barAdmissions: [],
+    courtAdmissions: [],
     contact: {
-      email: 'hboles@bhwlegal.com',
-      phone: '205-502-2000'
+      direct: '205-403-5701',
+      bhw: '205-502-2000',
+      email: 'wwhite@bhw.law',
+      fax: '205-847-1285',
+      phone: '205-403-5701'
     }
   },
   {
     name: 'Nathan Holmes',
-    role: 'Attorney / Business & Intellectual Property Advocate',
+    role: 'Of Counsel',
+    headline: 'Nathan Holmes - Artificial Intelligence, Technology, and Business Law Attorney',
+    subHeadline: 'Legal Advisor for AI & Emerging Technologies',
     image: 'https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/img5.jpg',
-    practiceAreas: ['Business Consulting', 'Business Formation & Dissolution', 'Transactions', 'Labor & Employment'],
-    shortBio: 'Dedicated general corporate advisor specializing in start-up counseling, contracts, and commercial operations.',
-    detailedBio: 'Nathan Holmes acts as outside corporate counsel and business advisor to small and medium enterprises. He provides legal advice for modern business operations, drafting contract instruments, facilitating strategic business plans, protecting trade secrets, and guiding employment policies. His tech-focused, agile legal approach helps early-stage start-up companies navigate their entity formations and licensing agreements with ease.',
+    practiceAreas: ['Artificial Intelligence and Emerging Technology Law', 'Privacy and Cybersecurity', 'Technology, Software, and SAAS Transactions', 'Intellectual Property Prosecution and Litigation', 'Commercial Litigation', 'General Business Law'],
+    shortBio: 'Much of Mr. Holmes’ practice focuses on matters where science and technology are central to the dispute or transaction.',
+    detailedBio: [
+      `Much of Mr. Holmes’ practice focuses on matters where science and technology are central to the dispute or transaction. Such work often involves industries and innovations where an operative understanding of the underlying technology is important to achieving an effective outcome.`,
+      `This includes traditional legal fields such as intellectual property litigation or prosecution as well as cases and deals involving emerging technologies, such as artificial intelligence, or legal matters hinging on forensic or technical evidence, where mathematics is applied to evaluate the evidence.`,
+      `Additionally, Mr. Holmes has extensive experience in commercial litigation and transactions as well as general business law. He has assisted with litigation or appeared pro hac vice in matters across the country, including in Alabama, Mississippi, Texas, California, Louisiana, Florida, Georgia, Washington DC, Pennsylvania, Illinois, Wisconsin, New York, North Carolina, and South Carolina.`,
+      `In addition to his JD (University of Alabama), Mr. Holmes obtained a masters degree in applied mathematics from Columbia University, a masters degree in civil engineering and bachelors degree in mathematics from the University of Alabama, and a certificate in real world risk management from the Real World Risk Institute.`,
+      `Mr. Holmes is a published independent scholar at the intersection of technology and law (see, for example, A Transaction Represented With Weighted Finite State Transducers). Mr. Holmes has an Erdős number of 5. Mr. Holmes is a frequent speaker at the American Academy of Forensic Science Annual Conference. He has presented there on a variety of topics, including misconceptions surrounding artificial intelligence, admissibility of expert forensic testimony, and utilizing neural networks to disprove the validity of certain speaker identification techniques used as evidence against criminal defendants. Moreover, Mr. Holmes frequently gives keynote talks, presentations, and continuing legal education (CLE) lectures on law and technology topics.`,
+      `Mr. Holmes serves as an adjunct professor of law at the University of Alabama school of Law and Cumberland school of Law where he teaches courses on AI and law.`,
+      `Mr. Holmes believes there is no better feeling than being useful to his clients, many of whom are risk takers – entrepreneurs, scientists and inventors, business owners, and colorful individuals – who stand to lose from their actions and opinions. Mr. Holmes is proud to serve as an attorney-scientist member of your business team and a thoughtful and zealous advocate for your business’ commercial matters.`
+    ],
     education: [
-      'J.D., University of Alabama School of Law',
-      'B.A., University of Alabama at Birmingham'
+      'Columbia University (New York, NY) – MS Applied Mathematics',
+      'University of Alabama School of Law (Tuscaloosa, AL) – Juris Doctor',
+      'University of Alabama (Tuscaloosa, AL) – MS Civil Engineering',
+      'University of Alabama Honors College (Tuscaloosa, AL) – BS Mathematics, Minor Computer Based Honors, Summa Cum Laude, Dr. Fred A. and Francis Pickens Lewis Endowed Scholarship Recipient (math department award)',
+      'Real World Risk Institute (New York, NY) – Certificate in Real World Risk Management'
     ],
     barAdmissions: [
-      'Alabama State Bar, 2011',
-      'U.S. District Court for Northern District of Alabama'
+      'Alabama'
     ],
-    awards: [
-      'Best Lawyers: Ones to Watch® – Commercial Litigation and Corporate Law',
-      'Birmingham Business Journal "Top 40 under 40" Legal Advisory nominee'
+    courtAdmissions: [],
+    corePracticeAreas: [
+      'Artificial Intelligence and Emerging Technology Law',
+      'Privacy and Cybersecurity',
+      'Linguistic Forensics and Authorship Disputes',
+      'Technology, Software, and SAAS Transactions',
+      'Intellectual Property Prosecution and Litigation',
+      'False Advertising and Unfair Competition',
+      'E-Commerce Law and Platform Disputes',
+      'Digital Media, Branding, and Influencer Law',
+      'Technology Litigation',
+      'Commercial Litigation',
+      'General Business Law'
     ],
+    awards: [],
     contact: {
-      email: 'nholmes@bhwlegal.com',
-      phone: '205-502-2000'
+      direct: '205-447-6283',
+      bhw: '',
+      email: 'nholmes@bhw.law',
+      fax: '205-847-1285',
+      phone: '205-447-6283'
     }
   }
 ];
 
 const ALL_PRACTICE_AREAS = [
   'All',
+  'White Collar Criminal Defense',
+  'Civil Litigation',
+  'Business Consulting',
+  'Banking and Compliance',
+  'Artificial Intelligence and Emerging Technology Law',
+  'Privacy and Cybersecurity',
+  'Commercial Litigation',
+  'Labor & Employment',
+  'Criminal Defense',
   'Corporate Law',
-  'Government Investigations',
-  'White Collar Defense',
-  'Personal Injury',
-  'Divorce & Family Law',
-  'Civil Lawsuits',
+  'Regulatory Compliance',
   'Transactions'
 ];
 
@@ -275,7 +383,7 @@ export default function AttorneysPage({ onNavigateToContact }) {
                   {/* Floating subtle overlay */}
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-4 text-white">
                     <p className="text-[10px] text-brand-gold uppercase tracking-widest font-sans font-bold mb-0.5">
-                      {attorney.role.split(' / ')[0]}
+                      {attorney.role}
                     </p>
                     <p className="text-xs text-gray-300 font-sans italic line-clamp-1">
                       {attorney.practiceAreas.slice(0, 2).join(' • ')}
@@ -290,7 +398,7 @@ export default function AttorneysPage({ onNavigateToContact }) {
                       {attorney.name}
                     </h3>
                     <p className="font-sans text-xs font-bold text-brand-gold uppercase tracking-wide mt-1">
-                      {attorney.role.split(' / ')[1] || attorney.role}
+                      {attorney.headline || attorney.role}
                     </p>
                     <p className="font-sans text-xs text-gray-600 mt-3 leading-relaxed">
                       {attorney.shortBio}
@@ -326,8 +434,8 @@ export default function AttorneysPage({ onNavigateToContact }) {
           <div className="lg:col-span-7 space-y-4">
             <span className="text-xs font-bold text-brand-gold uppercase tracking-widest block">Alabama Legal Advisory</span>
             <h3 className="font-display text-2xl font-bold uppercase text-brand-navy tracking-tight">Need Immediate Legal Representation?</h3>
-            <p className="text-sm font-sans text-gray-600 leading-relaxed max-w-2xl">
-              Our firm maintains standard, reliable offices in downtown Birmingham and Dothan, Alabama. In states where BHW does not have physically resident licensed attorneys, members of our firm receive admission of that jurisdiction through pro hac vice to ensure continuous guidance.
+          <p className="text-sm font-sans text-gray-600 leading-relaxed max-w-2xl">
+              Our firm maintains standard, reliable offices in downtown Birmingham, Alabama. In states where BHW does not have physically resident licensed attorneys, members of our firm receive admission of that jurisdiction through pro hac vice to ensure continuous guidance.
             </p>
           </div>
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
@@ -335,7 +443,7 @@ export default function AttorneysPage({ onNavigateToContact }) {
               onClick={onNavigateToContact}
               className="px-8 py-4 bg-brand-navy hover:bg-brand-gold hover:text-brand-navy text-white text-xs font-bold uppercase tracking-widest rounded-sm shadow-lg transition-all duration-350 cursor-pointer transform hover:-translate-y-1 flex items-center gap-2 group"
             >
-              <span>Schedule Free Inquiry</span>
+              <span>SCHEDULE AN INQUIRY</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
@@ -389,16 +497,35 @@ export default function AttorneysPage({ onNavigateToContact }) {
                       className="flex items-center gap-2.5 text-gray-300 hover:text-brand-gold transition-colors"
                     >
                       <Mail className="w-4 h-4 text-brand-gold shrink-0" />
-                      <span className="truncate">{selectedAttorney.contact.email}</span>
+                      <span className="truncate">Email: {selectedAttorney.contact.email}</span>
                     </a>
                     
-                    <a 
-                      href={`tel:${selectedAttorney.contact.phone}`} 
-                      className="flex items-center gap-2.5 text-gray-300 hover:text-brand-gold transition-colors"
-                    >
-                      <Phone className="w-4 h-4 text-brand-gold shrink-0" />
-                      <span>{selectedAttorney.contact.phone}</span>
-                    </a>
+                    {selectedAttorney.contact.direct && (
+                      <a 
+                        href={`tel:${selectedAttorney.contact.direct}`} 
+                        className="flex items-center gap-2.5 text-gray-300 hover:text-brand-gold transition-colors"
+                      >
+                        <Phone className="w-4 h-4 text-brand-gold shrink-0" />
+                        <span>Direct: {selectedAttorney.contact.direct}</span>
+                      </a>
+                    )}
+
+                    {selectedAttorney.contact.bhw && (
+                      <a 
+                        href={`tel:${selectedAttorney.contact.bhw}`} 
+                        className="flex items-center gap-2.5 text-gray-300 hover:text-brand-gold transition-colors"
+                      >
+                        <Phone className="w-4 h-4 text-brand-gold shrink-0" />
+                        <span>BHW: {selectedAttorney.contact.bhw}</span>
+                      </a>
+                    )}
+
+                    {selectedAttorney.contact.fax && (
+                      <div className="flex items-center gap-2.5 text-gray-350">
+                        <Phone className="w-4 h-4 text-brand-gold shrink-0" />
+                        <span>Fax: {selectedAttorney.contact.fax}</span>
+                      </div>
+                    )}
 
                     <div className="flex items-center gap-2.5 text-gray-350">
                       <MapPin className="w-4 h-4 text-brand-gold shrink-0" />
@@ -431,8 +558,13 @@ export default function AttorneysPage({ onNavigateToContact }) {
                     {selectedAttorney.name}
                   </h3>
                   <p className="font-sans text-xs md:text-sm font-extrabold text-brand-gold uppercase tracking-wide mt-1">
-                    {selectedAttorney.role}
+                    {selectedAttorney.headline || selectedAttorney.role}
                   </p>
+                  {selectedAttorney.subHeadline && (
+                    <p className="font-sans text-sm md:text-base font-bold text-gray-600 mt-2">
+                      {selectedAttorney.subHeadline}
+                    </p>
+                  )}
 
                   {/* Core practice list badges */}
                   <div className="flex flex-wrap gap-2 mt-4">
@@ -445,50 +577,110 @@ export default function AttorneysPage({ onNavigateToContact }) {
 
                   {/* Biography text body */}
                   <div className="mt-6 font-sans text-gray-700 text-xs sm:text-sm leading-relaxed space-y-4 text-justify pr-2">
-                    <p>{selectedAttorney.detailedBio}</p>
+                    {(Array.isArray(selectedAttorney.detailedBio) ? selectedAttorney.detailedBio : [selectedAttorney.detailedBio]).map((paragraph, key) => (
+                      <p key={key}>{paragraph}</p>
+                    ))}
                   </div>
 
                   {/* Tabbed / Collapsed Info Sections */}
                   <div className="mt-8 space-y-6">
                     
                     {/* Education */}
-                    <div>
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
-                        <BookOpen className="w-4 h-4 text-brand-gold" />
-                        <span>Education</span>
+                    {selectedAttorney.education && selectedAttorney.education.length > 0 && (
+                      <div>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
+                          <BookOpen className="w-4 h-4 text-brand-gold" />
+                          <span>Education</span>
+                        </div>
+                        <ul className="space-y-1.5 text-xs text-gray-600">
+                          {selectedAttorney.education.map((edu, key) => (
+                            <li key={key} className="flex gap-2 items-start">
+                              <span className="text-brand-gold font-bold mt-0.5">•</span>
+                              <span>{edu}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="space-y-1.5 text-xs text-gray-600">
-                        {selectedAttorney.education.map((edu, key) => (
-                          <li key={key} className="flex gap-2 items-start">
-                            <span className="text-brand-gold font-bold mt-0.5">•</span>
-                            <span>{edu}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    )}
 
-                    {/* Bar Admissions */}
-                    <div>
-                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
-                        <ShieldCheck className="w-4 h-4 text-brand-gold" />
-                        <span>Admissions</span>
+                    {/* Admissions */}
+                    {selectedAttorney.barAdmissions && selectedAttorney.barAdmissions.length > 0 && (
+                      <div>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
+                          <ShieldCheck className="w-4 h-4 text-brand-gold" />
+                          <span>Admissions</span>
+                        </div>
+                        <ul className="space-y-1.5 text-xs text-gray-600">
+                          {selectedAttorney.barAdmissions.map((adm, key) => (
+                            <li key={key} className="flex gap-2 items-start">
+                              <span className="text-brand-gold font-bold mt-0.5">•</span>
+                              <span>{adm}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <ul className="space-y-1.5 text-xs text-gray-600">
-                        {selectedAttorney.barAdmissions.map((adm, key) => (
-                          <li key={key} className="flex gap-2 items-start">
-                            <span className="text-brand-gold font-bold mt-0.5">•</span>
-                            <span>{adm}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    )}
+
+                    {/* Court Admissions */}
+                    {selectedAttorney.courtAdmissions && selectedAttorney.courtAdmissions.length > 0 && (
+                      <div>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
+                          <ShieldCheck className="w-4 h-4 text-brand-gold" />
+                          <span>Court Admissions</span>
+                        </div>
+                        <ul className="space-y-1.5 text-xs text-gray-600">
+                          {selectedAttorney.courtAdmissions.map((item, key) => (
+                            <li key={key} className="flex gap-2 items-start">
+                              <span className="text-brand-gold font-bold mt-0.5">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Professional Affiliations */}
+                    {selectedAttorney.professionalAffiliations && selectedAttorney.professionalAffiliations.length > 0 && (
+                      <div>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
+                          <Briefcase className="w-4 h-4 text-brand-gold" />
+                          <span>Professional Affiliations</span>
+                        </div>
+                        <ul className="space-y-1.5 text-xs text-gray-600">
+                          {selectedAttorney.professionalAffiliations.map((item, key) => (
+                            <li key={key} className="flex gap-2 items-start">
+                              <span className="text-brand-gold font-bold mt-0.5">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Core Practice Areas */}
+                    {selectedAttorney.corePracticeAreas && selectedAttorney.corePracticeAreas.length > 0 && (
+                      <div>
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
+                          <Scale className="w-4 h-4 text-brand-gold" />
+                          <span>Core Practice Areas</span>
+                        </div>
+                        <ul className="space-y-1.5 text-xs text-gray-600">
+                          {selectedAttorney.corePracticeAreas.map((item, key) => (
+                            <li key={key} className="flex gap-2 items-start">
+                              <span className="text-brand-gold font-bold mt-0.5">•</span>
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
                     {/* Honors / Awards */}
                     {selectedAttorney.awards && selectedAttorney.awards.length > 0 && (
                       <div>
                         <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-navy border-b border-gray-100 pb-2 mb-2.5">
                           <Award className="w-4 h-4 text-brand-gold" />
-                          <span>Credentials &amp; Awards</span>
+                          <span>{selectedAttorney.awardsHeading || 'Credentials & Awards'}</span>
                         </div>
                         <ul className="space-y-1.5 text-xs text-gray-600">
                           {selectedAttorney.awards.map((awr, key) => (

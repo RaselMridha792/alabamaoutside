@@ -12,8 +12,9 @@ import {
   Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
+import FeaturedLogos from '@/components/FeaturedLogos';
 
-export default function BusinessConsultingPage() {
+export default function AppellateLitigationPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -23,24 +24,7 @@ export default function BusinessConsultingPage() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +36,7 @@ export default function BusinessConsultingPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="professional-business-consulting-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="professional-appellate-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="professional-hero">
         <div 
@@ -69,8 +53,8 @@ export default function BusinessConsultingPage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Briefcase className="w-3.5 h-3.5" />
-            <span>Corporate Practice</span>
+            <Landmark className="w-3.5 h-3.5" />
+            <span>Appellate Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +64,7 @@ export default function BusinessConsultingPage() {
             id="professional-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Business Consulting
+            Appellate Litigation
           </motion.h1>
         </div>
       </section>
@@ -95,10 +79,10 @@ export default function BusinessConsultingPage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="professional_subheading_1">
-                Business Consulting Attorneys
+                Appellate Litigation Attorneys
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="professional_subheading_2">
-                Ensuring Every Aspect of Your Business Operates Seamlessly
+                Protecting Your Rights When the Trial Verdict Isn’t Right
               </h3>
             </div>
 
@@ -106,16 +90,16 @@ export default function BusinessConsultingPage() {
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
               <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                Whether your business requires answers to specific questions, or you are looking to make sure every aspect of your business is operating as it needs to be from top to bottom, the lawyers in our business consulting practice have the experience and cutting-edge knowledge of a broad range of industries in order to get you where you want to be.
+                One reality of our judicial system is that sometimes the trial verdict isn’t right. Boles Holmes White’s appellate practice is staffed with skilled and experienced lawyers to ensure your rights are protected, especially after a court has improperly ruled against you. Our appellate attorneys have a history of success for our clients in both state courts of appeal and federal appellate courts. We also regularly represent clients for appeals from administrative court decisions.
               </p>
               
-              {/* Scope of Services Grid */}
+              {/* Scope of Defenses Grid */}
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  "Contract Negotiation",
-                  "Mergers, Acquisitions & Dispositions",
-                  "Business Entity Formation",
-                  "General Corporate Counseling"
+                  "State Courts of Appeal",
+                  "Federal Appellate Courts",
+                  "Administrative Court Appeals",
+                  "Post-Trial Victories"
                 ].map((q, idx) => (
                   <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
                     <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
@@ -125,64 +109,64 @@ export default function BusinessConsultingPage() {
               </div>
             </div>
 
-            {/* Segment 1: How we can help */}
-            <div className="space-y-4" id="how-we-help-section">
+            {/* Segment 1: Success. No matter the challenge. */}
+            <div className="space-y-4" id="appellate-success-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Briefcase className="w-5 h-5 sm:h-6 sm:w-6" />
+                  <Scale className="w-5 h-5 sm:h-6 sm:w-6" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  How We Can Help
+                  Success. No Matter the Challenge.
                 </h3>
               </div>
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
-                  From advising entrepreneurs just beginning to grow their business to handling multi-million-dollar sales and counseling large corporations, we’re prepared to represent you across industries including real estate, banking, telecommunications, environmental, transportation, mining, technology, media, healthcare, and manufacturing.
+                  Appellate litigation requires a different knowledge of procedural rules and creative approaches to supported, thoughtfully researched legal arguments. Having represented clients nationally in matters of appeals ranging from final judgments, interlocutory appeals, petitions for rehearing, to petitions for writs of certiorari to the Alabama Supreme Court and the Supreme Court of the United States, we are ready to help you continue your fight.
                 </p>
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Within these fields, our attorneys are regularly retained as representatives in matters of general corporate counseling, contract negotiation, licensing and joint venture transactions, mergers, acquisitions and dispositions, employment counseling, business entity formation, commercial real estate transactions, commercial lending, litigation, tax matters, patent filings, and international transaction counseling. Clients rely on our team for an array of services, from one-time issue resolutions to serving as general corporate counsel.
+                  We have been able to secure post-trial victories for our appellate clients on a variety of legal issues, including Constitutional violations, civil rights, commercial litigation, and banking and securities appeals. Our focus in both state and federal appeals is to effectively present issues through thorough, well-written and reasoned briefs, highlighting flaws in a trial court’s decision in order to achieve justice for our clients. 
                 </p>
                 
                 {/* Visual callout focusing on background credentials */}
                 <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
                   <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">More Than Statements of Law</h4>
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Persuasive Arguments</h4>
                     <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      In addition to being knowledgeable about black letter law, we view the legal hurdles faced by business with the management side of things as well, relying on previous in-house counsel experience for Fortune 500 companies.
+                      In addition to our appellate attorneys’ rigorous legal writing skills, our firm is highly experienced in presenting those briefs persuasively to judges in oral arguments.
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Segment 2: Big Firm Quality, Fraction of the Expense */}
-            <div className="space-y-4" id="large-firm-quality-section">
+            {/* Segment 2: Protecting Our Clients at Every Step */}
+            <div className="space-y-4" id="trial-protection-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
+                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Quality Representation Without the Expense
+                  Protecting Clients at Every Step
                 </h3>
               </div>
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Aside from our team’s years of practice representing businesses, spanning from sole proprietorships to large corporations, one of the most unique and appealing reasons to hire Boles Holmes White is that our involvement and assistance to businesses can be as limited or as comprehensive as the client needs.
+                  At Boles Holmes White, our strong appellate practice not only benefits those clients who hire us on appeal, but it also benefits our clients we represent at the trial level. We take our experience and knowledge of state and federal appeals and apply it to the way we litigate throughout trial, in order to get the right outcome the first time.
                 </p>
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Unlike representation from the expensive “big law” firms, our main focus remains on providing the client with what they need, not billing the client for work that was not expected or needed. Our firm has the balance of personalized service with the experience and resources of big law, at a fraction of the cost.
+                  Occasionally, trial-level attorneys commit errors that can significantly damage or eliminate the possibility of a successful appeal. BHW attorneys that specialize in appellate litigation often advise our trial attorneys of potential issues that may arise in a particular case on appeal. Because our trial attorneys approach each case with this awareness, we are able to protect the record in the event we have to challenge or defend a court’s ruling at a higher level.
                 </p>
                 
                 {/* Visual grid listing types of cases handled */}
                 <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Industries Represented</h4>
+                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Appellate Competencies</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
                     {[
-                      "Real Estate", 
-                      "Banking & Finance", 
-                      "Technology & Media", 
-                      "Healthcare"
+                      "Final Judgments", 
+                      "Interlocutory Appeals", 
+                      "Writs of Certiorari", 
+                      "Petitions for Rehearing"
                     ].map((item, idx) => (
                       <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
                         {item}
@@ -208,7 +192,7 @@ export default function BusinessConsultingPage() {
                   Speak to an Attorney
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1 leading-relaxed">
-                  Provide your business details below for an absolute confidential, privileged legal consultation.
+                  Provide your case details below for an absolute confidential, privileged legal consultation.
                 </p>
               </div>
 
@@ -221,7 +205,7 @@ export default function BusinessConsultingPage() {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident corporate attorney from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident appellate attorney from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -317,10 +301,10 @@ export default function BusinessConsultingPage() {
                         id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Business Consulting">Business Consulting</option>
-                        <option value="Mergers & Acquisitions">Mergers &amp; Acquisitions</option>
-                        <option value="Contract Negotiation">Contract Negotiation</option>
-                        <option value="General Corporate Counsel">General Corporate Counsel</option>
+                        <option value="Appellate Litigation">Appellate Litigation</option>
+                        <option value="Civil Appeals">Civil Appeals</option>
+                        <option value="Criminal Appeals">Criminal Appeals</option>
+                        <option value="Other Legal Matter">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
@@ -351,38 +335,7 @@ export default function BusinessConsultingPage() {
       </main>
 
       {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="professional-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     <FeaturedLogos></FeaturedLogos>
     </div>
   );
 }

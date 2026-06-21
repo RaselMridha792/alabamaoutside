@@ -7,13 +7,15 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
-export default function DuiDefensePage() {
+import FeaturedLogos from '@/components/FeaturedLogos';
+import FAQ from '@/components/home/FAQ';
+
+export default function BurglaryPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,25 +24,6 @@ export default function DuiDefensePage() {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +35,7 @@ export default function DuiDefensePage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="dui-defense-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="burglary-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -70,7 +53,7 @@ export default function DuiDefensePage() {
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>DUI Defense Practice</span>
+            <span>Criminal Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +63,7 @@ export default function DuiDefensePage() {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            DUI Defense
+            Burglary Defense
           </motion.h1>
         </div>
       </section>
@@ -95,99 +78,49 @@ export default function DuiDefensePage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                DUI Defense Attorney Serving the State Of Alabama
+                Burglary
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                DUI &amp; DWI Defense Attorneys Throughout Alabama and the Southeast
+                Birmingham Burglary Defense Attorney: Protect Your Rights
               </h3>
             </div>
 
             {/* General Description Card */}
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                With a rich tradition of excellence in criminal defense, the Alabama DUI defense attorneys of Boles Holmes White LLC are known for their stunning victories in high-profile cases of national interest. However, our office maintains a tight focus on felony and misdemeanor DUI defense throughout the state of Alabama. Our concentration on DUI and DWI charges means that our clients benefit from focused, sophisticated, and confident representation in a friendly and attentive atmosphere.
+              
+              <h4 className="text-sm sm:text-base font-bold text-brand-navy uppercase tracking-wide mb-3">
+                Home Invasion, Robbery, Theft Lawyers representing clients throughout Alabama
+              </h4>
+              
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                Arrested for robbery in Birmingham? Does your arrest involve a gun crime? Your chances of going to Jefferson County Jail or an Alabama State Penitentiary will be significantly reduced with an experienced Birmingham burglary defense attorney on your side. At Boles Holmes White LLC, your attorney will have a team of dedicated legal professionals to assist in the defense of your rights and will be in consistent communication with you about the status of your case. The options you have—trial, plea bargain, defense strategies—will always be discussed with you in a straight-forward and clear manner. Most importantly, you will get a rigorous defense of your rights by an attorney at one of the nation’s leading criminal defense law firms.
               </p>
               
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify mt-4">
-                If you’re thinking about saving money by pleading guilty without a defense attorney, you might want to think again. You could have strong defenses ranging from an improper traffic stop to unreliable toxicology reports that few people would recognize. There might also be pretrial diversion programs in the community where you were arrested that could sidestep the criminal justice system altogether.
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify mb-4">
+                If you face charges of robbery in Birmingham or home invasion anywhere in Alabama, call (205) 502-2000 for the sophisticated and rigorous defense you would expect from a leader in criminal law. If you are convicted of such serious crimes as robbery, home invasion, or other theft crimes in Birmingham, Alabama prosecutors will pursue devastating penalties against you. Your freedom will be at stake. With the right robbery defense attorney on your side, you may be able to have your charges reduced or even dropped. Our Birmingham burglary defense attorneys have assisted countless clients who face charges similar to yours.
               </p>
-
-              {/* Scope of Defenses Grid */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Improper Traffic Stop Defenses",
-                  "Unreliable Toxicology Reports",
-                  "Pretrial Diversion Programs",
-                  "Felony & Misdemeanor Defense"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
-              </div>
+              
+              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed text-justify">
+                Though each case is unique, we will base our defense of your rights upon our history of success: we know what works in Alabama criminal defense. Contact us for the criminal defense lawyer you deserve against charges of robbery or home invasion in Birmingham. Don’t face the possibility of decades in prison and a permanent mark on your criminal record without a rigorous defense. Don’t face such penalties without one of the Alabama home invasion criminal lawyers at Boles Holmes White LLC protecting your freedom.  Birmingham police may have violated your rights. You may face accusations that cannot be supported. You may be in possession of stolen merchandise that you did not know was stolen. You may be suffering through a case of mistaken identity. You may be accused of being an accomplice in a robbery in which you had no part. Contact us immediately to get a lawyer fighting for your rights.
+              </p>
             </div>
 
-            {/* Segment 1: Protecting from Convictions */}
-            <div className="space-y-4" id="dwi-law-firm-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  A DWI Law Firm Serving Clients Statewide
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  An experienced Alabama DUI Defense attorney at Boles Holmes White LLC can evaluate your situation and find a way to protect you from the consequences of a drunk driving conviction. When you consider the long-term financial and personal impact, you’ll find that our single flat fee for your defense might turn out to be a great investment.
-                </p>
-                
-                {/* Visual callout focusing on consequences */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Consequences of a First Offense</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      A single conviction can cost several thousand dollars in court costs, fines, increased insurance premiums, mandatory chemical dependency treatment, and license reinstatement fees.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Segment 2: Accomplished Trial Lawyers */}
-            <div className="space-y-4" id="trial-lawyers-section">
+            {/* Segment 1: Vast Legal Experience */}
+            <div className="space-y-4" id="experience-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
                   <Scale className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Finding Weaknesses in a DUI Case
+                  Alabama Home Invasion, Robbery, Theft Lawyers with Vast Legal Experience
                 </h3>
               </div>
+              
               <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
                 <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Our DWI and DUI defense attorneys are all accomplished trial lawyers who know how to find the weaknesses in a DUI case and apply them to the benefit of our clients. You will get personal attention from your first consultation until your case is settled. Contact our skilled Alabama DUI Defense Attorneys as soon as possible after your arrest to get your defense organized and under way.
+                  For nearly five decades, Boles Holmes White LLC has been providing legal representation to people who face aggressive prosecutors and fierce law enforcement officers. Prosecutors are aggressive. Law enforcement officers are tough. When it comes to defending your rights, however, no one is tougher or more aggressive than the criminal defense attorneys at Boles Holmes White LLC.  We will defend your Constitutional rights against any opponent and no matter what criminal charges in Birmingham that you face: robbery, burglary, home invasion, high-value theft, armed robbery, shoplifting, and a host of other complex crimes that carry heavy penalties. You deserve to defend your freedom as aggressively as possible.  Call (205) 502-2000 to discuss your case with an experienced Birmingham burglary defense attorney.
                 </p>
-                
-                {/* Visual grid listing types of cases handled */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Cases We Handle</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                    {[
-                      "Misdemeanor DUI", 
-                      "Repeat/Felony DUI", 
-                      "Commercial Arrests", 
-                      "License Suspension"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -239,7 +172,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                         placeholder="John"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_first_name"
                       />
                     </div>
                   </div>
@@ -258,7 +190,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                         placeholder="Doe"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_last_name"
                       />
                     </div>
                   </div>
@@ -277,7 +208,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
                         placeholder="(205) 502-2000"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_phone"
                       />
                     </div>
                   </div>
@@ -296,7 +226,6 @@ export default function DuiDefensePage() {
                         onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="johndoe@example.com"
                         className="w-full bg-white text-gray-800 pl-11 pr-4 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold"
-                        id="input_email"
                       />
                     </div>
                   </div>
@@ -312,27 +241,25 @@ export default function DuiDefensePage() {
                         value={formData.practiceArea}
                         onChange={(e) => setFormData({...formData, practiceArea: e.target.value})}
                         className="w-full bg-white text-gray-800 pl-4 pr-10 py-3 rounded border border-gray-300 focus:outline-none focus:ring-1 focus:ring-brand-navy focus:border-brand-navy hover:border-gray-400 transition-all text-xs font-semibold cursor-pointer appearance-none"
-                        id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="DUI / DWI Defense">DUI / DWI Defense</option>
-                        <option value="License Suspension">License Suspension Hearings</option>
-                        <option value="Felony DUI">Felony or Repeat DUI</option>
-                        <option value="Other Criminal Matter">Other Criminal Matter</option>
+                        <option value="Criminal Defense (Burglary)">Criminal Defense (Burglary)</option>
+                        <option value="DUI Defense">DUI Defense</option>
+                        <option value="White Collar Crime">White Collar Crime</option>
+                        <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
 
                   {/* SMS Policy Consent Agreement */}
-                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none" id="sms-consent-box">
+                  <div className="p-3 bg-white/70 rounded border border-gray-250 text-[10px] sm:text-xs text-gray-500 leading-relaxed select-none">
                     By providing your phone number, you consent to receive automated informational/conversational SMS communications from Lawmatics on behalf of Boles Holmes White. Consent is not a condition of service. Message &amp; data rates may apply and frequency will vary. Reply STOP to unsubscribe. Text HELP for help. <a href="#privacy" className="underline hover:text-brand-gold">Privacy Policy</a> &bull; <a href="#terms" className="underline hover:text-brand-gold">Terms of Use</a>
                   </div>
 
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    id="btn_submit_intake"
                     className="w-full py-4 bg-[#4CAF50] hover:bg-[#43A047] text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-sm shadow-md transition-all duration-200 cursor-pointer text-center select-none transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     <span>SUBMIT</span>
@@ -348,39 +275,12 @@ export default function DuiDefensePage() {
         </div>
       </main>
 
-      {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos />
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Component */}
+      <FAQ />
+
     </div>
   );
 }

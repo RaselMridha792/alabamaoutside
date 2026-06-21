@@ -7,13 +7,16 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; 
 import { 
-  Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
+  Scale, ShieldCheck, HelpCircle, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
 
-export default function PersonalInjuryPage() {
+
+import FAQ from '@/components/home/FAQ';
+import FeaturedLogos from '@/components/FeaturedLogos';
+
+export default function CriminalDefenseOverviewPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,25 +25,6 @@ export default function PersonalInjuryPage() {
     practiceArea: ''
   });
   const [submitted, setSubmitted] = useState(false);
-
-  // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,7 +36,7 @@ export default function PersonalInjuryPage() {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="personal-injury-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="criminal-overview-page">
       {/* Hero Section */}
       <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
         <div 
@@ -70,7 +54,7 @@ export default function PersonalInjuryPage() {
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Injury &amp; Accident Practice</span>
+            <span>Criminal Practice</span>
           </motion.div>
 
           <motion.h1 
@@ -80,7 +64,7 @@ export default function PersonalInjuryPage() {
             id="personal-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Personal Injury
+            Criminal Defense Overview
           </motion.h1>
         </div>
       </section>
@@ -95,10 +79,10 @@ export default function PersonalInjuryPage() {
             {/* Header Block */}
             <div className="space-y-4">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                Personal Injury Attorneys in Birmingham, AL – Boles Holmes White
+                Experienced Birmingham Criminal Defense Lawyer
               </h2>
               <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                Why You Need Personal Injury Attorneys in Birmingham, AL
+                Aggressive Criminal Defense Attorneys in Birmingham AL
               </h3>
             </div>
 
@@ -106,92 +90,76 @@ export default function PersonalInjuryPage() {
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
               <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                Have you been injured through no fault of your own? Has another person’s wrongful conduct put you in harm’s way? If so, then you need an experienced personal injury attorney to fight for you. Personal injury cases can involve bodily harm, emotional pain or property damage. If someone else’s intentional, negligent or reckless conduct caused your loss, the law gives you the right to seek compensation. 
+                The lawyers at Boles Holmes White LLC, your trusted Birmingham criminal defense lawyer, have a long-standing reputation. Our experienced defense attorneys have successfully represented clients across Alabama and have represented clients in over 25 states in the nation. With thousands of criminal cases handled, our skilled criminal lawyers in Birmingham are ready to use their extensive experience to protect your rights and achieve the best possible outcome for your case. Our Birmingham criminal defense lawyers helped thousands of clients and now we can use that experience to help you.
               </p>
-              <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify mt-4">
-                The lawyers at Boles Holmes White LLC have years of experience representing clients and fighting for them in their times of need. We are aggressive advocates helping injury victims and their families to recover their lives. We know how to negotiate with insurance companies, and we know how to take cases to trial.
-              </p>
-              
-              {/* Damages Grid */}
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {[
-                  "Recover Medical Expenses",
-                  "Compensation for Lost Wages",
-                  "Damages for Pain & Suffering",
-                  "Punitive Damages Recovery"
-                ].map((q, idx) => (
-                  <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
-                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
-                    <span className="font-sans text-xs sm:text-sm font-semibold text-brand-navy">{q}</span>
-                  </div>
-                ))}
+            </div>
+
+            {/* Segment 1: Criminal Defense Services */}
+            <div className="space-y-4" id="criminal-services-section">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
+                  <ShieldCheck className="w-5 h-5 sm:h-6 sm:w-6" />
+                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="injury_heading">
+                  Our Criminal Defense Services for Against all Charges in Alabama
+                </h3>
+              </div>
+              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="injury_card_body">
+                {/* Client Instruction: Removed Auburn and Dothan */}
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5" id="injury_paragraph">
+                  We handle criminal defense matters across the State of Alabama from our office in Birmingham, and can assist you with criminal charges including:
+                </p>
+                
+                <ul className="space-y-3 font-sans text-sm sm:text-base text-gray-700">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
+                    <span>Domestic violence including harassment and violations of restraining orders/injunctions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
+                    <span>Drug crimes including charges related to prescription drugs, methamphetamine, and marijuana</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
+                    <span>DUI including felony DUI and multiple DUI charges</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
+                    <span>Property crimes such as shoplifting, armed robbery and larceny</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-brand-gold mt-1 shrink-0" />
+                    <span>Violent crimes like homicide, assault, and battery</span>
+                  </li>
+                </ul>
+
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mt-5 font-semibold">
+                  Whatever charges that have been brought against you, our Alabama defense attorneys are skilled at defending your rights.
+                </p>
               </div>
             </div>
 
-            {/* Segment 1: Aggressive Advocates */}
-            <div className="space-y-4" id="advocacy-section">
+            {/* Segment 2: Proactive Legal Defense */}
+            <div className="space-y-4" id="proactive-defense-section">
               <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Scale className="w-5 h-5 sm:h-6 sm:w-6" />
+                <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
+                  <Scale className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Aggressive Advocates for Injury Victims
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="business_litigation_heading">
+                  Proactive Legal Defense for Your Rights; Prosecutors Are Aggressive
                 </h3>
               </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Accidents can result in a variety of different ways from car accidents in Birmingham to slip-and-fall incidents across Alabama, so we address the unique needs of each client. We want you to focus on taking care of yourself and your loved ones; let us handle the legal, medical and insurance issues. 
+              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="business_card_body">
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5" id="business_paragraph">
+                  Our Birmingham Criminal defense attorney will prepare your case for court and will offer you an exceptionally aggressive and rigorous defense if your case goes to trial. But, our skilled lawyers may be able to get the charges against you dropped. In many cases we can determine that the police officers or other Alabama law enforcement officials violated your rights during an arrest or investigation. We will also work hard to find holes in the prosecution’s case against you. We will tenaciously defend your rights against your accusers. Contact the Birmingham criminal defense lawyer at Boles Holmes White LLC will be on your side against the longest odds and most complex criminal charges.
                 </p>
                 
-                {/* Visual callout focusing on background credentials */}
                 <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
                   <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Seasoned Litigators</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
-                      At Boles Holmes White LLC, we are seasoned litigators ready to put our skills, background, and resources to work for you.
-                    </p>
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Aggressive Representation</h4>
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1">We tenaciously defend your rights and work tirelessly to uncover civil rights violations or holes in the prosecution’s case to protect your future.</p>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Segment 2: Why Choose Boles Holmes White LLC */}
-            <div className="space-y-4" id="why-choose-us-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
-                  Why Choose Boles Holmes White LLC?
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
-                  We can help you determine what potential defendants could be held liable for your injury, assess whether you have a cause of action, gather evidence to prove liability and extent of damages, and negotiate a settlement or prove your case in court.
-                </p>
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
-                  Generally, under Alabama law, lawsuits must be filed within a <strong>two-year statute of limitations</strong> of the occurrence of the accident or discovery of the injury. Personal injury cases can take time to develop, so it’s important that you seek an attorney right away.
-                </p>
-                
-                {/* Visual grid listing strategic steps */}
-                <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Our Strategic Approach</h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                    {[
-                      "Determine Liability", 
-                      "Assess Causes of Action", 
-                      "Gather Evidence", 
-                      "Negotiate Settlements"
-                    ].map((item, idx) => (
-                      <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-[11px] sm:text-xs text-gray-500 mt-4 leading-relaxed italic text-center">
-                    Ready to take action? Schedule your free consultation today and let us handle the legal heavy lifting. Contact the Personal Injury Attorneys in Birmingham AL, at Boles Holmes White LLC today.
-                  </p>
                 </div>
               </div>
             </div>
@@ -320,11 +288,10 @@ export default function PersonalInjuryPage() {
                         id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Personal Injury">Personal Injury</option>
-                        <option value="Car Accident">Car Accident</option>
-                        <option value="Slip and Fall">Slip and Fall</option>
-                        <option value="Wrongful Death">Wrongful Death</option>
-                        <option value="Other">Other Personal Injury Matter</option>
+                        <option value="Criminal Defense">Criminal Defense</option>
+                        <option value="DUI Defense">DUI Defense</option>
+                        <option value="White Collar Crime">White Collar Crime</option>
+                        <option value="Other">Other Legal Matter</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
@@ -354,39 +321,12 @@ export default function PersonalInjuryPage() {
         </div>
       </main>
 
-      {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
+      {/* Featured In Logos Component */}
+      <FeaturedLogos></FeaturedLogos>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-              >
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* FAQ Component */}
+      <FAQ />
+
     </div>
   );
 }

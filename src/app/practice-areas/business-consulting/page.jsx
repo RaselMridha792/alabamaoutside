@@ -7,13 +7,14 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image'; // ✅ Next.js Image ইমপোর্ট করা হয়েছে
+import Image from 'next/image'; 
 import { 
   Scale, ShieldCheck, Landmark, Briefcase, HelpCircle, 
   ArrowRight, Mail, Phone, User, PhoneCall, CheckCircle2, ChevronDown
 } from 'lucide-react';
+import FeaturedLogos from '@/components/FeaturedLogos';
 
-export default function PersonalPage({ onNavigateToContact }) {
+export default function BusinessConsultingPage() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -24,23 +25,7 @@ export default function PersonalPage({ onNavigateToContact }) {
   const [submitted, setSubmitted] = useState(false);
 
   // All 15 media images referenced in the prompt
-  const mediaLogos = [
-    { name: "Forbes", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd892f06cae3d3bff4e71d0_forbes-1024x401.png" },
-    { name: "The Dallas Morning News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/5fd8993c59c519c3e5572559_The_Dallas_Morning_News_Logo.svg-1024x102.png" },
-    { name: "ABC News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/3.svg" },
-    { name: "NBC", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/4.png" },
-    { name: "Fox News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/5.svg" },
-    { name: "The Washington Post", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/6.svg" },
-    { name: "American Lawyer", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/7.png" },
-    { name: "The Birmingham News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/8.svg" },
-    { name: "CBS News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/9.svg" },
-    { name: "NBC News Channel", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/10.svg" },
-    { name: "CNN", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/11.png" },
-    { name: "Los Angeles Times", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/12.svg" },
-    { name: "The Detroit News", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/13-1024x185.png" },
-    { name: "The Atlanta Journal-Constitution", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/14.svg" },
-    { name: "Detroit Free Press", logo: "https://alabamaoutsidecounsel.com/wp-content/uploads//2024/06/15.svg" }
-  ];
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,9 +37,9 @@ export default function PersonalPage({ onNavigateToContact }) {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="personal-civil-page">
+    <div className="bg-slate-50 min-h-screen text-gray-800 scroll-smooth pb-16" id="professional-business-consulting-page">
       {/* Hero Section */}
-      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="personal-hero">
+      <section className="relative h-[45vh] sm:h-[50vh] flex items-center justify-center text-white bg-brand-navy overflow-hidden" id="professional-hero">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-85"
           style={{ backgroundImage: "url('https://alabamaoutsidecounsel.com/wp-content/uploads/2024/06/6042af26a5e70e1e56ee3508_1hugoblacktint.jpg')" }}
@@ -69,36 +54,36 @@ export default function PersonalPage({ onNavigateToContact }) {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-navy/80 border border-brand-gold/30 rounded-full text-brand-gold text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-4"
           >
-            <Scale className="w-3.5 h-3.5" />
-            <span>Litigation Practice</span>
+            <Briefcase className="w-3.5 h-3.5" />
+            <span>Corporate Practice</span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            id="personal-page-main-title"
+            id="professional-page-main-title"
             className="font-display text-4xl sm:text-5xl md:text-6xl font-bold uppercase tracking-wide text-white drop-shadow-lg"
           >
-            Civil Lawsuits
+            Business Consulting
           </motion.h1>
         </div>
       </section>
 
       {/* Structured Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" id="personal-main-container">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24" id="professional-main-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-start">
           
           {/* Left Column: Rich legal informational sections (7 cols) */}
-          <section className="lg:col-span-7 space-y-12" id="personal-content-col">
+          <section className="lg:col-span-7 space-y-12" id="professional-content-col">
             
             {/* Header Block */}
             <div className="space-y-4">
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="personal_subheading_1">
-                Birmingham Civil Litigation Attorney - We Assist Plaintiffs and Defendants
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl text-brand-navy font-bold leading-tight uppercase tracking-tight" id="professional_subheading_1">
+                Business Consulting Attorneys
               </h2>
-              <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="personal_subheading_2">
-                Attorneys Litigating in the Civil Courts of Alabama
+              <h3 className="font-serif text-lg sm:text-xl text-brand-gold font-semibold italic border-l-4 border-brand-navy pl-4" id="professional_subheading_2">
+                Ensuring Every Aspect of Your Business Operates Seamlessly
               </h3>
             </div>
 
@@ -106,17 +91,16 @@ export default function PersonalPage({ onNavigateToContact }) {
             <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md border border-gray-100 relative overflow-hidden" id="general-inquiry-card">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-brand-navy" />
               <p className="font-sans text-sm sm:text-base text-gray-700 leading-relaxed space-y-4 text-justify" id="general-inquiry-text">
-                Have you or a loved one been injured? Are you in a dispute and need legal representation? Have you been sued? Are you looking to file a lawsuit? Do you have secret inside knowledge of fraud against the government, but are afraid to report it? If you answered “Yes” to any of these questions, a Birmingham civil litigation attorney at Boles Holmes White can assist. Whether your case involves a business dispute or a wrongful death, whether you were injured in a car wreck, or you are a whistleblower, a lawyer can help to protect your best interests.
+                Whether your business requires answers to specific questions, or you are looking to make sure every aspect of your business is operating as it needs to be from top to bottom, the lawyers in our business consulting practice have the experience and cutting-edge knowledge of a broad range of industries in order to get you where you want to be.
               </p>
               
-              {/* Question list for visual layout improvement */}
+              {/* Scope of Services Grid */}
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {[
-                  "Have you or a loved one been injured?",
-                  "Are you in a dispute & need representation?",
-                  "Have you been sued in court?",
-                  "Are you looking to file a lawsuit?",
-                  "Do you have secret inside fraud knowledge?"
+                  "Contract Negotiation",
+                  "Mergers, Acquisitions & Dispositions",
+                  "Business Entity Formation",
+                  "General Corporate Counseling"
                 ].map((q, idx) => (
                   <div key={idx} className="flex gap-2.5 items-start p-3 bg-slate-50/80 rounded border border-gray-100">
                     <CheckCircle2 className="w-4 h-4 text-brand-gold mt-0.5 shrink-0" />
@@ -126,26 +110,65 @@ export default function PersonalPage({ onNavigateToContact }) {
               </div>
             </div>
 
-            {/* Segment 1: Personal Injury Attorneys */}
-            <div className="space-y-4" id="personal-injury-section">
+            {/* Segment 1: How we can help */}
+            <div className="space-y-4" id="how-we-help-section">
               <div className="flex items-center gap-2.5">
                 <div className="p-2 sm:p-2.5 bg-brand-gold/10 text-brand-gold rounded-md">
-                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6" />
+                  <Briefcase className="w-5 h-5 sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="injury_heading">
-                  Birmingham Personal Injury Attorneys
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
+                  How We Can Help
                 </h3>
               </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="injury_card_body">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify" id="injury_paragraph">
-                  Our Birmingham civil litigation lawyer provide a free evaluation of all personal injury cases. We review cases involving wrongful death, car wrecks, products liability, on the job injuries, and other personal injury cases. We evaluate the facts of the case, as well as your injuries and make a recommendation as to whether we believe you should file a civil lawsuit. We will also negotiate on your behalf, and if necessary, try your case in a court of law.
+              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-4">
+                  From advising entrepreneurs just beginning to grow their business to handling multi-million-dollar sales and counseling large corporations, we’re prepared to represent you across industries including real estate, banking, telecommunications, environmental, transportation, mining, technology, media, healthcare, and manufacturing.
+                </p>
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
+                  Within these fields, our attorneys are regularly retained as representatives in matters of general corporate counseling, contract negotiation, licensing and joint venture transactions, mergers, acquisitions and dispositions, employment counseling, business entity formation, commercial real estate transactions, commercial lending, litigation, tax matters, patent filings, and international transaction counseling. Clients rely on our team for an array of services, from one-time issue resolutions to serving as general corporate counsel.
                 </p>
                 
-                {/* Visual grid listing types of cases evaluated */}
+                {/* Visual callout focusing on background credentials */}
+                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
+                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">More Than Statements of Law</h4>
+                    <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                      In addition to being knowledgeable about black letter law, we view the legal hurdles faced by business with the management side of things as well, relying on previous in-house counsel experience for Fortune 500 companies.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Segment 2: Big Firm Quality, Fraction of the Expense */}
+            <div className="space-y-4" id="large-firm-quality-section">
+              <div className="flex items-center gap-2.5">
+                <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
+                  <Landmark className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
+                </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight">
+                  Quality Representation Without the Expense
+                </h3>
+              </div>
+              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed">
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
+                  Aside from our team’s years of practice representing businesses, spanning from sole proprietorships to large corporations, one of the most unique and appealing reasons to hire Boles Holmes White is that our involvement and assistance to businesses can be as limited or as comprehensive as the client needs.
+                </p>
+                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5">
+                  Unlike representation from the expensive “big law” firms, our main focus remains on providing the client with what they need, not billing the client for work that was not expected or needed. Our firm has the balance of personalized service with the experience and resources of big law, at a fraction of the cost.
+                </p>
+                
+                {/* Visual grid listing types of cases handled */}
                 <div className="mt-6 pt-5 border-t border-gray-100">
-                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Injury Claim Scopes Evaluated</h4>
+                  <h4 className="text-[11px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Industries Represented</h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-center">
-                    {["Wrongful Death", "Car Wrecks", "Products Liability", "On the Job Injuries"].map((item, idx) => (
+                    {[
+                      "Real Estate", 
+                      "Banking & Finance", 
+                      "Technology & Media", 
+                      "Healthcare"
+                    ].map((item, idx) => (
                       <span key={idx} className="bg-slate-50 py-2 px-1 text-[11px] sm:text-xs font-bold text-brand-navy rounded border border-gray-100 hover:border-brand-gold hover:bg-white transition-all duration-200">
                         {item}
                       </span>
@@ -155,36 +178,10 @@ export default function PersonalPage({ onNavigateToContact }) {
               </div>
             </div>
 
-            {/* Segment 2: Business Litigation Attorneys */}
-            <div className="space-y-4" id="business-litigation-section">
-              <div className="flex items-center gap-2.5">
-                <div className="p-2 sm:p-2.5 bg-brand-navy/5 text-brand-navy rounded-md">
-                  <Briefcase className="w-5 h-5 sm:h-6 sm:w-6 text-brand-navy" />
-                </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold uppercase text-brand-navy tracking-tight" id="business_litigation_heading">
-                  Birmingham Business Litigation Attorneys
-                </h3>
-              </div>
-              <div className="bg-white p-6 sm:p-8 rounded-lg border border-gray-150 shadow-sm leading-relaxed" id="business_card_body">
-                <p className="font-sans text-sm sm:text-base text-gray-750 text-justify mb-5" id="business_paragraph">
-                  Our legal team has business school graduates with real world business experience, as well as extensive courtroom litigation experience. If you are involved in a business dispute such as a breach of contract, violation of a non-compete, or allege interference with a business relationship, contact our legal team to advise you. We counsel those with knowledge of government fraud regarding the steps to become a whistleblower, outlining the benefits and protections provided. Whether you are the Plaintiff, or have been sued yourself, contact a Birmingham Civil Litigation Attorney of Boles Holmes White to discuss your business litigation needs.
-                </p>
-                
-                {/* Visual callout focusing on background credentials */}
-                <div className="p-4 bg-slate-50 border-l-4 border-brand-gold rounded-r flex gap-3 items-start">
-                  <HelpCircle className="w-5 h-5 text-brand-gold shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy uppercase tracking-wide">Distinct Real World Credentials</h4>
-                    <p className="text-xs sm:text-sm text-gray-600 mt-1">Our trial attorneys hold formal business degrees and actual strategic operational backgrounds, providing commercial lawsuits with aggressive representation backed by business acumen.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </section>
 
           {/* Right Column: Sticky Contact Form */}
-          <section className="lg:col-span-5 lg:sticky lg:top-28" id="personal-form-col">
+          <section className="lg:col-span-5 lg:sticky lg:top-28" id="professional-form-col">
             <div className="bg-[#EAECEE]/90 backdrop-blur-md rounded-lg p-6 sm:p-8 shadow-xl border border-gray-250" id="consultation-form-card">
               
               <div className="border-b border-gray-300 pb-4 mb-6">
@@ -196,7 +193,7 @@ export default function PersonalPage({ onNavigateToContact }) {
                   Speak to an Attorney
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-500 mt-1 leading-relaxed">
-                  Provide your case details below for an absolute confidential, privileged legal consultation.
+                  Provide your business details below for an absolute confidential, privileged legal consultation.
                 </p>
               </div>
 
@@ -209,7 +206,7 @@ export default function PersonalPage({ onNavigateToContact }) {
                   <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
                   <h4 className="font-bold text-emerald-800 text-sm uppercase tracking-wide">Confidential Form Received</h4>
                   <p className="text-xs sm:text-sm text-emerald-700 leading-relaxed">
-                    Thank you. A resident trial litigation attorney from Boles Holmes White will contact you inside 24 business hours.
+                    Thank you. A resident corporate attorney from Boles Holmes White will contact you inside 24 business hours.
                   </p>
                 </motion.div>
               ) : (
@@ -305,11 +302,10 @@ export default function PersonalPage({ onNavigateToContact }) {
                         id="select_area"
                       >
                         <option value="" disabled>Select...</option>
-                        <option value="Civil Lawsuits">Civil Lawsuits / Litigation</option>
-                        <option value="Personal Injury">Personal Injury Claims</option>
-                        <option value="Business Litigation">Business Disputes &amp; Litigation</option>
-                        <option value="Government Fraud">Government Fraud / Whistleblower</option>
-                        <option value="Other">Other Personal Legal Matter</option>
+                        <option value="Business Consulting">Business Consulting</option>
+                        <option value="Mergers & Acquisitions">Mergers &amp; Acquisitions</option>
+                        <option value="Contract Negotiation">Contract Negotiation</option>
+                        <option value="General Corporate Counsel">General Corporate Counsel</option>
                       </select>
                       <ChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-gray-400 pointer-events-none" />
                     </div>
@@ -340,40 +336,7 @@ export default function PersonalPage({ onNavigateToContact }) {
       </main>
 
       {/* Featured In Logos Grid */}
-      <section className="bg-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-gray-100" id="personal-media-section">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 space-y-2">
-            <span className="text-[10px] sm:text-xs font-extrabold text-brand-gold uppercase tracking-widest block">Media Advocacy &amp; recognition</span>
-            <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase text-brand-navy tracking-tight">Featured In</h3>
-            <div className="w-12 h-0.5 bg-brand-gold mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8 items-center justify-items-center select-none" id="media-grid">
-            {mediaLogos.map((reporter, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.04 }}
-                className="w-full flex items-center justify-center p-3 filter grayscale hover:grayscale-0 transition-all duration-300"
-                id={`media_item_${reporter.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}`}
-              >
-                {/* ✅ Image component use kora holo */}
-                <div className="relative h-12 w-full max-w-[150px]">
-                  <Image 
-                    src={reporter.logo} 
-                    alt={`${reporter.name} Logo`} 
-                    fill
-                    className="object-contain"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeaturedLogos></FeaturedLogos>
     </div>
   );
 }

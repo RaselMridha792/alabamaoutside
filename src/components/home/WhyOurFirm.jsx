@@ -1,31 +1,34 @@
+"use client";
+
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
 import React from 'react';
-import { DollarSign, Users, MessageSquare, Clock } from 'lucide-react';
+import { Briefcase, Award, Shield, Clock } from 'lucide-react';
 
+// ক্লায়েন্টের রিকয়ারমেন্ট অনুযায়ী সস্তা (Cheap) শব্দ বাদ দিয়ে নতুন কন্টেন্ট
 const WHY_CHOOSE_US = [
   {
-    icon: DollarSign,
-    title: "We Offer Flexible Payments",
-    description: "Customized payment plans that work with your budget"
+    icon: Briefcase,
+    title: "Unmatched Experience",
+    description: "Seasoned attorneys with decades of practice in state and federal courts."
   },
   {
-    icon: Users,
-    title: "Our Legal Team Is Highly Rated",
-    description: "Experienced and dedicated attorneys with proven track records"
+    icon: Award,
+    title: "Proven Results",
+    description: "A highly rated legal team with a track record of success in high-stakes litigation."
   },
   {
-    icon: MessageSquare,
-    title: "We Offer Free Consultations",
-    description: "Discuss your case with no obligation or cost"
+    icon: Shield,
+    title: "Aggressive Advocacy",
+    description: "Tenacious representation focused entirely on achieving the best possible outcome."
   },
   {
     icon: Clock,
-    title: "We're Available To You 24/7",
-    description: "Round-the-clock support when you need us most"
+    title: "Always Available",
+    description: "Dedicated, round-the-clock support for our clients when they need us most."
   }
 ];
 
@@ -33,12 +36,13 @@ export default function WhyOurFirm() {
   return (
     <section className="bg-white py-24 px-4 sm:px-6 lg:px-8" id="why-our-firm">
       <div className="max-w-6xl mx-auto">
+        
         {/* Section Header */}
         <div className="text-center mb-16 space-y-3">
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-brand-navy">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#0A192F]">
             Why Our Firm
           </h2>
-          <div className="w-12 h-1 bg-brand-gold mx-auto" />
+          <div className="w-12 h-1 bg-[#C5A85C] mx-auto" />
         </div>
 
         {/* Features Grid */}
@@ -49,13 +53,13 @@ export default function WhyOurFirm() {
               <div key={index} className="group text-center space-y-4">
                 {/* Icon Container */}
                 <div className="flex justify-center">
-                  <div className="bg-brand-gold/10 group-hover:bg-brand-gold/20 p-4 rounded-lg transition-colors duration-300">
-                    <Icon className="w-8 h-8 text-brand-gold" />
+                  <div className="bg-[#C5A85C]/10 group-hover:bg-[#C5A85C]/20 p-4 rounded-lg transition-colors duration-300">
+                    <Icon className="w-8 h-8 text-[#C5A85C]" />
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-lg sm:text-xl font-bold text-brand-navy">
+                <h3 className="font-display text-lg sm:text-xl font-bold text-[#0A192F]">
                   {item.title}
                 </h3>
 
@@ -67,6 +71,7 @@ export default function WhyOurFirm() {
             );
           })}
         </div>
+
       </div>
     </section>
   );
