@@ -41,7 +41,7 @@ export default function Header() {
         { name: 'Civil Lawsuits', href: '/practice-areas/civil-lawsuits' },
         { 
           name: 'Criminal Defense', 
-          href: '/practice-areas/criminal-defense', // এই লিংকে ক্লিক করলে ওভারভিউ পেজে যাবে
+          href: '/practice-areas/criminal-defense', 
           subSubItems: [
             { name: 'Criminal Defense Overview', href: '/practice-areas/criminal-defense/CriminalDefenseOverview' },
             { name: 'Arson', href: '/practice-areas/criminal-defense/arson' },
@@ -51,13 +51,12 @@ export default function Header() {
         },
         { 
           name: 'Divorce and Family Law', 
-          href: '/practice-areas/divorce-and-family-law', // এই লিংকে ক্লিক করলে ওভারভিউ পেজে যাবে
+          href: '/practice-areas/divorce-and-family-law',
           subSubItems: [
             { name: 'Divorce and Family Law', href: '/practice-areas/divorce-and-family-law/divorce-&-family-law' },
             { name: 'Adultery', href: '/practice-areas/divorce-and-family-law/adultery' },
             { name: 'Alimony', href: '/practice-areas/divorce-and-family-law/alimony' },
             { name: 'Annulments', href: '/practice-areas/divorce-and-family-law/annulments' },
-         
           ]
         },
         { 
@@ -196,14 +195,20 @@ export default function Header() {
 
                             return (
                               <div key={subItem.name} className="relative group/sub">
-                                {/* Changed to Link so clicking takes user to the page */}
-                                <Link
-                                  href={subItem.href}
-                                  className={`w-full flex items-center justify-between px-5 py-3 text-[11px] font-bold tracking-wider uppercase hover:text-brand-gold hover:bg-slate-50 transition-colors border-b border-gray-50 last:border-b-0 ${isSubActive ? 'text-brand-gold bg-slate-50' : 'text-[#0A192F]/80'}`}
-                                >
-                                  {subItem.name}
-                                  {hasSubSub && <ChevronRight className="w-3.5 h-3.5" />}
-                                </Link>
+                                {/* যদি সাব-মেনু থাকে তবে এটি কোনো লিংক হবে না, শুধুমাত্র একটি div হবে */}
+                                {hasSubSub ? (
+                                  <div className={`w-full flex items-center justify-between px-5 py-3 text-[11px] font-bold tracking-wider uppercase hover:text-brand-gold hover:bg-slate-50 transition-colors border-b border-gray-50 last:border-b-0 cursor-default ${isSubActive ? 'text-brand-gold bg-slate-50' : 'text-[#0A192F]/80'}`}>
+                                    {subItem.name}
+                                    <ChevronRight className="w-3.5 h-3.5" />
+                                  </div>
+                                ) : (
+                                  <Link
+                                    href={subItem.href}
+                                    className={`w-full flex items-center justify-between px-5 py-3 text-[11px] font-bold tracking-wider uppercase hover:text-brand-gold hover:bg-slate-50 transition-colors border-b border-gray-50 last:border-b-0 ${isSubActive ? 'text-brand-gold bg-slate-50' : 'text-[#0A192F]/80'}`}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                )}
 
                                 {/* Level 2 Dropdown (Flyout Menu) */}
                                 {hasSubSub && (
@@ -298,17 +303,12 @@ export default function Header() {
 
                           return (
                             <div key={subItem.name} className="flex flex-col">
+                              {/* মোবাইলে সাব-মেনু থাকলে সেটি বাটন হিসেবে কাজ করবে এবং ক্লিক করলে ড্রপডাউন খুলবে */}
                               {hasSubSub ? (
-                                <div className="flex items-center">
-                                  {/* Link to the overview page */}
-                                  <Link href={subItem.href} onClick={handleLinkClick} className={`flex-1 px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${isSubActive ? 'text-brand-gold' : 'text-gray-600 hover:text-brand-gold'}`}>
-                                    {subItem.name}
-                                  </Link>
-                                  {/* Button to toggle sub-dropdown on mobile */}
-                                  <button onClick={(e) => toggleMobileSubDropdown(subItem.name, e)} className={`p-2 focus:outline-none ${isSubActive ? 'text-brand-gold' : 'text-gray-600 hover:text-brand-gold'}`}>
-                                    <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isSubDropdownOpen ? 'rotate-180 text-brand-gold' : ''}`} />
-                                  </button>
-                                </div>
+                                <button onClick={(e) => toggleMobileSubDropdown(subItem.name, e)} className={`w-full flex justify-between items-center px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors focus:outline-none ${isSubActive ? 'text-brand-gold' : 'text-gray-600 hover:text-brand-gold'}`}>
+                                  <span className="text-left">{subItem.name}</span>
+                                  <ChevronDown className={`w-4 h-4 shrink-0 transition-transform duration-300 ${isSubDropdownOpen ? 'rotate-180 text-brand-gold' : ''}`} />
+                                </button>
                               ) : (
                                 <Link href={subItem.href} onClick={handleLinkClick} className={`block px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors ${isSubActive ? 'text-brand-gold' : 'text-gray-600 hover:text-brand-gold'}`}>
                                   {subItem.name}
